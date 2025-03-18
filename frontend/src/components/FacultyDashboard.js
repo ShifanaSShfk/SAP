@@ -2,19 +2,17 @@ import React, { useState, useEffect } from "react";
 import "../styles/FacultyDashboard.css"; // Import CSS file
 
 const FacultyDashboard = () => {
-  // const [tasks, setTasks] = useState([
-  //   { id: 1, requester: "Nikitha", requestType: "sent a request", eventName: "Hackathon", date: "Today", status: "pending" },
-  //   { id: 2, requester: "Nikitha", requestType: "sent a request", eventName: "CodeInit", date: "25 Jan", status: "completed" }
-  // ]);
   const [tasks] = useState([
-  { id: 1, requester: "Nikitha", requestType: "sent a request", eventName: "Hackathon", date: "Today", status: "pending" },
-  { id: 2, requester: "Nikitha", requestType: "sent a request", eventName: "CodeInit", date: "25 Jan", status: "completed" }
-]);
+    { id: 1, requester: "Nikitha", requestType: "sent a request", eventName: "Hackathon", date: "Today", status: "pending" },
+    { id: 2, requester: "Nikitha", requestType: "sent a request", eventName: "CodeInit", date: "25 Jan", status: "completed" }
+  ]);
 
   const [activeFilter, setActiveFilter] = useState("all");
 
   useEffect(() => {
-    if (window.innerWidth < 768) document.getElementById("sidebar").classList.add("sidebar-closed");
+    if (window.innerWidth < 768) {
+      document.getElementById("sidebar")?.classList.add("sidebar-closed");
+    }
   }, []);
 
   return (
