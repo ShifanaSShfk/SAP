@@ -6,9 +6,8 @@ import jakarta.persistence.*;
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
+    private String id;  // Changed to String since it is VARCHAR(15)
+
     @Column(nullable = false, unique = true)
     private String email;
 
@@ -16,23 +15,24 @@ public class User {
     private String password;
 
     @Column(nullable = false)
-    private String role;
+    private String role; // You can also use an ENUM for stricter validation
 
     // Default constructor (required for JPA)
     public User() {}
 
     // Constructor for easy initialization
-    public User(String email, String password, String role) {
+    public User(String id, String email, String password, String role) {
+        this.id = id;
         this.email = email;
         this.password = password;
         this.role = role;
     }
 
     // Getters and Setters
-    public Long getId() {
+    public String getId() {  // Changed from Long to String
         return id;
     }
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
