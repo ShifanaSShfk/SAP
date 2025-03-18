@@ -21,7 +21,7 @@ const FacultyDashboard = () => {
       <div id="sidebar" className="sidebar">
         <div className="sidebar-logo">
           <h1>SAP</h1>
-          <button id="closeSidebar" className="sidebar-toggle">✖</button>
+          {/* <button id="closeSidebar" className="sidebar-toggle">✖</button> */}
         </div>
         <nav className="sidebar-nav space-y-1">
           <a href="#" className="sidebar-item active">Dashboard</a>
