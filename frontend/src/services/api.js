@@ -1,13 +1,23 @@
-import axios from 'axios';
-
-const API_BASE_URL = "http://localhost:3000"; // Change this to your backend URL
+//import axios from 'axios';
 
 export const loginUser = async (email, password) => {
     try {
-        const response = await axios.post(`${API_BASE_URL}/api/login`, { email, password });
-        return response.data;
+      const response = await fetch("http://localhost:8080/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Invalid Credentials"); // ❌ Causes error if API returns 401
+      }
+  
+      return await response.json();
     } catch (error) {
-        console.error("Error logging in:", error);
-        throw error;
+      console.error("Login Error:", error);
+      throw error; // Propagate error to `Login.js`
     }
-};
+  };
+  
