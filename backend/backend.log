@@ -1,0 +1,1270 @@
+2025-03-18T01:33:41.233+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Starting BackendApplication using Java 21.0.6 with PID 267711 (/home/user/Downloads/SAP/backend/target/classes started by user in /home/user/Downloads/SAP/backend)
+2025-03-18T01:33:41.237+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-03-18T01:33:41.291+05:30  INFO 267711 --- [backend] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-03-18T01:33:41.292+05:30  INFO 267711 --- [backend] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-03-18T01:33:42.212+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-18T01:33:42.329+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 107 ms. Found 1 JPA repository interface.
+2025-03-18T01:33:42.495+05:30  WARN 267711 --- [backend] [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.s6_se_lab.backend]' package. Please check your configuration.
+2025-03-18T01:33:42.564+05:30  INFO 267711 --- [backend] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=0549f91d-e1ee-374e-90ce-43a337a9a073
+2025-03-18T01:33:43.077+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-18T01:33:43.088+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-18T01:33:43.088+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-18T01:33:43.118+05:30  INFO 267711 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-18T01:33:43.119+05:30  INFO 267711 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1826 ms
+2025-03-18T01:33:43.427+05:30  INFO 267711 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-18T01:33:43.491+05:30  INFO 267711 --- [backend] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-03-18T01:33:43.520+05:30  INFO 267711 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-18T01:33:43.720+05:30  INFO 267711 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-18T01:33:43.746+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-18T01:33:44.046+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5946bf1b
+2025-03-18T01:33:44.047+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-18T01:33:44.093+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-18T01:33:44.094+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-03-18T01:33:44.105+05:30  INFO 267711 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-18T01:33:44.697+05:30  INFO 267711 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-18T01:33:44.760+05:30  INFO 267711 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:33:45.024+05:30  WARN 267711 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-18T01:33:45.279+05:30  WARN 267711 --- [backend] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-03-18T01:33:45.691+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-03-18T01:33:45.702+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-03-18T01:33:45.703+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-03-18T01:33:45.703+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-03-18T01:33:45.704+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-03-18T01:33:45.705+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-03-18T01:33:45.705+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-03-18T01:33:45.705+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@12d486ad
+2025-03-18T01:33:45.754+05:30  WARN 267711 --- [backend] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 25eab647-362b-4636-8b9a-d3e15e017bd9
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-03-18T01:33:45.770+05:30  INFO 267711 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-03-18T01:33:45.879+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-03-18T01:33:45.964+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-18T01:33:46.177+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-18T01:33:46.226+05:30  INFO 267711 --- [backend] [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-03-18T01:33:46.226+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-03-18T01:33:46.238+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Started BackendApplication in 5.479 seconds (process running for 5.957)
+2025-03-18T01:34:44.767+05:30  INFO 267711 --- [backend] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-18T01:34:44.767+05:30  INFO 267711 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-18T01:34:44.769+05:30  INFO 267711 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-03-18T01:45:07.037+05:30  INFO 267711 --- [backend] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-03-18T01:45:07.101+05:30  INFO 267711 --- [backend] [Thread-6] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:45:07.108+05:30  INFO 267711 --- [backend] [Thread-6] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-18T01:45:07.115+05:30  INFO 267711 --- [backend] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-18T01:45:07.128+05:30  INFO 267711 --- [backend] [Thread-6] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-03-18T01:45:07.128+05:30  INFO 267711 --- [backend] [Thread-6] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-03-18T01:45:07.128+05:30  INFO 267711 --- [backend] [Thread-6] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:45:07.129+05:30  INFO 267711 --- [backend] [Thread-6] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-03-18T01:45:07.142+05:30  INFO 267711 --- [backend] [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:45:07.167+05:30  INFO 267711 --- [backend] [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-18T01:45:07.202+05:30  INFO 267711 --- [backend] [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-18T01:45:07.679+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Starting BackendApplication using Java 21.0.6 with PID 267711 (/home/user/Downloads/SAP/backend/target/classes started by user in /home/user/Downloads/SAP/backend)
+2025-03-18T01:45:07.680+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-03-18T01:45:07.988+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-18T01:45:07.992+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 1 JPA repository interface.
+2025-03-18T01:45:08.096+05:30  WARN 267711 --- [backend] [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.s6_se_lab.backend]' package. Please check your configuration.
+2025-03-18T01:45:08.105+05:30  INFO 267711 --- [backend] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=0549f91d-e1ee-374e-90ce-43a337a9a073
+2025-03-18T01:45:08.207+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-18T01:45:08.209+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-18T01:45:08.209+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-18T01:45:08.224+05:30  INFO 267711 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-18T01:45:08.224+05:30  INFO 267711 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 543 ms
+2025-03-18T01:45:08.369+05:30  INFO 267711 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-18T01:45:08.371+05:30  INFO 267711 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-18T01:45:08.378+05:30  INFO 267711 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-18T01:45:08.379+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-03-18T01:45:08.398+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@28b8cc82
+2025-03-18T01:45:08.399+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-03-18T01:45:08.400+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-18T01:45:08.400+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-03-18T01:45:08.400+05:30  INFO 267711 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-18T01:45:08.432+05:30  INFO 267711 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-18T01:45:08.442+05:30  INFO 267711 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:45:08.546+05:30  WARN 267711 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-18T01:45:08.742+05:30  WARN 267711 --- [backend] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-03-18T01:45:08.984+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-03-18T01:45:08.985+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-03-18T01:45:08.986+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-03-18T01:45:08.986+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-03-18T01:45:08.986+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-03-18T01:45:08.986+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-03-18T01:45:08.986+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-03-18T01:45:08.986+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@56901593
+2025-03-18T01:45:09.006+05:30  WARN 267711 --- [backend] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 18f2e8c9-168e-4f3b-a2de-ee6fced814a3
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-03-18T01:45:09.008+05:30  INFO 267711 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-03-18T01:45:09.038+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-03-18T01:45:09.087+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-18T01:45:09.311+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-18T01:45:09.349+05:30  INFO 267711 --- [backend] [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-03-18T01:45:09.349+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-03-18T01:45:09.356+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Started BackendApplication in 1.775 seconds (process running for 689.074)
+2025-03-18T01:45:09.358+05:30  INFO 267711 --- [backend] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-18T01:45:10.500+05:30  INFO 267711 --- [backend] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-03-18T01:45:10.502+05:30  INFO 267711 --- [backend] [Thread-9] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:45:10.502+05:30  INFO 267711 --- [backend] [Thread-9] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-18T01:45:10.502+05:30  INFO 267711 --- [backend] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-18T01:45:10.504+05:30  INFO 267711 --- [backend] [Thread-9] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-03-18T01:45:10.504+05:30  INFO 267711 --- [backend] [Thread-9] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-03-18T01:45:10.504+05:30  INFO 267711 --- [backend] [Thread-9] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:45:10.504+05:30  INFO 267711 --- [backend] [Thread-9] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-03-18T01:45:10.505+05:30  INFO 267711 --- [backend] [Thread-9] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:45:10.505+05:30  INFO 267711 --- [backend] [Thread-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-03-18T01:45:10.508+05:30  INFO 267711 --- [backend] [Thread-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-03-18T01:45:10.764+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Starting BackendApplication using Java 21.0.6 with PID 267711 (/home/user/Downloads/SAP/backend/target/classes started by user in /home/user/Downloads/SAP/backend)
+2025-03-18T01:45:10.764+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-03-18T01:45:10.956+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-18T01:45:10.961+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 1 JPA repository interface.
+2025-03-18T01:45:11.014+05:30  WARN 267711 --- [backend] [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.s6_se_lab.backend]' package. Please check your configuration.
+2025-03-18T01:45:11.019+05:30  INFO 267711 --- [backend] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=0549f91d-e1ee-374e-90ce-43a337a9a073
+2025-03-18T01:45:11.106+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-18T01:45:11.107+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-18T01:45:11.107+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-18T01:45:11.121+05:30  INFO 267711 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-18T01:45:11.122+05:30  INFO 267711 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 356 ms
+2025-03-18T01:45:11.210+05:30  INFO 267711 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-18T01:45:11.211+05:30  INFO 267711 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-18T01:45:11.217+05:30  INFO 267711 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-18T01:45:11.218+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2025-03-18T01:45:11.228+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@35a15bb8
+2025-03-18T01:45:11.228+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2025-03-18T01:45:11.229+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-18T01:45:11.229+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-03-18T01:45:11.229+05:30  INFO 267711 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-18T01:45:11.256+05:30  INFO 267711 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-18T01:45:11.267+05:30  INFO 267711 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:45:11.363+05:30  WARN 267711 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-18T01:45:11.497+05:30  WARN 267711 --- [backend] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-03-18T01:45:11.676+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-03-18T01:45:11.677+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-03-18T01:45:11.677+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-03-18T01:45:11.677+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-03-18T01:45:11.677+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-03-18T01:45:11.677+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-03-18T01:45:11.677+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-03-18T01:45:11.677+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@7b2399b4
+2025-03-18T01:45:11.703+05:30  WARN 267711 --- [backend] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 53e816f0-4052-46c2-b58c-834b671e19e4
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-03-18T01:45:11.704+05:30  INFO 267711 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-03-18T01:45:11.728+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-03-18T01:45:11.785+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-18T01:45:11.877+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-18T01:45:12.050+05:30  INFO 267711 --- [backend] [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-03-18T01:45:12.051+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-03-18T01:45:12.057+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Started BackendApplication in 1.5 seconds (process running for 691.775)
+2025-03-18T01:45:12.058+05:30  INFO 267711 --- [backend] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-18T01:45:45.213+05:30  INFO 267711 --- [backend] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-03-18T01:45:45.214+05:30  INFO 267711 --- [backend] [Thread-15] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:45:45.214+05:30  INFO 267711 --- [backend] [Thread-15] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-18T01:45:45.215+05:30  INFO 267711 --- [backend] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-18T01:45:45.216+05:30  INFO 267711 --- [backend] [Thread-15] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-03-18T01:45:45.217+05:30  INFO 267711 --- [backend] [Thread-15] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-03-18T01:45:45.217+05:30  INFO 267711 --- [backend] [Thread-15] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:45:45.217+05:30  INFO 267711 --- [backend] [Thread-15] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-03-18T01:45:45.217+05:30  INFO 267711 --- [backend] [Thread-15] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:45:45.218+05:30  INFO 267711 --- [backend] [Thread-15] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2025-03-18T01:45:45.227+05:30  INFO 267711 --- [backend] [Thread-15] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2025-03-18T01:45:45.332+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Starting BackendApplication using Java 21.0.6 with PID 267711 (/home/user/Downloads/SAP/backend/target/classes started by user in /home/user/Downloads/SAP/backend)
+2025-03-18T01:45:45.333+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-03-18T01:45:45.495+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-18T01:45:45.507+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 1 JPA repository interface.
+2025-03-18T01:45:45.555+05:30  WARN 267711 --- [backend] [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.s6_se_lab.backend]' package. Please check your configuration.
+2025-03-18T01:45:45.559+05:30  INFO 267711 --- [backend] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=0549f91d-e1ee-374e-90ce-43a337a9a073
+2025-03-18T01:45:45.644+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-18T01:45:45.645+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-18T01:45:45.646+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-18T01:45:45.655+05:30  INFO 267711 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-18T01:45:45.655+05:30  INFO 267711 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 321 ms
+2025-03-18T01:45:45.784+05:30  INFO 267711 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-18T01:45:45.785+05:30  INFO 267711 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-18T01:45:45.792+05:30  INFO 267711 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-18T01:45:45.793+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2025-03-18T01:45:45.810+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@19f50b54
+2025-03-18T01:45:45.810+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2025-03-18T01:45:45.811+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-18T01:45:45.811+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-03-18T01:45:45.811+05:30  INFO 267711 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-4)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-18T01:45:45.846+05:30  INFO 267711 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-18T01:45:45.867+05:30  INFO 267711 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:45:45.961+05:30  WARN 267711 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-18T01:45:46.112+05:30  WARN 267711 --- [backend] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-03-18T01:45:46.268+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-03-18T01:45:46.269+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-03-18T01:45:46.270+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-03-18T01:45:46.270+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-03-18T01:45:46.270+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-03-18T01:45:46.270+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-03-18T01:45:46.270+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-03-18T01:45:46.270+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@92eb2d3
+2025-03-18T01:45:46.291+05:30  WARN 267711 --- [backend] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: b3f3e553-78c7-4c50-9d03-d8d028865ad6
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-03-18T01:45:46.294+05:30  INFO 267711 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-03-18T01:45:46.321+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-03-18T01:45:46.366+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-18T01:45:46.472+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-18T01:45:46.510+05:30  INFO 267711 --- [backend] [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-03-18T01:45:46.511+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-03-18T01:45:46.519+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Started BackendApplication in 1.247 seconds (process running for 726.238)
+2025-03-18T01:45:46.521+05:30  INFO 267711 --- [backend] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-18T01:48:11.870+05:30  INFO 267711 --- [backend] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2025-03-18T01:48:11.871+05:30  INFO 267711 --- [backend] [Thread-21] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:48:11.871+05:30  INFO 267711 --- [backend] [Thread-21] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-18T01:48:11.872+05:30  INFO 267711 --- [backend] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-18T01:48:11.874+05:30  INFO 267711 --- [backend] [Thread-21] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-03-18T01:48:11.874+05:30  INFO 267711 --- [backend] [Thread-21] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-03-18T01:48:11.874+05:30  INFO 267711 --- [backend] [Thread-21] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:48:11.874+05:30  INFO 267711 --- [backend] [Thread-21] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-03-18T01:48:11.875+05:30  INFO 267711 --- [backend] [Thread-21] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:48:11.875+05:30  INFO 267711 --- [backend] [Thread-21] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2025-03-18T01:48:11.878+05:30  INFO 267711 --- [backend] [Thread-21] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2025-03-18T01:48:12.090+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Starting BackendApplication using Java 21.0.6 with PID 267711 (/home/user/Downloads/SAP/backend/target/classes started by user in /home/user/Downloads/SAP/backend)
+2025-03-18T01:48:12.090+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-03-18T01:48:12.259+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-18T01:48:12.264+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 1 JPA repository interface.
+2025-03-18T01:48:12.321+05:30  WARN 267711 --- [backend] [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.s6_se_lab.backend]' package. Please check your configuration.
+2025-03-18T01:48:12.326+05:30  INFO 267711 --- [backend] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=0549f91d-e1ee-374e-90ce-43a337a9a073
+2025-03-18T01:48:12.429+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-18T01:48:12.430+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-18T01:48:12.430+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-18T01:48:12.442+05:30  INFO 267711 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-18T01:48:12.442+05:30  INFO 267711 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 351 ms
+2025-03-18T01:48:12.577+05:30  INFO 267711 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-18T01:48:12.580+05:30  INFO 267711 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-18T01:48:12.588+05:30  INFO 267711 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-18T01:48:12.589+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2025-03-18T01:48:12.611+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4cb10df1
+2025-03-18T01:48:12.611+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2025-03-18T01:48:12.612+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-18T01:48:12.612+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-03-18T01:48:12.612+05:30  INFO 267711 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-5)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-18T01:48:12.648+05:30  INFO 267711 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-18T01:48:12.659+05:30  INFO 267711 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:48:12.755+05:30  WARN 267711 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-18T01:48:12.898+05:30  WARN 267711 --- [backend] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-03-18T01:48:13.080+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-03-18T01:48:13.081+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-03-18T01:48:13.081+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-03-18T01:48:13.081+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-03-18T01:48:13.081+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-03-18T01:48:13.081+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-03-18T01:48:13.081+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-03-18T01:48:13.081+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@5c2d33c1
+2025-03-18T01:48:13.099+05:30  WARN 267711 --- [backend] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 48b718de-05f0-480f-8ccc-6128e99afaeb
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-03-18T01:48:13.100+05:30  INFO 267711 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-03-18T01:48:13.124+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-03-18T01:48:13.164+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-18T01:48:13.250+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-18T01:48:13.333+05:30  INFO 267711 --- [backend] [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-03-18T01:48:13.333+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-03-18T01:48:13.339+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Started BackendApplication in 1.404 seconds (process running for 873.058)
+2025-03-18T01:48:13.341+05:30  INFO 267711 --- [backend] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-18T01:48:21.570+05:30  INFO 267711 --- [backend] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2025-03-18T01:48:21.572+05:30  INFO 267711 --- [backend] [Thread-27] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:48:21.572+05:30  INFO 267711 --- [backend] [Thread-27] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-18T01:48:21.572+05:30  INFO 267711 --- [backend] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-18T01:48:21.574+05:30  INFO 267711 --- [backend] [Thread-27] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-03-18T01:48:21.574+05:30  INFO 267711 --- [backend] [Thread-27] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-03-18T01:48:21.574+05:30  INFO 267711 --- [backend] [Thread-27] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:48:21.574+05:30  INFO 267711 --- [backend] [Thread-27] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-03-18T01:48:21.574+05:30  INFO 267711 --- [backend] [Thread-27] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:48:21.575+05:30  INFO 267711 --- [backend] [Thread-27] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2025-03-18T01:48:21.578+05:30  INFO 267711 --- [backend] [Thread-27] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2025-03-18T01:48:21.726+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Starting BackendApplication using Java 21.0.6 with PID 267711 (/home/user/Downloads/SAP/backend/target/classes started by user in /home/user/Downloads/SAP/backend)
+2025-03-18T01:48:21.726+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-03-18T01:48:21.880+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-18T01:48:21.883+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 1 JPA repository interface.
+2025-03-18T01:48:21.932+05:30  WARN 267711 --- [backend] [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.s6_se_lab.backend]' package. Please check your configuration.
+2025-03-18T01:48:21.953+05:30  INFO 267711 --- [backend] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=1fd36a96-b478-3ac3-bebb-026ae936e259
+2025-03-18T01:48:22.041+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-18T01:48:22.041+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-18T01:48:22.042+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-18T01:48:22.055+05:30  INFO 267711 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-18T01:48:22.056+05:30  INFO 267711 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 329 ms
+2025-03-18T01:48:22.155+05:30  INFO 267711 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-18T01:48:22.156+05:30  INFO 267711 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-18T01:48:22.162+05:30  INFO 267711 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-18T01:48:22.163+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2025-03-18T01:48:22.173+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-6 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1ee199c9
+2025-03-18T01:48:22.173+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2025-03-18T01:48:22.174+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-18T01:48:22.174+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-03-18T01:48:22.174+05:30  INFO 267711 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-6)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-18T01:48:22.201+05:30  INFO 267711 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-18T01:48:22.208+05:30  INFO 267711 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:48:22.292+05:30  WARN 267711 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-18T01:48:22.423+05:30  WARN 267711 --- [backend] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-03-18T01:48:22.604+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-03-18T01:48:22.605+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-03-18T01:48:22.605+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-03-18T01:48:22.605+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-03-18T01:48:22.605+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-03-18T01:48:22.605+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-03-18T01:48:22.605+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-03-18T01:48:22.605+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@1da9900d
+2025-03-18T01:48:22.630+05:30  WARN 267711 --- [backend] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 8422fcd8-36de-4a10-bf1e-0da5a8d3365c
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-03-18T01:48:22.631+05:30  INFO 267711 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-03-18T01:48:22.689+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-03-18T01:48:22.739+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-18T01:48:22.894+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-18T01:48:22.946+05:30  INFO 267711 --- [backend] [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-03-18T01:48:22.946+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-03-18T01:48:22.955+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Started BackendApplication in 1.298 seconds (process running for 882.674)
+2025-03-18T01:48:22.957+05:30  INFO 267711 --- [backend] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-18T01:48:24.141+05:30  INFO 267711 --- [backend] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2025-03-18T01:48:24.142+05:30  INFO 267711 --- [backend] [Thread-33] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:48:24.142+05:30  INFO 267711 --- [backend] [Thread-33] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-18T01:48:24.143+05:30  INFO 267711 --- [backend] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-18T01:48:24.146+05:30  INFO 267711 --- [backend] [Thread-33] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-03-18T01:48:24.146+05:30  INFO 267711 --- [backend] [Thread-33] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-03-18T01:48:24.146+05:30  INFO 267711 --- [backend] [Thread-33] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:48:24.146+05:30  INFO 267711 --- [backend] [Thread-33] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-03-18T01:48:24.147+05:30  INFO 267711 --- [backend] [Thread-33] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:48:24.148+05:30  INFO 267711 --- [backend] [Thread-33] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2025-03-18T01:48:24.150+05:30  INFO 267711 --- [backend] [Thread-33] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+2025-03-18T01:48:24.338+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Starting BackendApplication using Java 21.0.6 with PID 267711 (/home/user/Downloads/SAP/backend/target/classes started by user in /home/user/Downloads/SAP/backend)
+2025-03-18T01:48:24.338+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-03-18T01:48:24.535+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-18T01:48:24.539+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 1 JPA repository interface.
+2025-03-18T01:48:24.589+05:30  WARN 267711 --- [backend] [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.s6_se_lab.backend]' package. Please check your configuration.
+2025-03-18T01:48:24.596+05:30  INFO 267711 --- [backend] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=1fd36a96-b478-3ac3-bebb-026ae936e259
+2025-03-18T01:48:24.667+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-18T01:48:24.668+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-18T01:48:24.668+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-18T01:48:24.681+05:30  INFO 267711 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-18T01:48:24.681+05:30  INFO 267711 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 342 ms
+2025-03-18T01:48:24.776+05:30  INFO 267711 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-18T01:48:24.777+05:30  INFO 267711 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-18T01:48:24.782+05:30  INFO 267711 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-18T01:48:24.782+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2025-03-18T01:48:24.799+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Added connection com.mysql.cj.jdbc.ConnectionImpl@59a73362
+2025-03-18T01:48:24.799+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2025-03-18T01:48:24.800+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-18T01:48:24.800+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-03-18T01:48:24.800+05:30  INFO 267711 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-7)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-18T01:48:24.822+05:30  INFO 267711 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-18T01:48:24.834+05:30  INFO 267711 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:48:24.909+05:30  WARN 267711 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-18T01:48:25.027+05:30  WARN 267711 --- [backend] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-03-18T01:48:25.179+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-03-18T01:48:25.180+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-03-18T01:48:25.180+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-03-18T01:48:25.180+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-03-18T01:48:25.180+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-03-18T01:48:25.180+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-03-18T01:48:25.181+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-03-18T01:48:25.181+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@6a288943
+2025-03-18T01:48:25.205+05:30  WARN 267711 --- [backend] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 53d89cda-a4f8-4dc8-9142-cc5f018ce53d
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-03-18T01:48:25.206+05:30  INFO 267711 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-03-18T01:48:25.260+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-03-18T01:48:25.296+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-18T01:48:25.391+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-18T01:48:25.542+05:30  INFO 267711 --- [backend] [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-03-18T01:48:25.542+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-03-18T01:48:25.551+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Started BackendApplication in 1.349 seconds (process running for 885.27)
+2025-03-18T01:48:25.554+05:30  INFO 267711 --- [backend] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-18T01:48:26.696+05:30  INFO 267711 --- [backend] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-03-18T01:48:26.697+05:30  INFO 267711 --- [backend] [Thread-39] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:48:26.697+05:30  INFO 267711 --- [backend] [Thread-39] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-18T01:48:26.698+05:30  INFO 267711 --- [backend] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-18T01:48:26.699+05:30  INFO 267711 --- [backend] [Thread-39] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-03-18T01:48:26.699+05:30  INFO 267711 --- [backend] [Thread-39] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-03-18T01:48:26.699+05:30  INFO 267711 --- [backend] [Thread-39] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:48:26.699+05:30  INFO 267711 --- [backend] [Thread-39] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-03-18T01:48:26.700+05:30  INFO 267711 --- [backend] [Thread-39] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:48:26.700+05:30  INFO 267711 --- [backend] [Thread-39] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2025-03-18T01:48:26.702+05:30  INFO 267711 --- [backend] [Thread-39] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+2025-03-18T01:48:26.847+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Starting BackendApplication using Java 21.0.6 with PID 267711 (/home/user/Downloads/SAP/backend/target/classes started by user in /home/user/Downloads/SAP/backend)
+2025-03-18T01:48:26.848+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-03-18T01:48:27.018+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-18T01:48:27.021+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 1 JPA repository interface.
+2025-03-18T01:48:27.066+05:30  WARN 267711 --- [backend] [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.s6_se_lab.backend]' package. Please check your configuration.
+2025-03-18T01:48:27.071+05:30  INFO 267711 --- [backend] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=1fd36a96-b478-3ac3-bebb-026ae936e259
+2025-03-18T01:48:27.159+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-18T01:48:27.160+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-18T01:48:27.160+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-18T01:48:27.174+05:30  INFO 267711 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-18T01:48:27.174+05:30  INFO 267711 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 325 ms
+2025-03-18T01:48:27.273+05:30  INFO 267711 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-18T01:48:27.274+05:30  INFO 267711 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-18T01:48:27.279+05:30  INFO 267711 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-18T01:48:27.280+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2025-03-18T01:48:27.290+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-8 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3403cffc
+2025-03-18T01:48:27.291+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
+2025-03-18T01:48:27.291+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-18T01:48:27.291+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-03-18T01:48:27.292+05:30  INFO 267711 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-8)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-18T01:48:27.324+05:30  INFO 267711 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-18T01:48:27.335+05:30  INFO 267711 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:48:27.417+05:30  WARN 267711 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-18T01:48:27.519+05:30  WARN 267711 --- [backend] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-03-18T01:48:27.653+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-03-18T01:48:27.654+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-03-18T01:48:27.654+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-03-18T01:48:27.654+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-03-18T01:48:27.654+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-03-18T01:48:27.654+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-03-18T01:48:27.654+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-03-18T01:48:27.654+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@746a4024
+2025-03-18T01:48:27.671+05:30  WARN 267711 --- [backend] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 56d6785e-ffd6-47c2-bcfb-8d913af6a6a4
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-03-18T01:48:27.672+05:30  INFO 267711 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-03-18T01:48:27.710+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-03-18T01:48:27.736+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-18T01:48:27.874+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-18T01:48:28.038+05:30  INFO 267711 --- [backend] [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-03-18T01:48:28.039+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-03-18T01:48:28.048+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Started BackendApplication in 1.299 seconds (process running for 887.767)
+2025-03-18T01:48:28.050+05:30  INFO 267711 --- [backend] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-18T01:48:37.590+05:30  INFO 267711 --- [backend] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-18T01:48:37.590+05:30  INFO 267711 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-18T01:48:37.592+05:30  INFO 267711 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-03-18T01:49:49.210+05:30  INFO 267711 --- [backend] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 7 class path changes (0 additions, 0 deletions, 7 modifications)
+2025-03-18T01:49:49.218+05:30  INFO 267711 --- [backend] [Thread-45] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:49:49.218+05:30  INFO 267711 --- [backend] [Thread-45] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-18T01:49:49.219+05:30  INFO 267711 --- [backend] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-18T01:49:49.221+05:30  INFO 267711 --- [backend] [Thread-45] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-03-18T01:49:49.221+05:30  INFO 267711 --- [backend] [Thread-45] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-03-18T01:49:49.221+05:30  INFO 267711 --- [backend] [Thread-45] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:49:49.221+05:30  INFO 267711 --- [backend] [Thread-45] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-03-18T01:49:49.221+05:30  INFO 267711 --- [backend] [Thread-45] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:49:49.222+05:30  INFO 267711 --- [backend] [Thread-45] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown initiated...
+2025-03-18T01:49:49.224+05:30  INFO 267711 --- [backend] [Thread-45] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown completed.
+2025-03-18T01:49:49.339+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Starting BackendApplication using Java 21.0.6 with PID 267711 (/home/user/Downloads/SAP/backend/target/classes started by user in /home/user/Downloads/SAP/backend)
+2025-03-18T01:49:49.340+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-03-18T01:49:49.511+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-18T01:49:49.514+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 1 JPA repository interface.
+2025-03-18T01:49:49.559+05:30  WARN 267711 --- [backend] [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.s6_se_lab.backend]' package. Please check your configuration.
+2025-03-18T01:49:49.567+05:30  INFO 267711 --- [backend] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=1fd36a96-b478-3ac3-bebb-026ae936e259
+2025-03-18T01:49:49.673+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-18T01:49:49.674+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-18T01:49:49.674+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-18T01:49:49.684+05:30  INFO 267711 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-18T01:49:49.684+05:30  INFO 267711 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 343 ms
+2025-03-18T01:49:49.814+05:30  INFO 267711 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-18T01:49:49.815+05:30  INFO 267711 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-18T01:49:49.819+05:30  INFO 267711 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-18T01:49:49.819+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Starting...
+2025-03-18T01:49:49.829+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-9 - Added connection com.mysql.cj.jdbc.ConnectionImpl@21628271
+2025-03-18T01:49:49.830+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Start completed.
+2025-03-18T01:49:49.830+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-18T01:49:49.830+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-03-18T01:49:49.830+05:30  INFO 267711 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-9)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-18T01:49:49.852+05:30  INFO 267711 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-18T01:49:49.857+05:30  INFO 267711 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:49:49.929+05:30  WARN 267711 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-18T01:49:50.072+05:30  WARN 267711 --- [backend] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-03-18T01:49:50.207+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-03-18T01:49:50.209+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-03-18T01:49:50.209+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-03-18T01:49:50.209+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-03-18T01:49:50.209+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-03-18T01:49:50.209+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-03-18T01:49:50.209+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-03-18T01:49:50.209+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@3f7d587f
+2025-03-18T01:49:50.236+05:30  WARN 267711 --- [backend] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 9a7cfaf8-1617-4810-9729-6bf5e7df2a82
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-03-18T01:49:50.238+05:30  INFO 267711 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-03-18T01:49:50.286+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-03-18T01:49:50.318+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-18T01:49:50.427+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-18T01:49:50.511+05:30  INFO 267711 --- [backend] [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-03-18T01:49:50.511+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-03-18T01:49:50.521+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Started BackendApplication in 1.246 seconds (process running for 970.239)
+2025-03-18T01:49:50.523+05:30  INFO 267711 --- [backend] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-18T01:50:18.745+05:30  INFO 267711 --- [backend] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 7 class path changes (0 additions, 0 deletions, 7 modifications)
+2025-03-18T01:50:18.746+05:30  INFO 267711 --- [backend] [Thread-51] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:50:18.746+05:30  INFO 267711 --- [backend] [Thread-51] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-18T01:50:18.747+05:30  INFO 267711 --- [backend] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-18T01:50:18.748+05:30  INFO 267711 --- [backend] [Thread-51] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-03-18T01:50:18.748+05:30  INFO 267711 --- [backend] [Thread-51] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-03-18T01:50:18.748+05:30  INFO 267711 --- [backend] [Thread-51] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:50:18.748+05:30  INFO 267711 --- [backend] [Thread-51] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-03-18T01:50:18.749+05:30  INFO 267711 --- [backend] [Thread-51] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:50:18.749+05:30  INFO 267711 --- [backend] [Thread-51] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown initiated...
+2025-03-18T01:50:18.751+05:30  INFO 267711 --- [backend] [Thread-51] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown completed.
+2025-03-18T01:50:18.893+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Starting BackendApplication using Java 21.0.6 with PID 267711 (/home/user/Downloads/SAP/backend/target/classes started by user in /home/user/Downloads/SAP/backend)
+2025-03-18T01:50:18.893+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-03-18T01:50:19.071+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-18T01:50:19.075+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 1 JPA repository interface.
+2025-03-18T01:50:19.133+05:30  WARN 267711 --- [backend] [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.s6_se_lab.backend]' package. Please check your configuration.
+2025-03-18T01:50:19.138+05:30  INFO 267711 --- [backend] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=1fd36a96-b478-3ac3-bebb-026ae936e259
+2025-03-18T01:50:19.210+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-18T01:50:19.210+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-18T01:50:19.210+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-18T01:50:19.219+05:30  INFO 267711 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-18T01:50:19.219+05:30  INFO 267711 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 324 ms
+2025-03-18T01:50:19.330+05:30  INFO 267711 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-18T01:50:19.331+05:30  INFO 267711 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-18T01:50:19.336+05:30  INFO 267711 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-18T01:50:19.337+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Starting...
+2025-03-18T01:50:19.347+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-10 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6568f45
+2025-03-18T01:50:19.347+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Start completed.
+2025-03-18T01:50:19.348+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-18T01:50:19.348+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-03-18T01:50:19.348+05:30  INFO 267711 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-10)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-18T01:50:19.373+05:30  INFO 267711 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-18T01:50:19.379+05:30  INFO 267711 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:50:19.461+05:30  WARN 267711 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-18T01:50:19.583+05:30  WARN 267711 --- [backend] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-03-18T01:50:19.746+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-03-18T01:50:19.747+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-03-18T01:50:19.747+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-03-18T01:50:19.747+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-03-18T01:50:19.747+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-03-18T01:50:19.747+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-03-18T01:50:19.747+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-03-18T01:50:19.747+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@2b8f5600
+2025-03-18T01:50:19.767+05:30  WARN 267711 --- [backend] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 671fa180-8f9b-4eba-8a61-ca0f63a97220
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-03-18T01:50:19.769+05:30  INFO 267711 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-03-18T01:50:19.810+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-03-18T01:50:19.843+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-18T01:50:19.937+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-18T01:50:19.974+05:30  INFO 267711 --- [backend] [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-03-18T01:50:19.974+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-03-18T01:50:19.981+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Started BackendApplication in 1.175 seconds (process running for 999.699)
+2025-03-18T01:50:19.982+05:30  INFO 267711 --- [backend] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-18T01:50:26.248+05:30  INFO 267711 --- [backend] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 7 class path changes (0 additions, 1 deletion, 6 modifications)
+2025-03-18T01:50:26.250+05:30  INFO 267711 --- [backend] [Thread-57] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:50:26.251+05:30  INFO 267711 --- [backend] [Thread-57] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-18T01:50:26.252+05:30  INFO 267711 --- [backend] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-18T01:50:26.257+05:30  INFO 267711 --- [backend] [Thread-57] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-03-18T01:50:26.257+05:30  INFO 267711 --- [backend] [Thread-57] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-03-18T01:50:26.257+05:30  INFO 267711 --- [backend] [Thread-57] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:50:26.257+05:30  INFO 267711 --- [backend] [Thread-57] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-03-18T01:50:26.259+05:30  INFO 267711 --- [backend] [Thread-57] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:50:26.259+05:30  INFO 267711 --- [backend] [Thread-57] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown initiated...
+2025-03-18T01:50:26.264+05:30  INFO 267711 --- [backend] [Thread-57] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown completed.
+2025-03-18T01:50:26.550+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Starting BackendApplication using Java 21.0.6 with PID 267711 (/home/user/Downloads/SAP/backend/target/classes started by user in /home/user/Downloads/SAP/backend)
+2025-03-18T01:50:26.551+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-03-18T01:50:26.726+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-18T01:50:26.731+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 1 JPA repository interface.
+2025-03-18T01:50:26.791+05:30  WARN 267711 --- [backend] [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.s6_se_lab.backend]' package. Please check your configuration.
+2025-03-18T01:50:26.799+05:30  INFO 267711 --- [backend] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=1fd36a96-b478-3ac3-bebb-026ae936e259
+2025-03-18T01:50:26.909+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-18T01:50:26.910+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-18T01:50:26.910+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-18T01:50:26.937+05:30  INFO 267711 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-18T01:50:26.938+05:30  INFO 267711 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 383 ms
+2025-03-18T01:50:27.088+05:30  INFO 267711 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-18T01:50:27.089+05:30  INFO 267711 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-18T01:50:27.095+05:30  INFO 267711 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-18T01:50:27.096+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Starting...
+2025-03-18T01:50:27.108+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-11 - Added connection com.mysql.cj.jdbc.ConnectionImpl@28a7b69e
+2025-03-18T01:50:27.108+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Start completed.
+2025-03-18T01:50:27.109+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-18T01:50:27.109+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-03-18T01:50:27.109+05:30  INFO 267711 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-11)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-18T01:50:27.137+05:30  INFO 267711 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-18T01:50:27.144+05:30  INFO 267711 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:50:27.246+05:30  WARN 267711 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-18T01:50:27.400+05:30  WARN 267711 --- [backend] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-03-18T01:50:27.645+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-03-18T01:50:27.647+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-03-18T01:50:27.648+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-03-18T01:50:27.648+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-03-18T01:50:27.648+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-03-18T01:50:27.649+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-03-18T01:50:27.649+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-03-18T01:50:27.649+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@629a0539
+2025-03-18T01:50:27.669+05:30  WARN 267711 --- [backend] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 46e4c637-5ff5-48ff-b68d-7e2f3bbb941b
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-03-18T01:50:27.672+05:30  INFO 267711 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-03-18T01:50:27.729+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-03-18T01:50:27.761+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-18T01:50:27.863+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-18T01:50:28.027+05:30  INFO 267711 --- [backend] [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-03-18T01:50:28.027+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-03-18T01:50:28.037+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Started BackendApplication in 1.672 seconds (process running for 1007.755)
+2025-03-18T01:50:28.039+05:30  INFO 267711 --- [backend] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-18T01:50:29.162+05:30  INFO 267711 --- [backend] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 7 class path changes (1 addition, 0 deletions, 6 modifications)
+2025-03-18T01:50:29.163+05:30  INFO 267711 --- [backend] [Thread-63] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:50:29.163+05:30  INFO 267711 --- [backend] [Thread-63] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-18T01:50:29.164+05:30  INFO 267711 --- [backend] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-18T01:50:29.165+05:30  INFO 267711 --- [backend] [Thread-63] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-03-18T01:50:29.165+05:30  INFO 267711 --- [backend] [Thread-63] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-03-18T01:50:29.165+05:30  INFO 267711 --- [backend] [Thread-63] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:50:29.165+05:30  INFO 267711 --- [backend] [Thread-63] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-03-18T01:50:29.166+05:30  INFO 267711 --- [backend] [Thread-63] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:50:29.166+05:30  INFO 267711 --- [backend] [Thread-63] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Shutdown initiated...
+2025-03-18T01:50:29.168+05:30  INFO 267711 --- [backend] [Thread-63] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Shutdown completed.
+2025-03-18T01:50:29.274+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Starting BackendApplication using Java 21.0.6 with PID 267711 (/home/user/Downloads/SAP/backend/target/classes started by user in /home/user/Downloads/SAP/backend)
+2025-03-18T01:50:29.274+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-03-18T01:50:29.423+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-18T01:50:29.426+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 1 JPA repository interface.
+2025-03-18T01:50:29.478+05:30  WARN 267711 --- [backend] [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.s6_se_lab.backend]' package. Please check your configuration.
+2025-03-18T01:50:29.484+05:30  INFO 267711 --- [backend] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=1fd36a96-b478-3ac3-bebb-026ae936e259
+2025-03-18T01:50:29.559+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-18T01:50:29.560+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-18T01:50:29.560+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-18T01:50:29.572+05:30  INFO 267711 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-18T01:50:29.573+05:30  INFO 267711 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 298 ms
+2025-03-18T01:50:29.685+05:30  INFO 267711 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-18T01:50:29.686+05:30  INFO 267711 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-18T01:50:29.690+05:30  INFO 267711 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-18T01:50:29.691+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Starting...
+2025-03-18T01:50:29.701+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-12 - Added connection com.mysql.cj.jdbc.ConnectionImpl@786c0b40
+2025-03-18T01:50:29.701+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Start completed.
+2025-03-18T01:50:29.701+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-18T01:50:29.701+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-03-18T01:50:29.701+05:30  INFO 267711 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-12)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-18T01:50:29.725+05:30  INFO 267711 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-18T01:50:29.738+05:30  INFO 267711 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:50:29.836+05:30  WARN 267711 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-18T01:50:29.959+05:30  WARN 267711 --- [backend] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-03-18T01:50:30.100+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-03-18T01:50:30.100+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-03-18T01:50:30.101+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-03-18T01:50:30.101+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-03-18T01:50:30.101+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-03-18T01:50:30.101+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-03-18T01:50:30.101+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-03-18T01:50:30.101+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@d74eb4a
+2025-03-18T01:50:30.117+05:30  WARN 267711 --- [backend] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: e94a73aa-72a2-4eb6-b59d-a6435c9f788a
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-03-18T01:50:30.118+05:30  INFO 267711 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-03-18T01:50:30.176+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-03-18T01:50:30.214+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-18T01:50:30.302+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-18T01:50:30.341+05:30  INFO 267711 --- [backend] [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-03-18T01:50:30.341+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-03-18T01:50:30.348+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Started BackendApplication in 1.14 seconds (process running for 1010.067)
+2025-03-18T01:50:30.350+05:30  INFO 267711 --- [backend] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-18T01:50:42.622+05:30  INFO 267711 --- [backend] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 7 class path changes (0 additions, 0 deletions, 7 modifications)
+2025-03-18T01:50:42.624+05:30  INFO 267711 --- [backend] [Thread-69] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:50:42.624+05:30  INFO 267711 --- [backend] [Thread-69] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-18T01:50:42.624+05:30  INFO 267711 --- [backend] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-18T01:50:42.625+05:30  INFO 267711 --- [backend] [Thread-69] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-03-18T01:50:42.626+05:30  INFO 267711 --- [backend] [Thread-69] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-03-18T01:50:42.626+05:30  INFO 267711 --- [backend] [Thread-69] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:50:42.626+05:30  INFO 267711 --- [backend] [Thread-69] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-03-18T01:50:42.626+05:30  INFO 267711 --- [backend] [Thread-69] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:50:42.627+05:30  INFO 267711 --- [backend] [Thread-69] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Shutdown initiated...
+2025-03-18T01:50:42.628+05:30  INFO 267711 --- [backend] [Thread-69] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Shutdown completed.
+2025-03-18T01:50:42.805+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Starting BackendApplication using Java 21.0.6 with PID 267711 (/home/user/Downloads/SAP/backend/target/classes started by user in /home/user/Downloads/SAP/backend)
+2025-03-18T01:50:42.805+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-03-18T01:50:42.978+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-18T01:50:42.982+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 1 JPA repository interface.
+2025-03-18T01:50:43.042+05:30  WARN 267711 --- [backend] [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.s6_se_lab.backend]' package. Please check your configuration.
+2025-03-18T01:50:43.051+05:30  INFO 267711 --- [backend] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=1fd36a96-b478-3ac3-bebb-026ae936e259
+2025-03-18T01:50:43.159+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-18T01:50:43.160+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-18T01:50:43.160+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-18T01:50:43.174+05:30  INFO 267711 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-18T01:50:43.174+05:30  INFO 267711 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 367 ms
+2025-03-18T01:50:43.300+05:30  INFO 267711 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-18T01:50:43.302+05:30  INFO 267711 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-18T01:50:43.309+05:30  INFO 267711 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-18T01:50:43.309+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Starting...
+2025-03-18T01:50:43.321+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-13 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3209e1e0
+2025-03-18T01:50:43.321+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Start completed.
+2025-03-18T01:50:43.321+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-18T01:50:43.322+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-03-18T01:50:43.322+05:30  INFO 267711 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-13)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-18T01:50:43.349+05:30  INFO 267711 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-18T01:50:43.355+05:30  INFO 267711 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:50:43.433+05:30  WARN 267711 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-18T01:50:43.526+05:30  WARN 267711 --- [backend] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-03-18T01:50:43.649+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-03-18T01:50:43.650+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-03-18T01:50:43.650+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-03-18T01:50:43.650+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-03-18T01:50:43.650+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-03-18T01:50:43.650+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-03-18T01:50:43.650+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-03-18T01:50:43.650+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@3c6eac0b
+2025-03-18T01:50:43.669+05:30  WARN 267711 --- [backend] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 86352013-48b2-4865-8de6-a54efbf19319
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-03-18T01:50:43.670+05:30  INFO 267711 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-03-18T01:50:43.706+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-03-18T01:50:43.735+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-18T01:50:43.861+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-18T01:50:43.909+05:30  INFO 267711 --- [backend] [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-03-18T01:50:43.909+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-03-18T01:50:43.921+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Started BackendApplication in 1.248 seconds (process running for 1023.64)
+2025-03-18T01:50:43.925+05:30  INFO 267711 --- [backend] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-18T01:50:50.140+05:30  INFO 267711 --- [backend] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 7 class path changes (0 additions, 0 deletions, 7 modifications)
+2025-03-18T01:50:50.141+05:30  INFO 267711 --- [backend] [Thread-75] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:50:50.141+05:30  INFO 267711 --- [backend] [Thread-75] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-18T01:50:50.142+05:30  INFO 267711 --- [backend] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-18T01:50:50.143+05:30  INFO 267711 --- [backend] [Thread-75] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-03-18T01:50:50.143+05:30  INFO 267711 --- [backend] [Thread-75] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-03-18T01:50:50.143+05:30  INFO 267711 --- [backend] [Thread-75] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:50:50.143+05:30  INFO 267711 --- [backend] [Thread-75] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-03-18T01:50:50.144+05:30  INFO 267711 --- [backend] [Thread-75] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:50:50.144+05:30  INFO 267711 --- [backend] [Thread-75] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Shutdown initiated...
+2025-03-18T01:50:50.147+05:30  INFO 267711 --- [backend] [Thread-75] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Shutdown completed.
+2025-03-18T01:50:50.254+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Starting BackendApplication using Java 21.0.6 with PID 267711 (/home/user/Downloads/SAP/backend/target/classes started by user in /home/user/Downloads/SAP/backend)
+2025-03-18T01:50:50.255+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-03-18T01:50:50.427+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-18T01:50:50.430+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 1 JPA repository interface.
+2025-03-18T01:50:50.474+05:30  WARN 267711 --- [backend] [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.s6_se_lab.backend]' package. Please check your configuration.
+2025-03-18T01:50:50.479+05:30  INFO 267711 --- [backend] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=1fd36a96-b478-3ac3-bebb-026ae936e259
+2025-03-18T01:50:50.549+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-18T01:50:50.550+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-18T01:50:50.550+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-18T01:50:50.566+05:30  INFO 267711 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-18T01:50:50.567+05:30  INFO 267711 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 311 ms
+2025-03-18T01:50:50.714+05:30  INFO 267711 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-18T01:50:50.715+05:30  INFO 267711 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-18T01:50:50.722+05:30  INFO 267711 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-18T01:50:50.723+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Starting...
+2025-03-18T01:50:50.737+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-14 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7dd77f9
+2025-03-18T01:50:50.737+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Start completed.
+2025-03-18T01:50:50.737+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-18T01:50:50.737+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-03-18T01:50:50.738+05:30  INFO 267711 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-14)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-18T01:50:50.773+05:30  INFO 267711 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-18T01:50:50.781+05:30  INFO 267711 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:50:50.870+05:30  WARN 267711 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-18T01:50:50.986+05:30  WARN 267711 --- [backend] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-03-18T01:50:51.146+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-03-18T01:50:51.147+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-03-18T01:50:51.147+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-03-18T01:50:51.147+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-03-18T01:50:51.147+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-03-18T01:50:51.147+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-03-18T01:50:51.147+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-03-18T01:50:51.147+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@37d1958d
+2025-03-18T01:50:51.164+05:30  WARN 267711 --- [backend] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 19e4fd59-63eb-4c91-b555-5eb674ef42e1
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-03-18T01:50:51.165+05:30  INFO 267711 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-03-18T01:50:51.204+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-03-18T01:50:51.234+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-18T01:50:51.324+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-18T01:50:51.363+05:30  INFO 267711 --- [backend] [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-03-18T01:50:51.364+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-03-18T01:50:51.369+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Started BackendApplication in 1.175 seconds (process running for 1031.088)
+2025-03-18T01:50:51.371+05:30  INFO 267711 --- [backend] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-18T01:50:57.638+05:30  INFO 267711 --- [backend] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 7 class path changes (0 additions, 0 deletions, 7 modifications)
+2025-03-18T01:50:57.640+05:30  INFO 267711 --- [backend] [Thread-81] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:50:57.640+05:30  INFO 267711 --- [backend] [Thread-81] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-18T01:50:57.641+05:30  INFO 267711 --- [backend] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-18T01:50:57.642+05:30  INFO 267711 --- [backend] [Thread-81] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-03-18T01:50:57.642+05:30  INFO 267711 --- [backend] [Thread-81] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-03-18T01:50:57.642+05:30  INFO 267711 --- [backend] [Thread-81] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:50:57.642+05:30  INFO 267711 --- [backend] [Thread-81] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-03-18T01:50:57.643+05:30  INFO 267711 --- [backend] [Thread-81] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:50:57.643+05:30  INFO 267711 --- [backend] [Thread-81] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Shutdown initiated...
+2025-03-18T01:50:57.645+05:30  INFO 267711 --- [backend] [Thread-81] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Shutdown completed.
+2025-03-18T01:50:57.837+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Starting BackendApplication using Java 21.0.6 with PID 267711 (/home/user/Downloads/SAP/backend/target/classes started by user in /home/user/Downloads/SAP/backend)
+2025-03-18T01:50:57.837+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-03-18T01:50:58.009+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-18T01:50:58.014+05:30  INFO 267711 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 1 JPA repository interface.
+2025-03-18T01:50:58.068+05:30  WARN 267711 --- [backend] [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.s6_se_lab.backend]' package. Please check your configuration.
+2025-03-18T01:50:58.073+05:30  INFO 267711 --- [backend] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=1fd36a96-b478-3ac3-bebb-026ae936e259
+2025-03-18T01:50:58.147+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-18T01:50:58.148+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-18T01:50:58.148+05:30  INFO 267711 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-18T01:50:58.162+05:30  INFO 267711 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-18T01:50:58.162+05:30  INFO 267711 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 324 ms
+2025-03-18T01:50:58.256+05:30  INFO 267711 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-18T01:50:58.257+05:30  INFO 267711 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-18T01:50:58.262+05:30  INFO 267711 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-18T01:50:58.263+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Starting...
+2025-03-18T01:50:58.282+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-15 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6059e168
+2025-03-18T01:50:58.282+05:30  INFO 267711 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Start completed.
+2025-03-18T01:50:58.282+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-18T01:50:58.282+05:30  WARN 267711 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-03-18T01:50:58.283+05:30  INFO 267711 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-15)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-18T01:50:58.308+05:30  INFO 267711 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-18T01:50:58.319+05:30  INFO 267711 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:50:58.393+05:30  WARN 267711 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-18T01:50:58.523+05:30  WARN 267711 --- [backend] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-03-18T01:50:58.687+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-03-18T01:50:58.687+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-03-18T01:50:58.687+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-03-18T01:50:58.687+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-03-18T01:50:58.688+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-03-18T01:50:58.688+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-03-18T01:50:58.688+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-03-18T01:50:58.688+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@7f6ca715
+2025-03-18T01:50:58.704+05:30  WARN 267711 --- [backend] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 4389cde3-31cf-447b-bd07-4e57e06e2c55
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-03-18T01:50:58.706+05:30  INFO 267711 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-03-18T01:50:58.744+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-03-18T01:50:58.771+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-18T01:50:58.859+05:30  INFO 267711 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-18T01:50:58.895+05:30  INFO 267711 --- [backend] [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-03-18T01:50:58.895+05:30  INFO 267711 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-03-18T01:50:58.902+05:30  INFO 267711 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Started BackendApplication in 1.203 seconds (process running for 1038.62)
+2025-03-18T01:50:58.903+05:30  INFO 267711 --- [backend] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-18T01:51:09.540+05:30  INFO 267711 --- [backend] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-18T01:51:09.540+05:30  INFO 267711 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-18T01:51:09.542+05:30  INFO 267711 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-03-18T01:53:49.377+05:30  INFO 267711 --- [backend] [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:53:49.377+05:30  INFO 267711 --- [backend] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-18T01:53:49.380+05:30  INFO 267711 --- [backend] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-18T01:53:49.384+05:30  INFO 267711 --- [backend] [SpringApplicationShutdownHook] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-03-18T01:53:49.384+05:30  INFO 267711 --- [backend] [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-03-18T01:53:49.384+05:30  INFO 267711 --- [backend] [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T01:53:49.384+05:30  INFO 267711 --- [backend] [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-03-18T01:53:49.385+05:30  INFO 267711 --- [backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:53:49.386+05:30  INFO 267711 --- [backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Shutdown initiated...
+2025-03-18T01:53:49.391+05:30  INFO 267711 --- [backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Shutdown completed.
+2025-03-18T01:53:58.249+05:30  INFO 275254 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Starting BackendApplication using Java 21.0.6 with PID 275254 (/home/user/Downloads/SAP/backend/target/classes started by user in /home/user/Downloads/SAP/backend)
+2025-03-18T01:53:58.251+05:30  INFO 275254 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-03-18T01:53:58.292+05:30  INFO 275254 --- [backend] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-03-18T01:53:58.292+05:30  INFO 275254 --- [backend] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-03-18T01:53:59.024+05:30  INFO 275254 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-18T01:53:59.119+05:30  INFO 275254 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 88 ms. Found 1 JPA repository interface.
+2025-03-18T01:53:59.244+05:30  WARN 275254 --- [backend] [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.s6_se_lab.backend]' package. Please check your configuration.
+2025-03-18T01:53:59.307+05:30  INFO 275254 --- [backend] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=97976da4-2ea9-343f-a50c-051f7f599342
+2025-03-18T01:53:59.882+05:30  INFO 275254 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-18T01:53:59.910+05:30  INFO 275254 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-18T01:53:59.912+05:30  INFO 275254 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-18T01:53:59.972+05:30  INFO 275254 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-18T01:53:59.973+05:30  INFO 275254 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1680 ms
+2025-03-18T01:54:00.239+05:30  INFO 275254 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-18T01:54:00.282+05:30  INFO 275254 --- [backend] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-03-18T01:54:00.310+05:30  INFO 275254 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-18T01:54:00.493+05:30  INFO 275254 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-18T01:54:00.538+05:30  INFO 275254 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-18T01:54:00.858+05:30  INFO 275254 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@76d9ea80
+2025-03-18T01:54:00.859+05:30  INFO 275254 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-18T01:54:00.900+05:30  WARN 275254 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-18T01:54:00.901+05:30  WARN 275254 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-03-18T01:54:00.913+05:30  INFO 275254 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-18T01:54:01.466+05:30  INFO 275254 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-18T01:54:01.503+05:30  INFO 275254 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T01:54:01.782+05:30  WARN 275254 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-18T01:54:02.060+05:30  WARN 275254 --- [backend] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-03-18T01:54:02.496+05:30  INFO 275254 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-03-18T01:54:02.507+05:30  INFO 275254 --- [backend] [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-03-18T01:54:02.508+05:30  INFO 275254 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-03-18T01:54:02.508+05:30  INFO 275254 --- [backend] [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-03-18T01:54:02.509+05:30  INFO 275254 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-03-18T01:54:02.509+05:30  INFO 275254 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-03-18T01:54:02.509+05:30  INFO 275254 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-03-18T01:54:02.509+05:30  INFO 275254 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@1144c362
+2025-03-18T01:54:02.581+05:30  INFO 275254 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-18T01:54:02.794+05:30  INFO 275254 --- [backend] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-03-18T01:54:02.863+05:30  INFO 275254 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-18T01:54:02.948+05:30  INFO 275254 --- [backend] [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-03-18T01:54:02.948+05:30  INFO 275254 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-03-18T01:54:02.964+05:30  INFO 275254 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Started BackendApplication in 5.225 seconds (process running for 5.689)
+2025-03-18T01:54:20.815+05:30  INFO 275254 --- [backend] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-18T01:54:20.815+05:30  INFO 275254 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-18T01:54:20.817+05:30  INFO 275254 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-03-18T02:01:05.606+05:30  WARN 275254 --- [backend] [http-nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2025-03-18T02:23:48.830+05:30  INFO 275254 --- [backend] [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T02:23:48.831+05:30  INFO 275254 --- [backend] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-18T02:23:48.834+05:30  INFO 275254 --- [backend] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-18T02:23:48.843+05:30  INFO 275254 --- [backend] [SpringApplicationShutdownHook] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-03-18T02:23:48.844+05:30  INFO 275254 --- [backend] [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-03-18T02:23:48.844+05:30  INFO 275254 --- [backend] [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T02:23:48.844+05:30  INFO 275254 --- [backend] [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-03-18T02:23:48.850+05:30  INFO 275254 --- [backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T02:23:48.855+05:30  INFO 275254 --- [backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-18T02:23:48.861+05:30  INFO 275254 --- [backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-18T10:29:40.518+05:30  INFO 9098 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Starting BackendApplication using Java 21.0.6 with PID 9098 (/home/user/Downloads/SAP/backend/target/classes started by user in /home/user/Downloads/SAP/backend)
+2025-03-18T10:29:40.523+05:30  INFO 9098 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-03-18T10:29:40.576+05:30  INFO 9098 --- [backend] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-03-18T10:29:40.576+05:30  INFO 9098 --- [backend] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-03-18T10:29:41.390+05:30  INFO 9098 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-18T10:29:41.502+05:30  INFO 9098 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 105 ms. Found 1 JPA repository interface.
+2025-03-18T10:29:41.658+05:30  WARN 9098 --- [backend] [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.s6_se_lab.backend]' package. Please check your configuration.
+2025-03-18T10:29:41.751+05:30  INFO 9098 --- [backend] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=97976da4-2ea9-343f-a50c-051f7f599342
+2025-03-18T10:29:42.300+05:30  INFO 9098 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-18T10:29:42.315+05:30  INFO 9098 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-18T10:29:42.316+05:30  INFO 9098 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-18T10:29:42.368+05:30  INFO 9098 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-18T10:29:42.369+05:30  INFO 9098 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1792 ms
+2025-03-18T10:29:42.700+05:30  INFO 9098 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-18T10:29:42.755+05:30  INFO 9098 --- [backend] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-03-18T10:29:42.796+05:30  INFO 9098 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-18T10:29:43.001+05:30  INFO 9098 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-18T10:29:43.043+05:30  INFO 9098 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-18T10:29:43.373+05:30  INFO 9098 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4e70c8d0
+2025-03-18T10:29:43.374+05:30  INFO 9098 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-18T10:29:43.448+05:30  WARN 9098 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-18T10:29:43.450+05:30  WARN 9098 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-03-18T10:29:43.495+05:30  INFO 9098 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-18T10:29:44.127+05:30  INFO 9098 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-18T10:29:44.199+05:30  INFO 9098 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T10:29:44.523+05:30  WARN 9098 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-18T10:29:44.835+05:30  WARN 9098 --- [backend] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-03-18T10:29:45.251+05:30  INFO 9098 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-03-18T10:29:45.259+05:30  INFO 9098 --- [backend] [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-03-18T10:29:45.260+05:30  INFO 9098 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-03-18T10:29:45.260+05:30  INFO 9098 --- [backend] [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-03-18T10:29:45.261+05:30  INFO 9098 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-03-18T10:29:45.261+05:30  INFO 9098 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-03-18T10:29:45.261+05:30  INFO 9098 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-03-18T10:29:45.261+05:30  INFO 9098 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@3d1264c2
+2025-03-18T10:29:45.345+05:30  INFO 9098 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-18T10:29:45.562+05:30  INFO 9098 --- [backend] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-03-18T10:29:45.651+05:30  INFO 9098 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-18T10:29:45.702+05:30  INFO 9098 --- [backend] [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-03-18T10:29:45.702+05:30  INFO 9098 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-03-18T10:29:45.737+05:30  INFO 9098 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Started BackendApplication in 5.653 seconds (process running for 6.099)
+2025-03-18T10:30:14.239+05:30  INFO 9098 --- [backend] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-18T10:30:14.239+05:30  INFO 9098 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-18T10:30:14.241+05:30  INFO 9098 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-03-18T13:44:14.450+05:30  INFO 9098 --- [backend] [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T13:44:14.509+05:30  INFO 9098 --- [backend] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-18T13:44:14.535+05:30  INFO 9098 --- [backend] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-18T13:44:14.573+05:30  INFO 9098 --- [backend] [SpringApplicationShutdownHook] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-03-18T13:44:14.574+05:30  INFO 9098 --- [backend] [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-03-18T13:44:14.574+05:30  INFO 9098 --- [backend] [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-03-18T13:44:14.575+05:30  INFO 9098 --- [backend] [SpringApplicationShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-03-18T13:44:14.620+05:30  INFO 9098 --- [backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T13:44:14.712+05:30  INFO 9098 --- [backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-18T13:44:14.735+05:30  INFO 9098 --- [backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-18T18:43:45.115+05:30  INFO 68590 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Starting BackendApplication using Java 21.0.6 with PID 68590 (/home/user/Downloads/SAP/backend/target/classes started by user in /home/user/Downloads/SAP/backend)
+2025-03-18T18:43:45.118+05:30  INFO 68590 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-03-18T18:43:45.159+05:30  INFO 68590 --- [backend] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-03-18T18:43:45.159+05:30  INFO 68590 --- [backend] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-03-18T18:43:45.914+05:30  INFO 68590 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-18T18:43:46.013+05:30  INFO 68590 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 91 ms. Found 1 JPA repository interface.
+2025-03-18T18:43:46.132+05:30  WARN 68590 --- [backend] [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.s6_se_lab.backend]' package. Please check your configuration.
+2025-03-18T18:43:46.189+05:30  INFO 68590 --- [backend] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=97976da4-2ea9-343f-a50c-051f7f599342
+2025-03-18T18:43:46.639+05:30  INFO 68590 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-18T18:43:46.649+05:30  INFO 68590 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-18T18:43:46.649+05:30  INFO 68590 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-18T18:43:46.681+05:30  INFO 68590 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-18T18:43:46.681+05:30  INFO 68590 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1521 ms
+2025-03-18T18:43:46.923+05:30  INFO 68590 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-18T18:43:46.966+05:30  INFO 68590 --- [backend] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-03-18T18:43:46.993+05:30  INFO 68590 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-18T18:43:47.180+05:30  INFO 68590 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-18T18:43:47.204+05:30  INFO 68590 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-18T18:43:47.443+05:30  INFO 68590 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1628ebb3
+2025-03-18T18:43:47.444+05:30  INFO 68590 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-18T18:43:47.483+05:30  WARN 68590 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-18T18:43:47.483+05:30  WARN 68590 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-03-18T18:43:47.493+05:30  INFO 68590 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-18T18:43:47.936+05:30  INFO 68590 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-18T18:43:47.977+05:30  INFO 68590 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-18T18:43:48.217+05:30  WARN 68590 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-18T18:43:48.419+05:30  WARN 68590 --- [backend] [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-03-18T18:43:48.693+05:30  INFO 68590 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-03-18T18:43:48.701+05:30  INFO 68590 --- [backend] [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-03-18T18:43:48.701+05:30  INFO 68590 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-03-18T18:43:48.702+05:30  INFO 68590 --- [backend] [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-03-18T18:43:48.703+05:30  INFO 68590 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-03-18T18:43:48.703+05:30  INFO 68590 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-03-18T18:43:48.703+05:30  INFO 68590 --- [backend] [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-03-18T18:43:48.703+05:30  INFO 68590 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@3b3afecd
+2025-03-18T18:43:48.748+05:30  INFO 68590 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-18T18:43:48.869+05:30  INFO 68590 --- [backend] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-03-18T18:43:48.929+05:30  INFO 68590 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-18T18:43:48.936+05:30  INFO 68590 --- [backend] [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-03-18T18:43:48.936+05:30  INFO 68590 --- [backend] [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-03-18T18:43:48.946+05:30  INFO 68590 --- [backend] [restartedMain] c.s6_se_lab.backend.BackendApplication   : Started BackendApplication in 4.289 seconds (process running for 4.997)
+2025-03-18T18:44:23.925+05:30  INFO 68590 --- [backend] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-18T18:44:23.926+05:30  INFO 68590 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-18T18:44:23.930+05:30  INFO 68590 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms

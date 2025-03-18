@@ -20,4 +20,3 @@ export const loginUser = async (email, password) => {
       throw error; // Propagate error to `Login.js`
     }
   };
-  
