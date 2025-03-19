@@ -1,0 +1,137 @@
+/* Container Layout */
+.add-event-container {
+    display: flex;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background: #f8f9fa;
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    width: 250px;
+    background: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    color: black;
+    height: 100vh;
+    border-right: 2px solid #e0e0e0;
+  }
+  
+  .logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #6200ea;
+    margin-bottom: 20px;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  nav ul li {
+    padding: 12px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #6200ea;
+    transition: background 0.3s ease;
+    border-radius: 5px;
+  }
+  
+  nav ul li.active {
+    background: #6200ea;
+    color: white;
+  }
+  
+  nav ul li:hover {
+    background: #f5f5f5;
+  }
+  
+  .logout {
+    margin-top: auto;
+    background: #ffdddd;
+    color: red;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  .logout:hover {
+    background: #ffcccc;
+  }
+  
+  /* Main Content */
+  .main-content {
+    flex: 1;
+    padding: 20px;
+    background: white;
+  }
+  
+  .header {
+    background: #6200ea;
+    color: white;
+    padding: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  /* Event Details */
+  .event-details {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .event-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .event-box {
+    background: #e0e0e0;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .description {
+    height: 100px;
+    overflow-y: auto;
+  }
+  
+  /* Submit Button */
+  .submit-button {
+    background: #6200ea;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto 0;
+  }
+  
+  .submit-button:hover {
+    background: #4b00b3;
+  }
+  
+  .form-group {
+    display: flexbox;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
