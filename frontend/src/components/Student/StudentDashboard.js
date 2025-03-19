@@ -30,9 +30,6 @@ const StudentDashboard = () => {
       
       
       <main className="main-content">
-        <header className="header">
-          <h2>Hii, Nikhitha</h2>
-        </header>
         
         <section className="student-info">
           <div className="info-card">

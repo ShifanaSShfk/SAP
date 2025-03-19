@@ -60,13 +60,13 @@ const SendRequest = () => {
     <div className="sap-container">
       
       <main className="content">
-        <header className="header">
+        {/* <header className="header">
           <h2>Activity Points</h2>
           <div className="icons">
             <FaBell className="icon" />
             <FaRegUserCircle className="icon" />
           </div>
-        </header>
+        </header> */}
         <section className="send-request">
           <h3>New Request</h3>
           <form onSubmit={handleSubmit} encType="multipart/form-data">

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import "../styles/Faq.css";
 
 const faqs = [
@@ -57,7 +57,7 @@ const FAQ = () => {
       
       {/* Main Content */}
       <div className="main-content">
-        <h2 className="page-title">FAQ's</h2>
+        {/* <h2 className="page-title">FAQ's</h2> */}
         <div className="faq-list">
           {faqs.map((faq, index) => (
             <div key={index} className="faq-item">

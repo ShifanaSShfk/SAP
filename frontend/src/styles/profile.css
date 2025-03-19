@@ -1,0 +1,37 @@
+.profile-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .profile-card {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+  
+  .profile-card p {
+    margin: 8px 0;
+    font-size: 16px;
+  }
+  
+  .back-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 15px;
+    background: #2575fc;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+  
+  .back-btn:hover {
+    background: #6a11cb;
+  }
+  

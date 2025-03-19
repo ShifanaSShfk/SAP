@@ -25,7 +25,7 @@ const ActivityPoints = () => {
 
       {/* Main Content */}
       <div className="main-content">
-        <h2 className="page-title">Activity Points</h2>
+        {/* <h2 className="page-title">Activity Points</h2> */}
         <div className="request-history">
           <h3>Request History</h3>
           {requests.map((request, index) => (

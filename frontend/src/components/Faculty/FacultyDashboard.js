@@ -25,9 +25,7 @@ const FacultyDashboard = () => {
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
-        <header className="header">
-          <div className="header-title">Manjusha K</div>
-        </header>
+        
         <div className="main-content">
           <h2 className="section-title">My Tasks</h2>
           

@@ -1,0 +1,32 @@
+.header {
+    background-color: #2563eb; /* Blue header */
+    color: white;
+    padding: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .notification-btn, .user-profile {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .notification-dropdown, .profile-dropdown {
+    position: absolute;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    right: 10px;
+    top: 50px;
+  }
+  

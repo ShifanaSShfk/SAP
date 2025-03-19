@@ -14,13 +14,7 @@ function App() {
       
 
       <div className="main-content">
-        <div className="header">
-          <h2>Request Details</h2>
-          <div className="user-controls">
-            <div className="notification-icon">🔔</div>
-            <div className="user-avatar">👤</div>
-          </div>
-        </div>
+       
 
         <div className="content-area">
           <div className="tabs">

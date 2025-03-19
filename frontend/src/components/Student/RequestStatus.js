@@ -9,7 +9,7 @@ const StudentDashboard = () => {
      
       {/* Main Content */}
       <div className="main-content">
-        <div className="header">Activity Points</div>
+        {/* <div className="header">Activity Points</div> */}
         <div className="info-card">
           <h3>Request Status</h3>
           <div className="request-card pending">NSS Level 1 Exam - Pending      <Link to="/request-details">View Details</Link> </div>

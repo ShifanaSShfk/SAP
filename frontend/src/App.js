@@ -15,6 +15,8 @@ import FacRejected from "./components/Faculty/FacRequestRejected";
 import FacEvents from "./components/Faculty/MyEvents";
 import EventDetails from "./components/Faculty/eventdetails";
 import AddEvent from "./components/Faculty/AddEvent";
+import Profile from "./pages/Profile"; // Import Profile Page
+
 
 function App() {
   return (
@@ -34,6 +36,7 @@ function App() {
           <Route path="/fac-events" element={<FacEvents />} />
           <Route path="/event-details" element={<EventDetails />} />
           <Route path="/add-event" element={<AddEvent />} />
+          <Route path="/profile" element={<Profile />} />
         </Route>
     </Routes>
   );
