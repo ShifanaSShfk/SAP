@@ -1,0 +1,149 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  .activity-points-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    width: 250px;
+    background: white;
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo {
+    color: purple;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  nav ul li {
+    padding: 10px 0;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  .activity-buttons {
+    margin-top: 20px;
+  }
+  
+  .activity-buttons button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    background: #e5e5e5;
+  }
+  
+  .activity-buttons .active {
+    background: #6851f1;
+    color: white;
+  }
+  
+  /* Main Content */
+  .main-content {
+    flex: 1;
+    padding: 20px;
+    background: white;
+  }
+  
+  .page-title {
+    font-size: 24px;
+    color: #6851f1;
+  }
+  
+  .request-history {
+    margin-top: 20px;
+  }
+  
+  .request-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .request-info {
+    flex: 1;
+  }
+  
+  .status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .status.pending {
+    background: #f5c400;
+    color: white;
+  }
+  
+  .status.approved {
+    background: #28a745;
+    color: white;
+  }
+  
+  .status.rejected {
+    background: #dc3545;
+    color: white;
+  }
+  
+  .details-btn {
+    background: #6851f1;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Right Panel */
+  .right-panel {
+    width: 300px;
+    background: white;
+    padding: 20px;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .right-panel h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .event-card {
+    background: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .event-card p {
+    font-weight: bold;
+  }
+  
+  .event-card span {
+    font-size: 14px;
+    color: gray;
+  }
+  
