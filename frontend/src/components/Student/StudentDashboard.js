@@ -32,15 +32,15 @@ const StudentDashboard = () => {
       <main className="main-content">
         
         <section className="student-info">
-          <div className="info-card">
-            <p><strong>Name:</strong> {student.name}</p>
-            <p><strong>Student ID:</strong> {student.studentId}</p>
-            <p><strong>Branch:</strong> {student.branch}</p>
-            <p><strong>Section:</strong> {student.section}</p>
-            <p><strong>Email:</strong> <a href={`mailto:${student.email}`}>{student.email}</a></p>
-            <p><strong>Contact:</strong> {student.contact}</p>
-          </div>
-        </section>
+      <div className="info-card">
+        <p><strong>Name:</strong> {student.name}</p>
+        <p><strong>Student ID:</strong> {student.studentId}</p>
+        <p><strong>Branch:</strong> {student.branch}</p>
+        <p><strong>Section:</strong> {student.section}</p>
+        <p><strong>Email:</strong> <a href={`mailto:${student.email}`}>{student.email}</a></p>
+        <p><strong>Contact:</strong> {student.contact}</p>
+      </div>
+    </section>
 
         {/* <section className="activity-points">
           <h3>Activity Points</h3>
