@@ -1,148 +1,148 @@
 .sap-container {
-    display: flex;
-    height: 100vh;
-    font-family: Arial, sans-serif;
-  }
-  
-  .sidebar {
-    width: 250px;
-    background-color: #f8f9fa;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #5a2dde;
-  }
-  
-  nav ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  nav ul li {
-    padding: 10px 0;
-    cursor: pointer;
-  }
-  
-  .activity-points button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border: none;
-    background-color: #fff;
-    cursor: pointer;
-    text-align: left;
-  }
-  
-  .activity-points .active {
-    background-color: #5a2dde;
-    color: #fff;
-  }
-  
-  .logout {
-    margin-top: auto;
-    background-color: #dc3545;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .content {
-    flex: 1;
-    padding: 20px;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .icons .icon {
-    font-size: 20px;
-    margin-left: 10px;
-    cursor: pointer;
-  }
-  
-  .new-request {
-    margin-top: 20px;
-  }
-  
-  .form-group {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-  }
-  
-  input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-  }
-  
-  .file-upload {
-    padding: 15px;
-    border: 2px dashed #ccc;
-    text-align: center;
-    margin-top: 15px;
-  }
-  
-  .file-upload button {
-    margin-top: 10px;
-    padding: 8px 15px;
-    background-color: #5a2dde;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .upcoming-events {
-    width: 250px;
-    background-color: #fff;
-    padding: 20px;
-  }
-  
-  .event {
-    background-color: #f1f1f1;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .form-buttons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 20px;
-  }
-  
-  .cancel-button {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .submit-button {
-    background-color: #5a2dde;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .cancel-button:hover {
-    background-color: #c82333;
-  }
-  
-  .submit-button:hover {
-    background-color: #4a22c3;
-  }
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #5a2dde;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.activity-points button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+  text-align: left;
+}
+
+.activity-points .active {
+  background-color: #5a2dde;
+  color: #fff;
+}
+
+.logout {
+  margin-top: auto;
+  background-color: #dc3545;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icons .icon {
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.new-request {
+  margin-top: 20px;
+}
+
+.form-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+input, select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+.file-upload {
+  padding: 15px;
+  border: 2px dashed #ccc;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.file-upload button {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #5a2dde;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.upcoming-events {
+  width: 250px;
+  background-color: #fff;
+  padding: 20px;
+}
+
+.event {
+  background-color: #f1f1f1;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.cancel-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.submit-button {
+  background-color: #5a2dde;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.cancel-button:hover {
+  background-color: #c82333;
+}
+
+.submit-button:hover {
+  background-color: #4a22c3;
+}

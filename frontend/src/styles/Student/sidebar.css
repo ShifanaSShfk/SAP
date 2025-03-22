@@ -1,79 +1,84 @@
 /* Sidebar */
 .sidebar {
-    width: 250px;
-    background: white;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    color: black;
-    height: 100vh;
-    border-right: 2px solid #e0e0e0;
-  }
-  
-  /* Logo */
-  .logo {
-    font-size: 28px;
-    font-weight: bold;
-    color: #6200ea;
-    margin-bottom: 20px;
-  }
-  
-  /* Navigation */
-  nav ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  nav ul li {
-    padding: 12px;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    color: #6200ea;
-    transition: background 0.3s ease, color 0.3s ease;
-    border-radius: 5px;
-  }
-  
-  /* Active tab */
-  nav ul li.active {
-    background: #6200ea;
-    color: white;
-    font-weight: bold;
-  }
-  
-  /* Hover effect */
-  nav ul li:hover {
-    background: #f5f5f5;
-  }
-  
-  /* Remove underline from links */
-  nav ul li a {
-    text-decoration: none;
-    color: inherit;
-    width: 100%;
-    padding: 12px;
-  }
-  
-  /* Ensure active links have correct text color */
-  nav ul li.active a {
-    color: white;
-  }
-  
-  /* Logout button */
-  .logout {
-    margin-top: auto;
-    background: #ffdddd;
-    color: red;
-    border: none;
-    padding: 12px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background 0.3s ease;
-  }
-  
-  .logout:hover {
-    background: #ffcccc;
-  }
-  
+  width: 250px;
+  background: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  color: black;
+  height: 100vh;
+  border-right: 2px solid #e0e0e0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
+
+/* Logo */
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: #6200ea;
+  margin-bottom: 20px;
+  text-align: center; /* Center the logo text */
+}
+
+/* Navigation */
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  padding: 12px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #6200ea;
+  transition: background 0.3s ease, color 0.3s ease;
+  border-radius: 5px;
+  margin-bottom: 8px; /* Add spacing between items */
+}
+
+/* Active tab */
+nav ul li.active {
+  background: #6200ea;
+  color: white;
+  font-weight: bold;
+}
+
+/* Hover effect */
+nav ul li:hover {
+  background: #f5f5f5;
+}
+
+/* Remove underline from links */
+nav ul li a {
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+}
+
+/* Ensure active links have correct text color */
+nav ul li.active a {
+  color: white;
+}
+
+/* Logout button */
+.logout {
+  margin-top: auto;
+  background: #ffdddd;
+  color: red;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  text-align: center; /* Center the logout button text */
+}
+
+.logout:hover {
+  background: #ffcccc;
+}

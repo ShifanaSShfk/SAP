@@ -1,32 +1,53 @@
 .header {
-    background-color: #2563eb; /* Blue header */
-    color: white;
-    padding: 15px;
-    font-size: 24px;
-    font-weight: bold;
-    text-align: left;
-    border-radius: 8px;
-    margin-bottom: 20px;
-  }
-  .header-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .notification-btn, .user-profile {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .notification-dropdown, .profile-dropdown {
-    position: absolute;
-    background: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    padding: 10px;
-    border-radius: 5px;
-    right: 10px;
-    top: 50px;
-  }
-  
+  background-color: #2563eb; /* Blue header */
+  color: white;
+  padding: 15px 20px; /* Adjust padding for better spacing */
+  font-size: 24px;
+  font-weight: bold;
+  text-align: left;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between; /* Space between title and actions */
+  align-items: center; /* Center items vertically */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Increase gap between icons */
+}
+
+.notification-btn, .user-profile {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white; /* Ensure icons are white */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px; /* Add padding for better click area */
+  border-radius: 50%; /* Circular click area */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.notification-btn:hover, .user-profile:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Light hover effect */
+}
+
+.notification-dropdown, .profile-dropdown {
+  position: absolute;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 5px;
+  right: 10px;
+  top: 50px;
+  z-index: 1000; /* Ensure dropdown is above other elements */
+}
+
+.notification-dropdown p {
+  margin: 0;
+  color: #333; /* Dark text for dropdown */
+}

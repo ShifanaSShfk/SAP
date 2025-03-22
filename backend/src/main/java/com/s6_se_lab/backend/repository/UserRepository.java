@@ -6,6 +6,6 @@ import com.s6_se_lab.backend.model.User;
 // import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, java.lang.String> {
     User findByEmailAndPassword(String email, String password);
 }

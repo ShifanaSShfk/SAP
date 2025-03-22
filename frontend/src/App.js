@@ -16,6 +16,7 @@ import FacEvents from "./components/Faculty/MyEvents";
 import EventDetails from "./components/Faculty/eventdetails";
 import AddEvent from "./components/Faculty/AddEvent";
 import Profile from "./pages/Profile"; // Import Profile Page
+import CalendarApp from "./components/Faculty/CalendarPage";
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route path="/event-details" element={<EventDetails />} />
           <Route path="/add-event" element={<AddEvent />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/calendar-app" element={<CalendarApp />} />
         </Route>
     </Routes>
   );

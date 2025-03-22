@@ -1,6 +1,49 @@
-const API_BASE_URL = "http://localhost:8080"; // ✅ Update to match backend
+const API_BASE_URL = "http://localhost:8080";
+const API_URL = `${API_BASE_URL}/api/events`;
 
-// 🔹 Login function
+/**
+ * Sends a student request to the backend.
+ * @param {Object} data - The request data to be sent.
+ * @returns {Promise<Object>} - The response from the server.
+ */
+export const sendStudentRequest = async (data) => {
+  try {
+    const formData = new FormData();
+
+    // Append all fields to FormData
+    Object.keys(data).forEach((key) => {
+      if (key === "proofFile" && data[key]) {
+        // Append the file if it exists
+        formData.append(key, data[key]);
+      } else if (data[key]) {
+        // Append other fields
+        formData.append(key, data[key]);
+      }
+    });
+
+    const response = await fetch(`${API_BASE_URL}/api/requests/submit`, {
+      method: "POST",
+      body: formData, // Use FormData for file uploads
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "Failed to submit request");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error submitting request:", error);
+    throw error;
+  }
+};
+
+/**
+ * Logs in a user.
+ * @param {string} email - The user's email.
+ * @param {string} password - The user's password.
+ * @returns {Promise<Object>} - The response from the server.
+ */
 export const loginUser = async (email, password) => {
   try {
     const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
@@ -12,36 +55,65 @@ export const loginUser = async (email, password) => {
     });
 
     if (!response.ok) {
-      throw new Error("Invalid Credentials"); // ❌ Causes error if API returns 401
+      const errorData = await response.json();
+      throw new Error(errorData.message || "Invalid Credentials");
     }
 
     return await response.json();
   } catch (error) {
     console.error("Login Error:", error);
-    throw error; // Propagate error to `Login.js`
+    throw error;
   }
 };
 
-// 🔹 Function to send student request
-export const sendStudentRequest = async (data) => {
+/**
+ * Adds a new event.
+ * @param {Object} eventData - The event data to be added.
+ * @returns {Promise<Object>} - The response from the server.
+ */
+export const addEvent = async (eventData) => {
   try {
-    const formData = new FormData();
-    Object.keys(data).forEach((key) => {
-      formData.append(key, data[key]);
-    });
-
-    const response = await fetch(`${API_BASE_URL}/api/requests/submit`, {
+    const response = await fetch(`${API_URL}/add`, {
       method: "POST",
-      body: formData,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(eventData),
     });
 
     if (!response.ok) {
-      throw new Error("Failed to submit request");
+      const errorData = await response.json();
+      throw new Error(errorData.message || `HTTP error! Status: ${response.status}`);
     }
 
     return await response.json();
   } catch (error) {
-    console.error("Error submitting request:", error);
+    console.error("Error adding event:", error);
+    throw error;
+  }
+};
+
+/**
+ * Fetches all events.
+ * @returns {Promise<Array>} - The list of events.
+ */
+export const getAllEvents = async () => {
+  try {
+    const response = await fetch(`${API_URL}/all`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || `HTTP error! Status: ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching events:", error);
     throw error;
   }
 };

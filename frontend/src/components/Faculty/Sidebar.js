@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../../styles/Faculty/sidebar.css";
 
-const Sidebar = () => {
+const FacultySidebar = () => {
   const location = useLocation(); // Get current URL
   const navigate = useNavigate();
 
@@ -13,15 +13,15 @@ const Sidebar = () => {
 
   return (
     <aside className="sidebar">
-      <h1 className="logo">SAP</h1>
+      <h1 className="logo">SAP Faculty</h1> {/* Clarified title */}
       <nav>
         <ul>
           <li className={location.pathname === "/faculty-dashboard" ? "nav-item active" : "nav-item"}>
             <Link to="/faculty-dashboard">Dashboard</Link>
           </li>
           
-          <li className={location.pathname === "/calender" ? "nav-item active" : "nav-item"}>
-            <Link to="/calender">Calendar</Link>
+          <li className={location.pathname === "/calendar-app" ? "nav-item active" : "nav-item"}>
+            <Link to="/calendar-app">Calendar</Link>
           </li>
 
           <li className={location.pathname === "/fac-events" ? "nav-item active" : "nav-item"}>
@@ -38,4 +38,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default FacultySidebar;
