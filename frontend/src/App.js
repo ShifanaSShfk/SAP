@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
-import Layout from "./components/Layout";
+import Layout from "./components/Layout"; // Import Layout
 import FacultyDashboard from "./components/Faculty/FacultyDashboard";
 import StudentDashboard from "./components/Student/StudentDashboard";
 import SendRequest from "./components/Student/SendRequest";
@@ -15,8 +15,9 @@ import FacRejected from "./components/Faculty/FacRequestRejected";
 import FacEvents from "./components/Faculty/MyEvents";
 import EventDetails from "./components/Faculty/eventdetails";
 import AddEvent from "./components/Faculty/AddEvent";
-import Profile from "./pages/Profile";
-import Calendar from "./components/Faculty/Fac_Calendar";
+import Profile from "./pages/Profile"; // Import Profile Page
+import CalendarApp from "./components/Faculty/CalendarPage";
+
 
 function App() {
   return (
@@ -37,7 +38,7 @@ function App() {
           <Route path="/event-details" element={<EventDetails />} />
           <Route path="/add-event" element={<AddEvent />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/fac-calendar" element={<Calendar />} />
+          <Route path="/calendar-app" element={<CalendarApp />} />
         </Route>
     </Routes>
   );

@@ -20,8 +20,8 @@ const FacultySidebar = () => {
             <Link to="/faculty-dashboard">Dashboard</Link>
           </li>
           
-          <li className={location.pathname === "/fac-calendar" ? "nav-item active" : "nav-item"}>
-            <Link to="/fac-calendar">Calendar</Link>
+          <li className={location.pathname === "/calendar-app" ? "nav-item active" : "nav-item"}>
+            <Link to="/calendar-app">Calendar</Link>
           </li>
 
           <li className={location.pathname === "/fac-events" ? "nav-item active" : "nav-item"}>
