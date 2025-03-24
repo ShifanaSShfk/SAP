@@ -1,14 +1,38 @@
-
 .layout {
-    display: flex;
-    height: 100vh;
-    overflow: hidden;
-  }
-  
-  .content {
-    flex-grow: 1;
-    padding: 20px;
-    flex-direction: column;
-    overflow-y: auto;
-  }
-  
+  display: flex;
+  height: 100vh;
+}
+
+.separator {
+  width: 2px; /* Thin vertical line */
+  background-color: #ccc; /* Light gray */
+  height: 100vh;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.page-content {
+  display: flex;
+  /* flex-grow: 1; */
+  padding: 20px;
+  gap: 20px; /* Adds spacing between sections */
+}
+
+.middle-content {
+  flex: 3; /* Takes most of the space */
+}
+
+.upcoming-events-container {
+  flex: 1; /* Ensures proper spacing */
+  min-width: 250px; /* Prevents squeezing */
+  max-width: 300px; /* Limits max width */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex-basis: 200px;
+}

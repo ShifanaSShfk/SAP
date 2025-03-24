@@ -35,4 +35,16 @@ public class Student {
     @NotBlank
     @Column(name = "faculty_advisor_id")
     private String facultyAdvisorId;
+
+    @NotBlank
+    @Column(name = "department", nullable = false)
+    private String department;
+
+    @NotBlank
+    @Column(name = "section", nullable = false)
+    private String section;
+
+    @NotBlank
+    @Column(name = "contact_number", nullable = false)
+    private String contactNumber;
 }

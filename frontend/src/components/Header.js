@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import "../styles/header.css";
 
-// BellIcon Component
 const BellIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +19,6 @@ const BellIcon = () => (
   </svg>
 );
 
-// UserIcon Component
 const UserIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -40,13 +38,11 @@ const UserIcon = () => (
 
 const Header = () => {
   const location = useLocation();
-  const navigate = useNavigate(); // For navigation
-  const username = localStorage.getItem("username") || "User"; // Store username during login
+  const navigate = useNavigate();
+  const username = localStorage.getItem("username") || "User";
 
-  // Notification state
   const [showNotifications, setShowNotifications] = useState(false);
 
-  // Define page titles based on path
   const pageTitles = {
     "/student-dashboard": `Hi, ${username}`,
     "/faculty-dashboard": `Hi, ${username}`,
@@ -64,10 +60,11 @@ const Header = () => {
 
   return (
     <header className="header">
-      <h1>{title}</h1>
+      <div className="header-left">
+        <h1>{title}</h1>
+      </div>
       
-      <div className="header-actions">
-        {/* 🔔 Notification Bell */}
+      <div className="header-right">
         <button className="notification-btn" onClick={() => setShowNotifications(!showNotifications)}>
           <BellIcon />
           {showNotifications && (
@@ -77,9 +74,9 @@ const Header = () => {
           )}
         </button>
 
-        {/* 👤 User Profile - Navigates to /profile on click */}
         <div className="user-profile" onClick={() => navigate("/profile")} style={{ cursor: "pointer" }}>
           <UserIcon />
+          <span>{username}</span>
         </div>
       </div>
     </header>

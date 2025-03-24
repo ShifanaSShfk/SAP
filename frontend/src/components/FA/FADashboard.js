@@ -7,10 +7,10 @@ const FacultyDashboard = () => {
     { id: 1, requester: "Nikitha", requestType: "sent a request", eventName: "Hackathon", date: "Today", status: "pending" },
     { id: 2, requester: "Nikitha", requestType: "sent a request", eventName: "CodeInit", date: "25 Jan", status: "completed" }
   ]);
-  const upcomingEvents = [
-    { id: 1, title: "Talk on Web Development", date: "Friday, 4th February", time: "10:30 AM" },
-    { id: 2, title: "Talk on AI/ML", date: "Wednesday, 5th February", time: "6:00 PM" },
-  ];
+  // const upcomingEvents = [
+  //   { id: 1, title: "Talk on Web Development", date: "Friday, 4th February", time: "10:30 AM" },
+  //   { id: 2, title: "Talk on AI/ML", date: "Wednesday, 5th February", time: "6:00 PM" },
+  // ];
   const [activeFilter, setActiveFilter] = useState("all");
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const FacultyDashboard = () => {
             
             {tasks.filter(t => activeFilter === "all" || t.status === activeFilter).map(task => (
               <div key={task.id} className="task-card">
-                <p><strong>{task.requester}</strong> {task.requestType} on <strong>{task.eventName}<button className="details-btn"><Link to="/fac-overview">View Details</Link> </button></strong></p>
+                <p><strong>{task.requester}</strong> {task.requestType} on <strong>{task.eventName}<button className="details-btn"><Link to="/fa-overview">View Details</Link> </button></strong></p>
                 <span className={`task-status ${task.status === "pending" ? "task-status-pending" : "task-status-completed"}`}>
                   {task.status.charAt(0).toUpperCase() + task.status.slice(1)}
                 </span>

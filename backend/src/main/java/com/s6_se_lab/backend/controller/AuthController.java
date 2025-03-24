@@ -23,7 +23,11 @@ public class AuthController {
 
         User user = userRepository.findByEmailAndPassword(email, password);
         if (user != null) {
-            return ResponseEntity.ok(Map.of("role", user.getRole()));
+            return ResponseEntity.ok(Map.of(
+                "id", user.getId(),  // Include user ID in response
+                "role", user.getRole(),
+                "email", user.getEmail()
+            ));
         }
         return ResponseEntity.status(401).body(Map.of("error", "Invalid credentials"));
     }

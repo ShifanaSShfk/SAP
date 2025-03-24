@@ -19,6 +19,9 @@ const StudentSidebar = () => {
           <li className={location.pathname === "/student-dashboard" ? "active" : ""}>
             <Link to="/student-dashboard">Dashboard</Link>
           </li>
+          <li className={location.pathname === "/calendar" ? "active" : ""}>
+            <Link to="/calendar">Calendar</Link>
+          </li>
           <li className={location.pathname === "/send-request" ? "active" : ""}>
             <Link to="/send-request">Send Request</Link>
           </li>

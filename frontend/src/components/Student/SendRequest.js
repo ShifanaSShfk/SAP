@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../../styles/Student/SendRequest.css";
 import { useNavigate } from "react-router-dom";
+// import { FaRegUserCircle, FaBell } from "react-icons/fa";
 import { sendStudentRequest } from "../../services/api";
 
 const SendRequest = () => {
@@ -8,13 +9,11 @@ const SendRequest = () => {
     name: "",
     rollNumber: "",
     eventName: "",
-    eventType: "",
     eventDate: "",
     eventTime: "",
     location: "",
     facultyName: "",
     facultyAdvisorName: "",
-    activityPoints: "",
     proofFile: null,
   });
 
@@ -59,9 +58,17 @@ const SendRequest = () => {
 
   return (
     <div className="sap-container">
+      
       <main className="content">
+        {/* <header className="header">
+          <h2>Activity Points</h2>
+          <div className="icons">
+            <FaBell className="icon" />
+            <FaRegUserCircle className="icon" />
+          </div>
+        </header> */}
         <section className="send-request">
-          <h3>New Request</h3>
+          {/* <h3>New Request</h3> */}
           <form onSubmit={handleSubmit} encType="multipart/form-data">
             <div className="form-group">
               <input type="text" name="name" placeholder="Name *" required value={formData.name} onChange={handleChange} />
@@ -69,19 +76,11 @@ const SendRequest = () => {
             </div>
             <div className="form-group">
               <input type="text" name="eventName" placeholder="Event Name *" required value={formData.eventName} onChange={handleChange} />
-              <select name="eventType" required value={formData.eventType} onChange={handleChange}>
-                <option value="">Select Event Type *</option>
-                <option value="Institute Level">Institute Level</option>
-                <option value="Department Level">Department Level</option>
-              </select>
-            </div>
-            <div className="form-group">
               <input type="date" name="eventDate" required value={formData.eventDate} onChange={handleChange} />
-              <input type="time" name="eventTime" required value={formData.eventTime} onChange={handleChange} />
             </div>
             <div className="form-group">
+              <input type="time" name="eventTime" required value={formData.eventTime} onChange={handleChange} />
               <input type="text" name="location" placeholder="Location" value={formData.location} onChange={handleChange} />
-              <input type="number" name="activityPoints" placeholder="Activity Points *" required value={formData.activityPoints} onChange={handleChange} />
             </div>
             <div className="form-group">
               <input type="text" name="facultyName" placeholder="Faculty Name *" required value={formData.facultyName} onChange={handleChange} />
@@ -98,11 +97,7 @@ const SendRequest = () => {
           </form>
         </section>
       </main>
-      <aside className="upcoming-events">
-        <h3>Upcoming Events</h3>
-        <div className="event">Talk on Web Development - Friday, 4th February, 10:30 AM</div>
-        <div className="event">Talk on AI/ML - Wednesday, 5th February, 6:00 PM</div>
-      </aside>
+     
     </div>
   );
 };

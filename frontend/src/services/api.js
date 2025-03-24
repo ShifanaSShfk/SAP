@@ -117,3 +117,23 @@ export const getAllEvents = async () => {
     throw error;
   }
 };
+
+/**
+ * Fetches student details by ID.
+ * @param {string} studentID - The ID of the student.
+ * @returns {Promise<Object>} - The student details.
+ */
+export const fetchStudentDetails = async (studentID) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/students/${studentID}`);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching student details:", error);
+    throw error;
+  }
+};

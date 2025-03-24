@@ -15,4 +15,7 @@ public class AuthService {
     public Optional<User> authenticate(String email, String password) {
         return Optional.ofNullable(userRepository.findByEmailAndPassword(email, password));
     }
+    public Optional<User> getUserById(String userId) {
+        return userRepository.findById(userId);
+    }
 }

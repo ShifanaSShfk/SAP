@@ -7,36 +7,30 @@ import googleLogo from "../assets/google.webp";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate(); // ✅ Use navigate for redirection
+  const navigate = useNavigate(); // Use navigate for redirection
 
   const handleLogin = async (e) => {
-    console.log("Login button clicked");
     e.preventDefault();
     try {
-      const response = await loginUser(email, password);
-      console.log("Login Successful:", response);
-
-      if (response) {
-        localStorage.setItem("token", response.token);
-        localStorage.setItem("role", response.role);
-
-        // ✅ Redirect users based on role
-        if (response.role === "student") {
-          navigate("/student-dashboard");
-        } else if (response.role === "faculty") {
-          navigate("/faculty-dashboard");
-        } else {
-          alert("Invalid role");
-        }
-      } else {
-        alert("Invalid Credentials");
+      const user = await loginUser(email, password);
+  
+      // Store user details in localStorage
+      localStorage.setItem("username", user.name);
+      localStorage.setItem("email", user.email);
+      localStorage.setItem("role", user.role);
+  
+      if (user.role === "student") {
+        localStorage.setItem("studentID", user.id); // Ensure studentID is set
+        navigate("/student-dashboard");
+      } else if (user.role === "faculty") {
+        localStorage.setItem("facultyID", user.id); // Ensure facultyID is set
+        navigate("/faculty-dashboard");
       }
     } catch (error) {
-      console.error("Login Failed:", error);
-      alert("Invalid Credentials"); // Display an alert on failure
+      alert(error.message);
     }
   };
-
+  
   return (
     <div className="login-container">
       <div className="background-overlay"></div>
@@ -60,7 +54,7 @@ const Login = () => {
             required
           />
 
-          {/* ✅ Prevent unintended form submission */}
+          {/*  Prevent unintended form submission */}
           <button
             type="button"
             className="forgot-password"
@@ -74,7 +68,7 @@ const Login = () => {
           </button>
         </form>
 
-        {/* ✅ Use imported image correctly */}
+        {/*  Use imported image correctly */}
         <button className="google-btn">
           <img src={googleLogo} alt="Google Logo" />
           Sign in with Google
