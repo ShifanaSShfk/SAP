@@ -18,13 +18,13 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Map<String, String> request) {
-        String email = request.get("email");
+        String id = request.get("id");
         String password = request.get("password");
 
-        User user = userRepository.findByEmailAndPassword(email, password);
+        User user = userRepository.findByIdAndPassword(id, password);
         if (user != null) {
             return ResponseEntity.ok(Map.of(
-                "id", user.getId(),  // Include user ID in response
+                "id", user.getId(),
                 "role", user.getRole(),
                 "email", user.getEmail()
             ));

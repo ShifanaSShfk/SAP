@@ -35,6 +35,11 @@ function App() {
       <Route element={<Layout />}>
         {/* Student Routes */}
         <Route path="/student-dashboard" element={<PrivateRoute role="student"><StudentDashboard /></PrivateRoute>} />
+        {/* <Route path="/student-dashboard" element={
+          <PrivateRoute allowedRoles={["student"]}>
+            <StudentDashboard />
+          </PrivateRoute>
+        } /> */}
         <Route path="/send-request" element={<PrivateRoute role="student"><SendRequest /></PrivateRoute>} />
         <Route path="/request-status" element={<PrivateRoute role="student"><RequestStatus /></PrivateRoute>} />
         <Route path="/request-details" element={<PrivateRoute role="student"><Activitydetails /></PrivateRoute>} />

@@ -12,8 +12,8 @@ public class AuthService {
     @Autowired
     private UserRepository userRepository;
 
-    public Optional<User> authenticate(String email, String password) {
-        return Optional.ofNullable(userRepository.findByEmailAndPassword(email, password));
+    public Optional<User> authenticate(String id, String password) {
+        return Optional.ofNullable(userRepository.findByIdAndPassword(id, password));
     }
     public Optional<User> getUserById(String userId) {
         return userRepository.findById(userId);
