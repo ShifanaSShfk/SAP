@@ -5,67 +5,52 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "faculty")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Faculty {
+    
     @Id
-    @Column(name = "faculty_id") // Explicitly map the column name
-    private String facultyId; // Renamed to follow Java naming conventions
+    @Column(name = "faculty_id", nullable = false)
+    private String facultyId;
 
     @NotBlank
-    @Column(name = "faculty_name")
+    @Column(name = "faculty_name", nullable = false)
     private String facultyName;
 
-    @NotNull
     @Column(name = "is_faculty_advisor")
-    private boolean isFacultyAdvisor;
+    private Boolean isFacultyAdvisor; // Changed to match DB column and added proper getter
 
     @NotBlank
+    @Column(name = "department", nullable = false)
     private String department;
 
-    // Default constructor (required for JPA)
-    public Faculty() {}
+    @NotBlank
+    @Column(name = "designation", nullable = false)
+    private String designation;
+
+    @Column(name = "faculty_room")
+    private String facultyRoom;
 
     // Parameterized constructor
-    public Faculty(String facultyId, String facultyName, boolean isFacultyAdvisor, String department) {
+    public Faculty(String facultyId, String facultyName, Boolean isFacultyAdvisor, 
+                  String department, String designation, String facultyRoom) {
         this.facultyId = facultyId;
         this.facultyName = facultyName;
         this.isFacultyAdvisor = isFacultyAdvisor;
         this.department = department;
+        this.designation = designation;
+        this.facultyRoom = facultyRoom;
     }
 
-    // Getters and Setters
-    public String getFacultyId() {
-        return facultyId;
-    }
-
-    public void setFacultyId(String facultyId) {
-        this.facultyId = facultyId;
-    }
-
-    public String getFacultyName() {
-        return facultyName;
-    }
-
-    public void setFacultyName(String facultyName) {
-        this.facultyName = facultyName;
-    }
-
-    public boolean isFacultyAdvisor() {
+    // Custom getter for faculty advisor status to ensure proper JSON serialization
+    public Boolean isFacultyAdvisor() {
         return isFacultyAdvisor;
-    }
-
-    public void setFacultyAdvisor(boolean isFacultyAdvisor) {
-        this.isFacultyAdvisor = isFacultyAdvisor;
-    }
-
-    public String getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
     }
 }

@@ -18,12 +18,16 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Map<String, String> request) {
-        String email = request.get("email");
+        String id = request.get("id");
         String password = request.get("password");
 
-        User user = userRepository.findByEmailAndPassword(email, password);
+        User user = userRepository.findByIdAndPassword(id, password);
         if (user != null) {
-            return ResponseEntity.ok(Map.of("role", user.getRole()));
+            return ResponseEntity.ok(Map.of(
+                "id", user.getId(),
+                "role", user.getRole(),
+                "email", user.getEmail()
+            ));
         }
         return ResponseEntity.status(401).body(Map.of("error", "Invalid credentials"));
     }

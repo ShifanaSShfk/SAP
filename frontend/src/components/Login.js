@@ -1,39 +1,35 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../services/api"; // Import API function
+import { loginUser } from "../services/api";
 import "../styles/Login.css";
 import googleLogo from "../assets/google.webp";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+  const [id, setId] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate(); // ✅ Use navigate for redirection
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
-    console.log("Login button clicked");
     e.preventDefault();
+    setError("");
+    setIsLoading(true);
+    
     try {
-      const response = await loginUser(email, password);
-      console.log("Login Successful:", response);
-
-      if (response) {
-        localStorage.setItem("token", response.token);
-        localStorage.setItem("role", response.role);
-
-        // ✅ Redirect users based on role
-        if (response.role === "student") {
-          navigate("/student-dashboard");
-        } else if (response.role === "faculty") {
-          navigate("/faculty-dashboard");
-        } else {
-          alert("Invalid role");
-        }
-      } else {
-        alert("Invalid Credentials");
+      const userData = await loginUser(id, password);
+      
+      // Redirect based on role
+      if (userData.role === 'student') {
+        navigate('/student-dashboard');
+      } else if (userData.role === 'faculty') {
+        navigate(userData.isFacultyAdvisor ? '/fa-dashboard' : '/faculty-dashboard');
       }
     } catch (error) {
-      console.error("Login Failed:", error);
-      alert("Invalid Credentials"); // Display an alert on failure
+      console.error("Login failed:", error);
+      setError(error.message || "Login failed. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -44,12 +40,15 @@ const Login = () => {
         <h2 className="login-title">
           Log in to <span className="sap">SAP</span>
         </h2>
+        
+        {error && <div className="error-message">{error}</div>}
+        
         <form onSubmit={handleLogin}>
           <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            placeholder="ID"
+            value={id}
+            onChange={(e) => setId(e.target.value)}
             required
           />
           <input
@@ -60,7 +59,6 @@ const Login = () => {
             required
           />
 
-          {/* ✅ Prevent unintended form submission */}
           <button
             type="button"
             className="forgot-password"
@@ -69,12 +67,15 @@ const Login = () => {
             Forgot Password?
           </button>
 
-          <button type="submit" className="login-btn" onClick={handleLogin}>
-            Log In
+          <button 
+            type="submit" 
+            className="login-btn" 
+            disabled={isLoading}
+          >
+            {isLoading ? 'Logging in...' : 'Log In'}
           </button>
         </form>
 
-        {/* ✅ Use imported image correctly */}
         <button className="google-btn">
           <img src={googleLogo} alt="Google Logo" />
           Sign in with Google

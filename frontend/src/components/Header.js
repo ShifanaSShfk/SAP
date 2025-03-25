@@ -1,38 +1,17 @@
-import React, { useState } from "react";
-import { useLocation, Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { fetchFacultyDetails, fetchStudentDetails } from "../services/api";
 import "../styles/header.css";
 
-// BellIcon Component
 const BellIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
     <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
   </svg>
 );
 
-// UserIcon Component
 const UserIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
     <circle cx="12" cy="7" r="4"></circle>
   </svg>
@@ -40,46 +19,73 @@ const UserIcon = () => (
 
 const Header = () => {
   const location = useLocation();
-  const navigate = useNavigate(); // For navigation
-  const username = localStorage.getItem("username") || "User"; // Store username during login
-
-  // Notification state
+  const navigate = useNavigate();
+  const [username, setUsername] = useState("User");
+  const [userRole, setUserRole] = useState("");
+  const [isFacultyAdvisor, setIsFacultyAdvisor] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
 
-  // Define page titles based on path
-  const pageTitles = {
-    "/student-dashboard": `Hi, ${username}`,
-    "/faculty-dashboard": `Hi, ${username}`,
-    "/send-request": "Send Request",
-    "/request-status": "Request Status",
-    "/request-history": "Request History",
-    "/faq": "FAQ",
-    "/fac-events": "My Events",
-    "/fac-overview": "Overview",
-    "/fac-approved": "Approved Requests",
-    "/fac-rejected": "Rejected Requests",
+  useEffect(() => {
+    const loadUserData = async () => {
+      const role = localStorage.getItem("role");
+      const userId = localStorage.getItem("userId");
+      const storedName = localStorage.getItem("username");
+      
+      setUserRole(role);
+      setUsername(storedName || "User");
+
+      try {
+        if (role === "faculty") {
+          const facultyData = await fetchFacultyDetails(userId);
+          setUsername(facultyData.name || facultyData.facultyName);
+          setIsFacultyAdvisor(facultyData.isFacultyAdvisor);
+          localStorage.setItem("username", facultyData.name || facultyData.facultyName);
+        } else if (role === "student") {
+          const studentData = await fetchStudentDetails(userId);
+          setUsername(studentData.studentName);
+          localStorage.setItem("username", studentData.studentName);
+        }
+      } catch (error) {
+        console.error("Error fetching user details:", error);
+      }
+    };
+
+    loadUserData();
+  }, []);
+
+  const title = `Hi, ${username}`; // Always show "Hi, [username]"
+
+  const handleProfileClick = () => {
+    navigate(userRole === "faculty" ? "/faculty-profile" : "/student-profile");
   };
 
-  const title = pageTitles[location.pathname] || "SAP Management System";
+  const handleSwitchView = () => {
+    navigate(location.pathname === "/fa-dashboard" ? "/faculty-dashboard" : "/fa-dashboard");
+  };
 
   return (
     <header className="header">
-      <h1>{title}</h1>
+      <div className="header-left">
+        <h1>{title}</h1>
+      </div>
       
-      <div className="header-actions">
-        {/* 🔔 Notification Bell */}
+      <div className="header-right">
+        {userRole === "faculty" && isFacultyAdvisor && (
+          <button onClick={handleSwitchView} className="switch-view-btn">
+            {location.pathname === "/fa-dashboard" 
+              ? "Switch to Faculty View" 
+              : "Switch to FA View"}
+          </button>
+        )}
+
         <button className="notification-btn" onClick={() => setShowNotifications(!showNotifications)}>
           <BellIcon />
-          {showNotifications && (
-            <div className="notification-dropdown">
-              <p>No new notifications</p>
-            </div>
-          )}
+          {showNotifications && <div className="notification-dropdown"><p>No new notifications</p></div>}
         </button>
 
-        {/* 👤 User Profile - Navigates to /profile on click */}
-        <div className="user-profile" onClick={() => navigate("/profile")} style={{ cursor: "pointer" }}>
+        <div className="user-profile" onClick={handleProfileClick}>
           <UserIcon />
+          <span>{username}</span>
         </div>
       </div>
     </header>

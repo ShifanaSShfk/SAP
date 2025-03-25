@@ -1,72 +1,69 @@
-import React from "react";
-import { Link } from "react-router-dom"; // Import Link for navigation
-import "../../styles/Student/StudentDashboard.css";
+import React, { useEffect, useState } from 'react';
+import { fetchStudentDetails, fetchFacultyDetails } from '../../services/api';
+import '../../styles/Student/StudentDashboard.css';
 
 const StudentDashboard = () => {
-  const student = {
-    name: "Ravipati Nikhitha Choudhary",
-    studentId: "B220492CS",
-    branch: "Computer Science and Engineering",
-    section: "CS02",
-    email: "ravipati_b220492cs@nitc.ac.in",
-    contact: "+91 9119119110",
-  };
+  const [student, setStudent] = useState(null);
+  const [facultyAdvisor, setFacultyAdvisor] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const upcomingEvents = [
-    { id: 1, title: "Talk on Web Development", date: "Friday, 4th February", time: "10:30 AM" },
-    { id: 2, title: "Talk on AI/ML", date: "Wednesday, 5th February", time: "6:00 PM" },
-  ];
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const userId = localStorage.getItem('userId');
+        if (!userId) {
+          throw new Error('User ID not found');
+        }
 
-  const leaderboard = [
-    { id: 1, name: "Iman", points: 2019 },
-    { id: 2, name: "Vatani", points: 1932 },
-    { id: 3, name: "Jonathan", points: 1481 },
-    { id: 4, name: "Paul", points: 1241 },
-    { id: 5, name: "Robert", points: 1051 },
-  ];
+        // Fetch student details
+        const studentData = await fetchStudentDetails(userId);
+        console.log('Student Data:', studentData); // Add this for debugging
+        setStudent(studentData);
+
+        // If student has faculty advisor, fetch their details
+        if (studentData.facultyAdvisorId) {
+          const facultyData = await fetchFacultyDetails(studentData.facultyAdvisorId);
+          console.log('Faculty Data:', facultyData); // Add this for debugging
+          setFacultyAdvisor(facultyData);
+        }
+
+      } catch (error) {
+        console.error('Error loading student data:', error);
+        setError(error.message || 'Failed to load student data');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
+
+  if (loading) {
+    return <div className="loading">Loading...</div>;
+  }
+
+  if (error) {
+    return <div className="error-message">{error}</div>;
+  }
 
   return (
     <div className="dashboard-container">
-      
-      
       <main className="main-content">
-        
         <section className="student-info">
-      <div className="info-card">
-        <p><strong>Name:</strong> {student.name}</p>
-        <p><strong>Student ID:</strong> {student.studentId}</p>
-        <p><strong>Branch:</strong> {student.branch}</p>
-        <p><strong>Section:</strong> {student.section}</p>
-        <p><strong>Email:</strong> <a href={`mailto:${student.email}`}>{student.email}</a></p>
-        <p><strong>Contact:</strong> {student.contact}</p>
-      </div>
-    </section>
-
-        {/* <section className="activity-points">
-          <h3>Activity Points</h3>
-          <canvas id="activityChart"></canvas>
-        </section> */}
+          <h2>Student Dashboard</h2>
+          <div className="info-card">
+            <p><strong>Name:</strong> {student?.studentName || 'N/A'}</p>
+            <p><strong>Student ID:</strong> {student?.studentId || 'N/A'}</p>
+            <p><strong>Department:</strong> {student?.department || 'N/A'}</p>
+            <p><strong>Section:</strong> {student?.section || 'N/A'}</p>
+            <p><strong>Faculty Advisor:</strong> {facultyAdvisor?.name || 'N/A'}</p>
+            <p><strong>Institutional Points:</strong> {student?.institutionalPoints || 0}</p>
+            <p><strong>Departmental Points:</strong> {student?.departmentPoints || 0}</p>
+            <p><strong>Total Points:</strong> {student?.totalPoints || 0}</p>
+          </div>
+        </section>
       </main>
-
-      <aside className="right-sidebar">
-        <div className="events-section">
-          <h3>Upcoming Events</h3>
-          {upcomingEvents.map(event => (
-            <div key={event.id} className="event">
-              <p><strong>{event.title}</strong></p>
-              <p>{event.date}, {event.time}</p>
-            </div>
-          ))}
-        </div>
-        <div className="leaderboard">
-          <h3>Leaderboard</h3>
-          {leaderboard.map((user, index) => (
-            <p key={user.id} className={`leaderboard-entry ${index === 0 ? "first-place" : ""}`}>
-              {index + 1}. {user.name} - {user.points} pts
-            </p>
-          ))}
-        </div>
-      </aside>
     </div>
   );
 };

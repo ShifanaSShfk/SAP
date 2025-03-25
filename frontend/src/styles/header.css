@@ -1,42 +1,47 @@
 .header {
-  background-color: #2563eb; /* Blue header */
+  background-color: #2563eb;
   color: white;
-  padding: 15px 20px; /* Adjust padding for better spacing */
+  padding: 15px 20px;
   font-size: 24px;
   font-weight: bold;
   text-align: left;
   border-radius: 8px;
   margin-bottom: 20px;
   display: flex;
-  justify-content: space-between; /* Space between title and actions */
-  align-items: center; /* Center items vertically */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.header-actions {
+.header-left {
   display: flex;
   align-items: center;
-  gap: 15px; /* Increase gap between icons */
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .notification-btn, .user-profile {
   background: none;
   border: none;
   cursor: pointer;
-  color: white; /* Ensure icons are white */
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px; /* Add padding for better click area */
-  border-radius: 50%; /* Circular click area */
-  transition: background-color 0.3s ease; /* Smooth hover effect */
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
 }
 
 .notification-btn:hover, .user-profile:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Light hover effect */
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-.notification-dropdown, .profile-dropdown {
+.notification-dropdown {
   position: absolute;
   background: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -44,10 +49,32 @@
   border-radius: 5px;
   right: 10px;
   top: 50px;
-  z-index: 1000; /* Ensure dropdown is above other elements */
+  z-index: 1000;
 }
 
 .notification-dropdown p {
   margin: 0;
-  color: #333; /* Dark text for dropdown */
+  color: #333;
+}
+
+.user-profile span {
+  margin-left: 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.switch-view-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 15px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.switch-view-btn:hover {
+  background-color: #45a049;
 }

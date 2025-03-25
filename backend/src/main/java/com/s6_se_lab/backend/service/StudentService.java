@@ -32,6 +32,10 @@ public class StudentService {
         student.setDepartmentPoints(studentDetails.getDepartmentPoints());
         student.setInstitutionalPoints(studentDetails.getInstitutionalPoints());
         student.setFacultyAdvisorId(studentDetails.getFacultyAdvisorId());
+        student.setDepartment(studentDetails.getDepartment());
+        student.setSection(studentDetails.getSection());
+        student.setContactNumber(studentDetails.getContactNumber());
+        
         return studentRepository.save(student);
     }
 

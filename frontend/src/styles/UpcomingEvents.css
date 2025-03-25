@@ -1,0 +1,32 @@
+.upcoming-events {
+    width: 300px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .upcoming-events h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .event-card {
+    background: #f5f5f5;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+  
+  .event-title {
+    font-weight: bold;
+    color: #6200ea;
+  }
+  
+  .event-date,
+  .event-time {
+    font-size: 14px;
+    color: #555;
+  }
+  
