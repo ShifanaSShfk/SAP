@@ -195,26 +195,25 @@ export const fetchStudentDetails = async (studentID) => {
   }
 };
 
-// Update your fetchFacultyDetails function:
 export const fetchFacultyDetails = async (facultyID) => {
   try {
-    const token = localStorage.getItem("authToken");
     const response = await fetch(`${API_BASE_URL}/api/faculty/${facultyID}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        ...(token && { Authorization: `Bearer ${token}` }),
+        "Authorization": `Bearer ${localStorage.getItem("authToken")}`
       },
     });
 
     const data = await handleResponse(response);
-    console.log('Raw faculty data from API:', data); // For debugging
-    
     return {
-      id: data.id,
-      name: data.name || data.facultyName, // Try both possible field names
+      id: data.facultyId,
+      name: data.facultyName,
       department: data.department,
-      isFacultyAdvisor: data.isFacultyAdvisor || false
+      designation: data.designation,
+      facultyRoom: data.facultyRoom,
+      email: data.email,
+      isFacultyAdvisor: data.isFacultyAdvisor
     };
   } catch (error) {
     console.error("Error fetching faculty details:", error);

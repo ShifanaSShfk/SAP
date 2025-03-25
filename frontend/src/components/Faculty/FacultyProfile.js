@@ -18,14 +18,15 @@ const FacultyProfile = () => {
         }
 
         const facultyData = await fetchFacultyDetails(facultyId);
+        console.log('Fetched faculty data:', facultyData);
         setFaculty(facultyData);
 
         // Store faculty data in localStorage
-        localStorage.setItem('facultyName', facultyData.name);
-        localStorage.setItem('facultyId', facultyData.id);
-        localStorage.setItem('department', facultyData.department);
-        localStorage.setItem('designation', facultyData.designation);
-        localStorage.setItem('isFacultyAdvisor', facultyData.isFacultyAdvisor);
+        localStorage.setItem('facultyName', facultyData.name || '');
+        localStorage.setItem('facultyId', facultyData.id || '');
+        localStorage.setItem('department', facultyData.department || '');
+        localStorage.setItem('designation', facultyData.designation || '');
+        localStorage.setItem('isFacultyAdvisor', facultyData.isFacultyAdvisor || 'false');
 
       } catch (error) {
         console.error('Error loading faculty data:', error);
@@ -62,11 +63,13 @@ const FacultyProfile = () => {
     <div className="profile-container">
       <h2>Faculty Profile</h2>
       <div className="profile-card">
-        <p><strong>Faculty ID:</strong> {faculty?.id}</p>
-        <p><strong>Name:</strong> {faculty?.name}</p>
-        <p><strong>Role:</strong> {faculty?.isFacultyAdvisor ? 'Faculty Advisor' : 'Faculty'}</p>
-        <p><strong>Department:</strong> {faculty?.department}</p>
-        <p><strong>Designation:</strong> {faculty?.designation}</p>
+        <p><strong>Faculty ID:</strong> {faculty?.id || 'N/A'}</p>
+        <p><strong>Name:</strong> {faculty?.name || 'N/A'}</p>
+        <p><strong>Role:</strong> {localStorage.getItem('isFacultyAdvisor') === 'true' ? 'Faculty Advisor' : 'Faculty'}</p>
+        <p><strong>Department:</strong> {faculty?.department || 'N/A'}</p>
+        <p><strong>Designation:</strong> {faculty?.designation || 'N/A'}</p>
+        <p><strong>Faculty Room:</strong> {faculty?.facultyRoom || 'N/A'}</p>
+        <p><strong>Email:</strong> {faculty?.email || 'N/A'}</p>
       </div>
       
       {faculty?.isFacultyAdvisor && (
