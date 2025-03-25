@@ -1,75 +1,67 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { fetchStudentDetails, fetchFacultyDetails } from '../../services/api';
 import '../../styles/Student/StudentDashboard.css';
-//import { fetchStudentDetails } from "../../services/api"; // Ensure correct import
-
 
 const StudentDashboard = () => {
   const [student, setStudent] = useState(null);
   const [facultyAdvisor, setFacultyAdvisor] = useState(null);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchStudentDetails = async () => {
-      const studentID = localStorage.getItem("studentID");
-
-      if (!studentID) {
-        setError("Student ID not found. Please log in again.");
-        return;
-      }
-
+    const loadData = async () => {
       try {
-        // Fetch student details
-        const studentResponse = await fetch(`http://localhost:8080/api/students/${studentID}`);
-        if (!studentResponse.ok) throw new Error(`HTTP error! Status: ${studentResponse.status}`);
+        const userId = localStorage.getItem('userId');
+        if (!userId) {
+          throw new Error('User ID not found');
+        }
 
-        const studentData = await studentResponse.json();
+        // Fetch student details
+        const studentData = await fetchStudentDetails(userId);
+        console.log('Student Data:', studentData); // Add this for debugging
         setStudent(studentData);
 
-        // Fetch faculty advisor details
-        const facultyID = studentData.facultyAdvisorId;
-        if (facultyID) {
-          const facultyResponse = await fetch(`http://localhost:8080/api/faculty/${facultyID}`);
-          if (!facultyResponse.ok) throw new Error(`Failed to fetch faculty details`);
-
-          const facultyData = await facultyResponse.json();
-          setFacultyAdvisor(facultyData.facultyName); // Extract only the faculty name
+        // If student has faculty advisor, fetch their details
+        if (studentData.facultyAdvisorId) {
+          const facultyData = await fetchFacultyDetails(studentData.facultyAdvisorId);
+          console.log('Faculty Data:', facultyData); // Add this for debugging
+          setFacultyAdvisor(facultyData);
         }
+
       } catch (error) {
-        console.error("Error fetching student details:", error);
-        setError("Failed to load data. Please try again.");
+        console.error('Error loading student data:', error);
+        setError(error.message || 'Failed to load student data');
+      } finally {
+        setLoading(false);
       }
     };
 
-    fetchStudentDetails();
+    loadData();
   }, []);
+
+  if (loading) {
+    return <div className="loading">Loading...</div>;
+  }
 
   if (error) {
     return <div className="error-message">{error}</div>;
-  }
-
-  if (!student) {
-    return <div>Loading...</div>;
   }
 
   return (
     <div className="dashboard-container">
       <main className="main-content">
         <section className="student-info">
+          <h2>Student Dashboard</h2>
           <div className="info-card">
-            
-          <p><strong>Name:</strong> {student.studentName}</p>
-            <p><strong>Student ID:</strong> {student.studentId}</p>
-            <p><strong>Department:</strong> {student.department}</p>
-            <p><strong>Section:</strong> {student.section}</p>
-            <p><strong>Email:</strong> {student.email}</p> {/* Corrected field */}
-            <p><strong>Contact:</strong> {student.contactNumber}</p>
-            <p><strong>Faculty Advisor:</strong> {facultyAdvisor || "N/A"}</p>
-            <p><strong>Institutional Points:</strong> {student.institutionalPoints}</p>
-            <p><strong>Department Points:</strong> {student.departmentPoints}</p>
-            <p><strong>Total Points:</strong> {student.totalPoints}</p>
-            </div>
+            <p><strong>Name:</strong> {student?.studentName || 'N/A'}</p>
+            <p><strong>Student ID:</strong> {student?.studentId || 'N/A'}</p>
+            <p><strong>Department:</strong> {student?.department || 'N/A'}</p>
+            <p><strong>Section:</strong> {student?.section || 'N/A'}</p>
+            <p><strong>Faculty Advisor:</strong> {facultyAdvisor?.name || 'N/A'}</p>
+            <p><strong>Institutional Points:</strong> {student?.institutionalPoints || 0}</p>
+            <p><strong>Departmental Points:</strong> {student?.departmentPoints || 0}</p>
+            <p><strong>Total Points:</strong> {student?.totalPoints || 0}</p>
+          </div>
         </section>
       </main>
     </div>

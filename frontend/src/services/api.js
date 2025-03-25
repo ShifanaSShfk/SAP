@@ -160,36 +160,45 @@ export const getAllEvents = async () => {
   }
 };
 
-/**
- * Fetches student details by ID.
- * @param {string} studentID - The ID of the student.
- * @returns {Promise<Object>} - The student details.
- */
+// ... (keep existing imports and helper functions)
+
+// Update your fetchStudentDetails function:
 export const fetchStudentDetails = async (studentID) => {
   try {
+    const token = localStorage.getItem("authToken");
     const response = await fetch(`${API_BASE_URL}/api/students/${studentID}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        ...(token && { Authorization: `Bearer ${token}` }),
       },
     });
 
-    return handleResponse(response);
+    const data = await handleResponse(response);
+    console.log('Raw student data from API:', data); // For debugging
+    
+    return {
+      studentId: data.studentId,
+      studentName: data.studentName,
+      department: data.department,
+      section: data.section,
+      email: data.email,
+      contactNumber: data.contactNumber,
+      facultyAdvisorId: data.facultyAdvisorId,
+      institutionalPoints: data.institutionalPoints || 0,
+      departmentPoints: data.departmentPoints || 0,
+      totalPoints: data.totalPoints || 0
+    };
   } catch (error) {
     console.error("Error fetching student details:", error);
     throw error;
   }
 };
 
-/**
- * Fetches faculty details by ID.
- * @param {string} facultyID - The ID of the faculty.
- * @returns {Promise<Object>} - The faculty details.
- */
+// Update your fetchFacultyDetails function:
 export const fetchFacultyDetails = async (facultyID) => {
   try {
     const token = localStorage.getItem("authToken");
-
     const response = await fetch(`${API_BASE_URL}/api/faculty/${facultyID}`, {
       method: "GET",
       headers: {
@@ -198,7 +207,15 @@ export const fetchFacultyDetails = async (facultyID) => {
       },
     });
 
-    return handleResponse(response);
+    const data = await handleResponse(response);
+    console.log('Raw faculty data from API:', data); // For debugging
+    
+    return {
+      id: data.id,
+      name: data.name || data.facultyName, // Try both possible field names
+      department: data.department,
+      isFacultyAdvisor: data.isFacultyAdvisor || false
+    };
   } catch (error) {
     console.error("Error fetching faculty details:", error);
     throw error;

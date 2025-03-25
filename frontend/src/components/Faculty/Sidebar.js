@@ -27,9 +27,7 @@ const Sidebar = () => {
           <li className={location.pathname === "/fac-events" ? "nav-item active" : "nav-item"}>
             <Link to="/fac-events">My Events</Link>
           </li>
-          <li className={location.pathname === "/student-details" ? "nav-item active" : "nav-item"}>
-            <Link to="/student-details">Student Details</Link>
-          </li>
+         
          
           <li className={location.pathname === "/faq" ? "nav-item active" : "nav-item"}>
             <Link to="/faq">FAQ</Link>

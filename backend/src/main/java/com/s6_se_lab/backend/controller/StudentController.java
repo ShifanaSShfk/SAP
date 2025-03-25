@@ -30,30 +30,30 @@ public class StudentController {
 
     @GetMapping("/{studentId}")
     public ResponseEntity<?> getStudentById(@PathVariable String studentId) {
-        Optional<Student> studentOpt = studentService.getStudentById(studentId);
+    Optional<Student> studentOpt = studentService.getStudentById(studentId);
 
-        if (!studentOpt.isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-
-        Student student = studentOpt.get();
-        Optional<User> userOpt = userService.getUserById(studentId); // Fetch email from User entity
-
-        // Construct response JSON with student details and email
-        Map<String, Object> response = new HashMap<>();
-        response.put("studentName", student.getStudentName());
-        response.put("studentId", student.getStudentId());
-        response.put("department", student.getDepartment());
-        response.put("section", student.getSection());
-        response.put("contactNumber", student.getContactNumber());
-        response.put("facultyAdvisorId", student.getFacultyAdvisorId());
-        response.put("institutionalPoints", student.getInstitutionalPoints());
-        response.put("departmentPoints", student.getDepartmentPoints());
-        response.put("totalPoints", student.getTotalPoints());
-        response.put("email", userOpt.map(User::getEmail).orElse(null)); // Add email if available
-
-        return ResponseEntity.ok(response);
+    if (!studentOpt.isPresent()) {
+        return ResponseEntity.notFound().build();
     }
+
+    Student student = studentOpt.get();
+    Optional<User> userOpt = userService.getUserById(studentId);
+
+    Map<String, Object> response = new HashMap<>();
+    response.put("studentName", student.getStudentName());
+    response.put("studentId", student.getStudentId());
+    response.put("department", student.getDepartment());
+    response.put("section", student.getSection());
+    response.put("contactNumber", student.getContactNumber());
+    response.put("facultyAdvisorId", student.getFacultyAdvisorId());
+    response.put("institutionalPoints", student.getInstitutionalPoints());
+    response.put("departmentPoints", student.getDepartmentPoints());
+    response.put("totalPoints", student.getTotalPoints());
+    response.put("email", userOpt.map(User::getEmail).orElse(null));
+
+    return ResponseEntity.ok(response);
+}
+
 
     @PostMapping
     public Student createStudent(@RequestBody Student student) {
