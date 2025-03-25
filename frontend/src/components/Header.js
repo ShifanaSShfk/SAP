@@ -37,11 +37,13 @@ const Header = () => {
       try {
         if (role === "faculty") {
           const facultyData = await fetchFacultyDetails(userId);
-          setUsername(facultyData.facultyName);
+          setUsername(facultyData.name || facultyData.facultyName);
           setIsFacultyAdvisor(facultyData.isFacultyAdvisor);
+          localStorage.setItem("username", facultyData.name || facultyData.facultyName);
         } else if (role === "student") {
           const studentData = await fetchStudentDetails(userId);
           setUsername(studentData.studentName);
+          localStorage.setItem("username", studentData.studentName);
         }
       } catch (error) {
         console.error("Error fetching user details:", error);
@@ -51,14 +53,7 @@ const Header = () => {
     loadUserData();
   }, []);
 
-  const pageTitles = {
-    "/student-dashboard": `Hi, ${username}`,
-    "/faculty-dashboard": `Hi, ${username}`,
-    "/fa-dashboard": `Hi, ${username} (FA)`,
-    // ... other paths
-  };
-
-  const title = pageTitles[location.pathname] || "SAP Management System";
+  const title = `Hi, ${username}`; // Always show "Hi, [username]"
 
   const handleProfileClick = () => {
     navigate(userRole === "faculty" ? "/faculty-profile" : "/student-profile");
