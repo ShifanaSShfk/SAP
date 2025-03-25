@@ -17,17 +17,30 @@ const Layout = () => {
 
   // Update view based on path
   useEffect(() => {
-    if (location.pathname.includes("fa-dashboard")) {
-      setCurrentView("fa");
-    } else if (location.pathname.includes("faculty-dashboard")) {
-      setCurrentView("faculty");
+    if (userRole === "faculty" && isFacultyAdvisor) {
+      // FA-specific paths
+      if (location.pathname.startsWith("/fa-") || 
+          location.pathname === "/student-details" || 
+          location.pathname === "/generate-report") {
+        setCurrentView("fa");
+      } 
+      // Faculty-specific paths
+      else if (location.pathname.startsWith("/faculty-") || 
+               location.pathname === "/fac-events") {
+        setCurrentView("faculty");
+      }
+      // For shared paths (/calendar, /faq), keep current view
     }
-  }, [location]);
+  }, [location, userRole, isFacultyAdvisor]);
 
   const toggleView = () => {
-    const newView = currentView === "faculty" ? "fa" : "faculty";
-    setCurrentView(newView);
-    localStorage.setItem("currentView", newView);
+    if (userRole === "faculty" && isFacultyAdvisor) {
+      const newView = currentView === "faculty" ? "fa" : "faculty";
+      setCurrentView(newView);
+      localStorage.setItem("currentView", newView);
+      // Navigate to the corresponding dashboard
+      window.location.href = newView === "fa" ? "/fa-dashboard" : "/faculty-dashboard";
+    }
   };
 
   return (
@@ -46,7 +59,11 @@ const Layout = () => {
       <div className="separator"></div>
 
       <div className="content">
-        <Header onSwitchView={toggleView} />
+        <Header 
+          onSwitchView={toggleView} 
+          showSwitchButton={userRole === "faculty" && isFacultyAdvisor}
+          currentView={currentView}
+        />
         <div className="page-content">
           <div className="middle-content">
             <Outlet />

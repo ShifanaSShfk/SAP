@@ -1,3 +1,4 @@
+// Header.js
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { fetchFacultyDetails, fetchStudentDetails } from "../services/api";
@@ -24,6 +25,7 @@ const Header = () => {
   const [userRole, setUserRole] = useState("");
   const [isFacultyAdvisor, setIsFacultyAdvisor] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
+  const [currentView, setCurrentView] = useState("faculty");
 
   useEffect(() => {
     const loadUserData = async () => {
@@ -40,6 +42,11 @@ const Header = () => {
           setUsername(facultyData.name || facultyData.facultyName);
           setIsFacultyAdvisor(facultyData.isFacultyAdvisor);
           localStorage.setItem("username", facultyData.name || facultyData.facultyName);
+          
+          // Set initial view based on path
+          const initialView = location.pathname.startsWith("/fa-") ? "fa" : "faculty";
+          setCurrentView(initialView);
+          localStorage.setItem("currentView", initialView);
         } else if (role === "student") {
           const studentData = await fetchStudentDetails(userId);
           setUsername(studentData.studentName);
@@ -53,14 +60,35 @@ const Header = () => {
     loadUserData();
   }, []);
 
-  const title = `Hi, ${username}`; // Always show "Hi, [username]"
+  // Update view when navigating
+  useEffect(() => {
+    if (userRole !== "faculty" || !isFacultyAdvisor) return;
+    
+    // FA-specific paths
+    if (location.pathname.startsWith("/fa-") || 
+        location.pathname === "/student-details" || 
+        location.pathname === "/generate-report") {
+      setCurrentView("fa");
+    } 
+    // Faculty-specific paths
+    else if (location.pathname.startsWith("/faculty-") || 
+             location.pathname === "/fac-events") {
+      setCurrentView("faculty");
+    }
+    // For shared paths (/calendar, /faq), keep current view
+  }, [location.pathname, userRole, isFacultyAdvisor]);
+
+  const title = `Hi, ${username}`;
 
   const handleProfileClick = () => {
     navigate(userRole === "faculty" ? "/faculty-profile" : "/student-profile");
   };
 
   const handleSwitchView = () => {
-    navigate(location.pathname === "/fa-dashboard" ? "/faculty-dashboard" : "/fa-dashboard");
+    const newView = currentView === "fa" ? "faculty" : "fa";
+    setCurrentView(newView);
+    localStorage.setItem("currentView", newView);
+    navigate(newView === "fa" ? "/fa-dashboard" : "/faculty-dashboard");
   };
 
   return (
@@ -72,9 +100,7 @@ const Header = () => {
       <div className="header-right">
         {userRole === "faculty" && isFacultyAdvisor && (
           <button onClick={handleSwitchView} className="switch-view-btn">
-            {location.pathname === "/fa-dashboard" 
-              ? "Switch to Faculty View" 
-              : "Switch to FA View"}
+            {currentView === "fa" ? "Switch to Faculty View" : "Switch to FA View"}
           </button>
         )}
 
