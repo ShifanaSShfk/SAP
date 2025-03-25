@@ -76,13 +76,13 @@ public class User {
         this.role = role;
     }
 
-    public Boolean getIsFacultyAdvisor() {
-        return isFacultyAdvisor;
-    }
+    // public Boolean getIsFacultyAdvisor() {
+    //     return isFacultyAdvisor;
+    // }
 
-    public void setIsFacultyAdvisor(Boolean isFacultyAdvisor) {
-        this.isFacultyAdvisor = isFacultyAdvisor;
-    }
+    // public void setIsFacultyAdvisor(Boolean isFacultyAdvisor) {
+    //     this.isFacultyAdvisor = isFacultyAdvisor;
+    // }
 
     public String getName() {
         return name;
@@ -92,9 +92,15 @@ public class User {
         this.name = name;
     }
 
-    public String getDepartment() {
-        return department;
-    }
+     // public Boolean getIsFacultyAdvisor() {
+    //     return isFacultyAdvisor;
+    // }
+
+    // public void setIsFacultyAdvisor(Boolean isFacultyAdvisor) {
+    //     this.isFacultyAdvisor = isFacultyAdvisor;
+    // }public String getDepartment() {
+    //     return department;
+    // }
 
     public void setDepartment(String department) {
         this.department = department;

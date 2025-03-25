@@ -36,3 +36,13 @@
   align-items: stretch;
   flex-basis: 200px;
 }
+/* View indicator */
+.view-indicator {
+  background: #3498db;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-bottom: 15px;
+  display: inline-block;
+}

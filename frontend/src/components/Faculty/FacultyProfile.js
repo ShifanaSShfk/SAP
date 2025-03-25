@@ -65,7 +65,7 @@ const FacultyProfile = () => {
       <div className="profile-card">
         <p><strong>Faculty ID:</strong> {faculty?.id || 'N/A'}</p>
         <p><strong>Name:</strong> {faculty?.name || 'N/A'}</p>
-        <p><strong>Role:</strong> {localStorage.getItem('isFacultyAdvisor') === 'true' ? 'Faculty Advisor' : 'Faculty'}</p>
+        {/* <p><strong>Role:</strong> {localStorage.getItem('isFacultyAdvisor') === 'true' ? 'Faculty Advisor' : 'Faculty'}</p> */}
         <p><strong>Department:</strong> {faculty?.department || 'N/A'}</p>
         <p><strong>Designation:</strong> {faculty?.designation || 'N/A'}</p>
         <p><strong>Faculty Room:</strong> {faculty?.facultyRoom || 'N/A'}</p>
