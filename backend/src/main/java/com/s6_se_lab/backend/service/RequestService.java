@@ -182,4 +182,38 @@ public class RequestService {
             return requestMap;
         }).collect(Collectors.toList());
     }
+
+    public Request rejectRequest(Long requestId, String rejectionReason) {
+        Request request = requestRepository.findById(requestId)
+            .orElseThrow(() -> new RuntimeException("Request not found with ID: " + requestId));
+        
+        request.setStatus(Request.Status.Rejected);
+        
+        // If you want to store the rejection reason, you'll need to add this field to your Request entity
+        request.setRejectionReason(rejectionReason);
+        
+        return requestRepository.save(request);
+    }
+
+    public Map<String, Object> getRequestWithDetails(Long requestId) {
+        Request request = requestRepository.findById(requestId)
+            .orElseThrow(() -> new RuntimeException("Request not found with ID: " + requestId));
+        
+        Map<String, Object> details = new HashMap<>();
+        details.put("request_id", request.getRequestId());
+        details.put("event_name", request.getEventName());
+        details.put("status", request.getStatus().getDisplayValue());
+        details.put("student_name", request.getStudent().getStudentName());
+        details.put("student_id", request.getStudent().getStudentId());
+        details.put("department", request.getStudent().getDepartment());
+        details.put("section", request.getStudent().getSection());
+        details.put("event_date", request.getEventDate());
+        details.put("event_time", request.getEventTime());
+        details.put("location", request.getLocation());
+        details.put("activity_points", request.getActivityPoints());
+        details.put("proof_document", request.getProofDocument());
+        details.put("rejection_reason", request.getRejectionReason());
+        
+        return details;
+    }
 }

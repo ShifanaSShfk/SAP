@@ -64,9 +64,18 @@ public ResponseEntity<Request> approveRequest(@PathVariable Long requestId) {
 }
 
 @PutMapping("/{requestId}/reject")
-public ResponseEntity<Request> rejectRequest(@PathVariable Long requestId) {
-    Request request = requestService.rejectRequest(requestId);
+public ResponseEntity<Request> rejectRequest(
+    @PathVariable Long requestId,
+    @RequestBody Map<String, String> requestBody) {
+    
+    String reason = requestBody.get("reason");
+    Request request = requestService.rejectRequest(requestId, reason);
     return ResponseEntity.ok(request);
 }
 
+@GetMapping("/{requestId}")
+public ResponseEntity<Map<String, Object>> getRequestDetails(@PathVariable Long requestId) {
+    Map<String, Object> requestDetails = requestService.getRequestWithDetails(requestId);
+    return ResponseEntity.ok(requestDetails);
+}
 }

@@ -309,3 +309,73 @@ export const fetchFacultyRequests = async (facultyId) => {
     throw error;
   }
 };
+
+export const approveRequest = async (requestId) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/requests/${requestId}/approve`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("authToken")}`
+      }
+    });
+    return handleResponse(response);
+  } catch (error) {
+    console.error("Error approving request:", error);
+    throw error;
+  }
+};
+
+export const rejectRequest = async (requestId, reason) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/requests/${requestId}/reject`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("authToken")}`
+      },
+      body: JSON.stringify({ reason })
+    });
+    return handleResponse(response);
+  } catch (error) {
+    console.error("Error rejecting request:", error);
+    throw error;
+  }
+};
+
+/**
+ * Fetches details of a specific request
+ * @param {string} requestId - The ID of the request to fetch
+ * @returns {Promise<Object>} - The request details
+ */
+export const fetchRequestDetails = async (requestId) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/requests/${requestId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("authToken")}`
+      }
+    });
+    
+    const data = await handleResponse(response);
+    return {
+      request_id: data.request_id,
+      event_name: data.event_name,
+      status: data.status,
+      student_name: data.student_name,
+      student_id: data.student_id,
+      department: data.department,
+      section: data.section,
+      event_date: data.event_date,
+      event_time: data.event_time,
+      location: data.location,
+      activity_points: data.activity_points,
+      proof_document: data.proof_document,
+      rejection_reason: data.rejection_reason || ''
+    };
+  } catch (error) {
+    console.error("Error fetching request details:", error);
+    throw error;
+  }
+};

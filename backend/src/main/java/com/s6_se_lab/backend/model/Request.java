@@ -207,4 +207,15 @@ public class Request {
     public void setFacultyInCharge(Set<Faculty> facultyInCharge) {
         this.facultyInCharge = facultyInCharge;
     }
+    @Column(name = "rejection_reason", length = 1000)
+private String rejectionReason;
+
+// Add getter and setter
+public String getRejectionReason() {
+    return rejectionReason;
+}
+
+public void setRejectionReason(String rejectionReason) {
+    this.rejectionReason = rejectionReason;
+}
 }

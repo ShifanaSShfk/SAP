@@ -26,6 +26,7 @@ import FAApproved from "./components/FA/FARequestApproved";
 import FARejected from "./components/FA/FARequestRejected";
 import PrivateRoute from "./components/PrivateRoute";
 import GenerateReport from "./components/FA/GenerateReport";
+import FacRequestDetails from "./components/Faculty/FacRequestDetails";
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
         <Route path="/faculty-profile" element={<PrivateRoute role="faculty"><FacultyProfile /></PrivateRoute>} />
         <Route path="/faculty-calendar" element={<PrivateRoute role="faculty"><Calendar /></PrivateRoute>} />
         <Route path="/faculty-faq" element={<PrivateRoute role="faculty"><FAQ /></PrivateRoute>} />
+        <Route path="/fac-request/:requestId" element={<PrivateRoute role="faculty"><FacRequestDetails /></PrivateRoute>} />
       </Route>
 
       {/* FA Routes */}
