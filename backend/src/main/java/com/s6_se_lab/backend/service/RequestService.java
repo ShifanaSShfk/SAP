@@ -7,7 +7,9 @@ import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.logging.Logger;
@@ -155,5 +157,29 @@ public class RequestService {
 
     public List<Request> getRequestsByFacultyInChargeId(String facultyId) {
         return requestRepository.findByFacultyInChargeId(facultyId);
+    }
+
+
+    public List<Map<String, Object>> getRequestsWithStudentDetailsByFacultyId(String facultyId) {
+        List<Request> requests = requestRepository.findByFacultyInChargeFacultyId(facultyId);
+        
+        return requests.stream().map(request -> {
+            Map<String, Object> requestMap = new HashMap<>();
+            Student student = request.getStudent();
+            
+            requestMap.put("request_id", request.getRequestId());
+            requestMap.put("event_name", request.getEventName());
+            requestMap.put("status", request.getStatus().getDisplayValue());
+            requestMap.put("student_id", student.getStudentId());
+            requestMap.put("student_name", student.getStudentName());
+            requestMap.put("department", student.getDepartment());
+            requestMap.put("section", student.getSection());
+            requestMap.put("event_date", request.getEventDate().toString());
+            requestMap.put("event_time", request.getEventTime().toString());
+            requestMap.put("location", request.getLocation());
+            requestMap.put("activity_points", request.getActivityPoints());
+            requestMap.put("proof_document", request.getProofDocument());
+            return requestMap;
+        }).collect(Collectors.toList());
     }
 }

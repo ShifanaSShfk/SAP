@@ -290,7 +290,20 @@ export const fetchFacultyRequests = async (facultyId) => {
       throw new Error("Invalid response format from server");
     }
     
-    return data;
+    return data.map(request => ({
+      request_id: request.request_id,
+      event_name: request.event_name || "Untitled Event",
+      status: request.status || "Pending",
+      student_id: request.student_id,
+      student_name: request.student_name || "Unknown Student",
+      department: request.department || "N/A",
+      section: request.section || "N/A",
+      event_date: request.event_date,
+      event_time: request.event_time,
+      location: request.location || "Location not specified",
+      activity_points: request.activity_points || 0,
+      proof_document: request.proof_document
+    }));
   } catch (error) {
     console.error("Error fetching faculty requests:", error);
     throw error;

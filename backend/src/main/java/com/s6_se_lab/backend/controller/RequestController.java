@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/requests")
@@ -50,10 +51,11 @@ public class RequestController {
     }
 
     @GetMapping("/faculty/{facultyId}")
-public ResponseEntity<List<Request>> getRequestsByFacultyInCharge(@PathVariable String facultyId) {
-    List<Request> requests = requestService.getRequestsByFacultyInChargeId(facultyId);
-    return ResponseEntity.ok(requests);
-}
+    public ResponseEntity<List<Map<String, Object>>> getRequestsByFacultyInCharge(@PathVariable String facultyId) {
+        List<Map<String, Object>> requests = requestService.getRequestsWithStudentDetailsByFacultyId(facultyId);
+        return ResponseEntity.ok(requests);
+    }
+
 
 @PutMapping("/{requestId}/approve")
 public ResponseEntity<Request> approveRequest(@PathVariable Long requestId) {
