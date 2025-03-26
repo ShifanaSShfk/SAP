@@ -1,38 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { fetchStudentDetails } from "../../services/api";
 import "../../styles/StudentDetails.css";
 
-const StudentList = () => {
+const StudentDetails = () => {
+  const [students, setStudents] = useState([]);
   const [sortBy, setSortBy] = useState("Total Activity Points");
+  const [loading, setLoading] = useState(true);
 
-  const students = [
-    { name: "Shifana S Shafeek", institutePoints: 10, deptPoints: 40 },
-    { name: "Ravipati Nikitha Chawadary", institutePoints: 20, deptPoints: 25 },
-    { name: "Sreedevi K", institutePoints: 10, deptPoints: 15 },
-    { name: "Prithwiraj", institutePoints: 5, deptPoints: 35 },
-    { name: "Sukumar", institutePoints: 5, deptPoints: 5 },
-    { name: "Charlie", institutePoints: 55, deptPoints: 5 },
-    { name: "Robert", institutePoints: 20, deptPoints: 25 },
-    { name: "Ashley", institutePoints: 15, deptPoints: 35 },
-    { name: "Trisha", institutePoints: 10, deptPoints: 25 },
-  ];
+  useEffect(() => {
+    const fetchStudents = async () => {
+      try {
+        // This should be replaced with your actual API endpoint
+        const response = await fetchStudentDetails("all"); // Or use specific FA endpoint
+        setStudents(response.data || []);
+      } catch (error) {
+        console.error("Error fetching students:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchStudents();
+  }, []);
 
   const sortedStudents = [...students].sort((a, b) => {
     if (sortBy === "Total Activity Points") {
       return (
-        b.institutePoints + b.deptPoints - (a.institutePoints + a.deptPoints)
+        b.institutionalPoints + b.departmentPoints - 
+        (a.institutionalPoints + a.departmentPoints)
       );
     } else if (sortBy === "Department Activity Points") {
-      return b.deptPoints - a.deptPoints;
+      return b.departmentPoints - a.departmentPoints;
     } else if (sortBy === "Institute Activity Points") {
-      return b.institutePoints - a.institutePoints;
+      return b.institutionalPoints - a.institutionalPoints;
     }
     return 0;
   });
 
+  if (loading) return <div>Loading student details...</div>;
+
   return (
     <div className="student-list-container">
       <header className="student-list-header">
-       
+        <h2>Student Details</h2>
         <div className="sort-options">
           <label>Sort by:</label>
           <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
@@ -55,15 +65,19 @@ const StudentList = () => {
         <tbody>
           {sortedStudents.map((student, index) => (
             <tr key={index}>
-              <td>{student.name}</td>
-              <td className={student.institutePoints < 20 ? "low" : ""}>
-                {student.institutePoints}
+              <td>{student.studentName}</td>
+              <td className={student.institutionalPoints < 20 ? "low" : ""}>
+                {student.institutionalPoints}
               </td>
-              <td className={student.deptPoints < 20 ? "low" : ""}>
-                {student.deptPoints}
+              <td className={student.departmentPoints < 20 ? "low" : ""}>
+                {student.departmentPoints}
               </td>
-              <td className={student.institutePoints + student.deptPoints < 40 ? "low" : "high"}>
-                {student.institutePoints + student.deptPoints}
+              <td className={
+                student.institutionalPoints + student.departmentPoints < 40 
+                  ? "low" 
+                  : "high"
+              }>
+                {student.institutionalPoints + student.departmentPoints}
               </td>
             </tr>
           ))}
@@ -73,4 +87,4 @@ const StudentList = () => {
   );
 };
 
-export default StudentList;
+export default StudentDetails;
