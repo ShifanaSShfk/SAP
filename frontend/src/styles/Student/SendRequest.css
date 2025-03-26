@@ -1,148 +1,306 @@
-.sap-container {
-  display: flex;
-  height: 100vh;
-  font-family: Arial, sans-serif;
+.send-request-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.sidebar {
-  width: 250px;
-  background-color: #f8f9fa;
-  padding: 20px;
+.send-request-container h2 {
+  margin-bottom: 2rem;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.request-form {
   display: flex;
   flex-direction: column;
-}
-
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: #5a2dde;
-}
-
-nav ul {
-  list-style: none;
-  padding: 0;
-}
-
-nav ul li {
-  padding: 10px 0;
-  cursor: pointer;
-}
-
-.activity-points button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border: none;
-  background-color: #fff;
-  cursor: pointer;
-  text-align: left;
-}
-
-.activity-points .active {
-  background-color: #5a2dde;
-  color: #fff;
-}
-
-.logout {
-  margin-top: auto;
-  background-color: #dc3545;
-  color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-}
-
-.content {
-  flex: 1;
-  padding: 20px;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.icons .icon {
-  font-size: 20px;
-  margin-left: 10px;
-  cursor: pointer;
-}
-
-.new-request {
-  margin-top: 20px;
+  gap: 1.5rem;
 }
 
 .form-group {
   display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #34495e;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-row .form-group {
+  flex: 1;
 }
 
 input, select {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
 }
 
-.file-upload {
-  padding: 15px;
-  border: 2px dashed #ccc;
+.file-upload-box {
+  padding: 2rem;
+  border: 2px dashed #3498db;
+  border-radius: 4px;
   text-align: center;
-  margin-top: 15px;
+  background-color: #f8fafc;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
 }
 
-.file-upload button {
-  margin-top: 10px;
-  padding: 8px 15px;
-  background-color: #5a2dde;
-  color: white;
-  border: none;
+.file-upload-box:hover {
+  background-color: #f0f7ff;
+}
+
+.file-upload-box p {
+  margin: 0;
+  color: #3498db;
+}
+
+.file-format {
+  font-size: 0.8rem;
+  color: #7f8c8d !important;
+  margin-top: 0.5rem !important;
+}
+
+.file-upload-box input[type="file"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
   cursor: pointer;
 }
 
-.upcoming-events {
-  width: 250px;
-  background-color: #fff;
-  padding: 20px;
+.file-selected {
+  margin-top: 1rem !important;
+  color: #2ecc71 !important;
+  font-weight: 600;
 }
 
-.event {
-  background-color: #f1f1f1;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-.form-buttons {
+.form-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
-.cancel-button {
-  background-color: #dc3545;
-  color: white;
+button {
+  padding: 0.75rem 1.5rem;
   border: none;
-  padding: 10px 15px;
+  border-radius: 4px;
+  font-size: 1rem;
   cursor: pointer;
-  border-radius: 5px;
+  transition: background 0.2s;
 }
 
-.submit-button {
+button[type="submit"] {
+  background: #5a2dde;
+  color: white;
+}
+
+button[type="submit"]:hover {
+  background: #4a22c3;
+}
+
+button[type="button"] {
+  background: #e74c3c;
+  color: white;
+}
+
+button[type="button"]:hover {
+  background: #c0392b;
+}
+
+.loading {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+}
+
+.multi-select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: white;
+}
+
+.multi-select option {
+  padding: 0.5rem;
+}
+
+.multi-select option:hover {
   background-color: #5a2dde;
   color: white;
-  border: none;
-  padding: 10px 15px;
+}
+
+.read-only {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.faculty-info {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+}
+
+.faculty-info p {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+small {
+  display: block;
+  margin-top: 0.25rem;
+  color: #666;
+  font-size: 0.8rem;
+}
+
+
+/* Loading indicator */
+.loading {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+}
+
+/* Student information section */
+.student-info {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.info-row {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+.info-label {
+  font-weight: 600;
+  width: 150px;
+  color: #34495e;
+}
+
+.info-value {
+  flex: 1;
+}
+
+/* Faculty search and selection */
+.faculty-search-container {
+  margin-top: 0.5rem;
+}
+
+.faculty-search {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.faculty-select-container {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.faculty-option {
+  padding: 0.75rem;
   cursor: pointer;
-  border-radius: 5px;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s;
 }
 
-.cancel-button:hover {
-  background-color: #c82333;
+.faculty-option:hover {
+  background-color: #f0f7ff;
 }
 
-.submit-button:hover {
-  background-color: #4a22c3;
+.faculty-option.selected {
+  background-color: #5a2dde;
+  color: white;
+}
+
+.selected-faculties {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.selected-faculty {
+  background-color: #e0e7ff;
+  color: #5a2dde;
+  padding: 0.5rem 0.75rem;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.selected-faculty button {
+  background: none;
+  border: none;
+  color: #5a2dde;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0;
+  line-height: 1;
+}
+
+.selected-faculty button:hover {
+  color: #4a22c3;
+}
+
+/* Form actions */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.form-actions button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.form-actions button[type="submit"] {
+  background: #5a2dde;
+  color: white;
+}
+
+.form-actions button[type="submit"]:hover {
+  background: #4a22c3;
+}
+
+.form-actions button[type="button"] {
+  background: #e74c3c;
+  color: white;
+}
+
+.form-actions button[type="button"]:hover {
+  background: #c0392b;
 }

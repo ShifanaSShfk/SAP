@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "request")
@@ -28,12 +30,6 @@ public class Request {
     @ManyToOne
     @JoinColumn(name = "student_id", nullable = false, foreignKey = @ForeignKey(name = "fk_request_student"))
     private Student student;
-
-    @Column(name = "faculty_advisor_id")
-    private String facultyAdvisorId;
-
-    @Column(name = "_charge_id")
-    private String facultyInChargeId;
 
     @Column(name = "proof_document", length = 255)
     private String proofDocument;
@@ -60,7 +56,22 @@ public class Request {
     @Column(name = "location", nullable = false, length = 255)
     private String location;
 
-    // Default constructor (required for JPA)
+    @ManyToMany
+    @JoinTable(
+        name = "request_faculty_advisors",
+        joinColumns = @JoinColumn(name = "request_id"),
+        inverseJoinColumns = @JoinColumn(name = "faculty_id")
+    )
+    private Set<Faculty> facultyAdvisors = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(
+        name = "request_faculty_in_charge",
+        joinColumns = @JoinColumn(name = "request_id"),
+        inverseJoinColumns = @JoinColumn(name = "faculty_id")
+    )
+    private Set<Faculty> facultyInCharge = new HashSet<>();
+
     public Request() {}
 
     // Getters and Setters
@@ -94,22 +105,6 @@ public class Request {
 
     public void setStudent(Student student) {
         this.student = student;
-    }
-
-    public String getFacultyAdvisorId() {
-        return facultyAdvisorId;
-    }
-
-    public void setFacultyAdvisorId(String facultyAdvisorId) {
-        this.facultyAdvisorId = facultyAdvisorId;
-    }
-
-    public String getFacultyInChargeId() {
-        return facultyInChargeId;
-    }
-
-    public void setFacultyInChargeId(String facultyInChargeId) {
-        this.facultyInChargeId = facultyInChargeId;
     }
 
     public String getProofDocument() {
@@ -174,5 +169,21 @@ public class Request {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public Set<Faculty> getFacultyAdvisors() {
+        return facultyAdvisors;
+    }
+
+    public void setFacultyAdvisors(Set<Faculty> facultyAdvisors) {
+        this.facultyAdvisors = facultyAdvisors;
+    }
+
+    public Set<Faculty> getFacultyInCharge() {
+        return facultyInCharge;
+    }
+
+    public void setFacultyInCharge(Set<Faculty> facultyInCharge) {
+        this.facultyInCharge = facultyInCharge;
     }
 }
