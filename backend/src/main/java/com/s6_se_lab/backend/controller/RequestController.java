@@ -4,6 +4,7 @@ import com.s6_se_lab.backend.model.Request;
 import com.s6_se_lab.backend.service.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -77,5 +78,15 @@ public ResponseEntity<Request> rejectRequest(
 public ResponseEntity<Map<String, Object>> getRequestDetails(@PathVariable Long requestId) {
     Map<String, Object> requestDetails = requestService.getRequestWithDetails(requestId);
     return ResponseEntity.ok(requestDetails);
+}
+
+@GetMapping("/student/{studentId}")
+public ResponseEntity<List<Map<String, Object>>> getStudentRequests(@PathVariable String studentId) {
+    try {
+        List<Map<String, Object>> requests = requestService.getStudentRequests(studentId);
+        return ResponseEntity.ok(requests);
+    } catch (Exception e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    }
 }
 }

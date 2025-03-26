@@ -28,9 +28,9 @@ const StudentSidebar = () => {
           <li className={location.pathname === "/request-status" ? "active" : ""}>
             <Link to="/request-status">Request Status</Link>
           </li>
-          <li className={location.pathname === "/request-history" ? "active" : ""}>
+          {/* <li className={location.pathname === "/request-history" ? "active" : ""}>
             <Link to="/request-history">Request History</Link>
-          </li>
+          </li> */}
           <li className={location.pathname === "/faq" ? "active" : ""}>
             <Link to="/faq">FAQ</Link>
           </li>

@@ -409,3 +409,40 @@ export const fetchStudentsByFA = async (facultyAdvisorId) => {
     throw error;
   }
 };
+
+export const fetchStudentRequests = async (studentId) => {
+  try {
+    const token = localStorage.getItem("authToken");
+    const response = await fetch(`${API_BASE_URL}/api/requests/student/${studentId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        ...(token && { Authorization: `Bearer ${token}` }),
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    
+    if (!Array.isArray(data)) {
+      throw new Error("Invalid response format from server");
+    }
+    
+    // Sort by createdAt (newest first)
+    return data.map(request => ({
+      request_id: request.request_id || request.requestId,
+      event_name: request.event_name || request.eventName,
+      status: request.status || "Pending",
+      event_date: request.event_date || request.eventDate,
+      activity_points: request.activity_points || request.activityPoints,
+      rejection_reason: request.rejection_reason || null,
+      created_at: request.created_at || request.createdAt
+    })).sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+  } catch (error) {
+    console.error("Error fetching student requests:", error);
+    throw error;
+  }
+};
