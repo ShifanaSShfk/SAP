@@ -1,4 +1,3 @@
-// App.js
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
@@ -8,7 +7,6 @@ import StudentDashboard from "./components/Student/StudentDashboard";
 import SendRequest from "./components/Student/SendRequest";
 import RequestStatus from "./components/Student/RequestStatus";
 import Activitydetails from "./components/Student/activitydetails";
-// import Requesthistory from "./components/Student/requesthistory";
 import FAQ from "./components/Faq";
 import FacOverview from "./components/Faculty/FacRequestOverview";
 import FacApproved from "./components/Faculty/FacRequestApproved";
@@ -17,8 +15,7 @@ import FacEvents from "./components/Faculty/MyEvents";
 import EventDetails from "./components/Faculty/eventdetails";
 import AddEvent from "./components/Faculty/AddEvent";
 import Profile from "./components/Student/Profile";
-import FacultyProfile from "./components/Faculty/FacultyProfile"; 
-import Calendar from "./components/calendar";
+import FacultyProfile from "./components/Faculty/FacultyProfile";
 import FADashboard from "./components/FA/FADashboard";
 import StudentDetails from "./components/FA/StudentDetails";
 import FAOverview from "./components/FA/FARequestOverview";
@@ -26,6 +23,8 @@ import FAApproved from "./components/FA/FARequestApproved";
 import FARejected from "./components/FA/FARequestRejected";
 import PrivateRoute from "./components/PrivateRoute";
 import GenerateReport from "./components/FA/GenerateReport";
+import FacRequestDetails from "./components/Faculty/FacRequestDetails";
+import FARequestDetails from "./components/FA/FARequestDetails";
 
 function App() {
   return (
@@ -40,7 +39,6 @@ function App() {
         <Route path="/send-request" element={<PrivateRoute role="student"><SendRequest /></PrivateRoute>} />
         <Route path="/request-status" element={<PrivateRoute role="student"><RequestStatus /></PrivateRoute>} />
         <Route path="/request-details" element={<PrivateRoute role="student"><Activitydetails /></PrivateRoute>} />
-        {/* <Route path="/request-history" element={<PrivateRoute role="student"><Requesthistory /></PrivateRoute>} /> */}
         <Route path="/student-profile" element={<PrivateRoute role="student"><Profile /></PrivateRoute>} />
         <Route path="/faq" element={<PrivateRoute role="student"><FAQ /></PrivateRoute>} />
       </Route>
@@ -55,17 +53,20 @@ function App() {
         <Route path="/event-details" element={<PrivateRoute role="faculty"><EventDetails /></PrivateRoute>} />
         <Route path="/add-event" element={<PrivateRoute role="faculty"><AddEvent /></PrivateRoute>} />
         <Route path="/faculty-profile" element={<PrivateRoute role="faculty"><FacultyProfile /></PrivateRoute>} />
-        <Route path="/faculty-calendar" element={<PrivateRoute role="faculty"><Calendar facultyView /></PrivateRoute>} />
         <Route path="/faculty-faq" element={<PrivateRoute role="faculty"><FAQ facultyView /></PrivateRoute>} />
+        <Route path="/fac-request/:requestId" element={<PrivateRoute role="faculty"><FacRequestDetails /></PrivateRoute>} />
       </Route>
 
-{/* FA Routes */}
-<Route element={<Layout sidebarType="fa" />}>
+      {/* FA Routes */}
+      <Route element={<Layout sidebarType="fa" />}>
         <Route path="/fa-dashboard" element={<PrivateRoute role="fa" faRequired><FADashboard /></PrivateRoute>} />
-        <Route path="/fa-calendar" element={<PrivateRoute role="fa" faRequired><Calendar faView /></PrivateRoute>} />
         <Route path="/student-details" element={<PrivateRoute role="fa" faRequired><StudentDetails /></PrivateRoute>} />
         <Route path="/generate-report" element={<PrivateRoute role="fa" faRequired><GenerateReport /></PrivateRoute>} />
         <Route path="/fa-faq" element={<PrivateRoute role="fa" faRequired><FAQ faView /></PrivateRoute>} />
+        <Route path="/fa-overview" element={<PrivateRoute role="fa" faRequired><FAOverview /></PrivateRoute>} />
+        <Route path="/fa-approved" element={<PrivateRoute role="fa" faRequired><FAApproved /></PrivateRoute>} />
+        <Route path="/fa-rejected" element={<PrivateRoute role="fa" faRequired><FARejected /></PrivateRoute>} />
+        <Route path="/fa-request/:requestId" element={<PrivateRoute role="fa" faRequired><FARequestDetails /></PrivateRoute>} />
       </Route>
     </Routes>
   );

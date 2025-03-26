@@ -4,7 +4,7 @@ import "../../styles/Faculty/FacRequestDetails.css";
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
 
-const FacRequestDetails = () => {
+const FARequestDetails = () => {
   const { requestId } = useParams();
   const navigate = useNavigate();
   const [request, setRequest] = useState(null);
@@ -34,17 +34,17 @@ const FacRequestDetails = () => {
     loadRequestDetails();
   }, [requestId]);
 
-  const handleApprove = async () => {
+  const handleFAApprove = async () => {
     setIsSubmitting(true);
     try {
-      const response = await fetch(`${API_BASE_URL}/api/requests/${requestId}/approve`, {
+      const response = await fetch(`${API_BASE_URL}/api/requests/${requestId}/fa/approve`, {
         method: "PUT",
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('authToken')}`
         }
       });
 
-      if (!response.ok) throw new Error('Approval failed');
+      if (!response.ok) throw new Error('FA Approval failed');
       setRequest(prev => ({ ...prev, status: "Approved" }));
     } catch (err) {
       setError(err.message);
@@ -53,7 +53,7 @@ const FacRequestDetails = () => {
     }
   };
 
-  const handleReject = async () => {
+  const handleFAReject = async () => {
     if (!rejectionReason.trim()) {
       setError("Please provide a reason for rejection");
       return;
@@ -61,7 +61,7 @@ const FacRequestDetails = () => {
 
     setIsSubmitting(true);
     try {
-      const response = await fetch(`${API_BASE_URL}/api/requests/${requestId}/reject`, {
+      const response = await fetch(`${API_BASE_URL}/api/requests/${requestId}/fa/reject`, {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ const FacRequestDetails = () => {
         body: JSON.stringify({ reason: rejectionReason })
       });
 
-      if (!response.ok) throw new Error('Rejection failed');
+      if (!response.ok) throw new Error('FA Rejection failed');
       setRequest(prev => ({ ...prev, status: "Rejected", rejection_reason: rejectionReason }));
     } catch (err) {
       setError(err.message || "Failed to reject request");
@@ -129,7 +129,7 @@ const FacRequestDetails = () => {
         <i className="fas fa-arrow-left"></i> Back to Dashboard
       </button>
 
-      <h2>Request Details</h2>
+      <h2>Request Details (Faculty Advisor View)</h2>
 
       <div className="info-row">
         <span className="label">Current Status:</span>
@@ -191,7 +191,7 @@ const FacRequestDetails = () => {
 
       {request.status === "Pending" && (
         <div className="action-section">
-          <h3>Take Action</h3>
+          <h3>Take Action (Faculty Advisor)</h3>
           {error && <div className="error-message">{error}</div>}
           
           <div className="form-group">
@@ -208,7 +208,7 @@ const FacRequestDetails = () => {
 
           <div className="action-buttons">
             <button 
-              onClick={handleApprove}
+              onClick={handleFAApprove}
               disabled={isSubmitting}
               className="approve-btn"
             >
@@ -218,12 +218,12 @@ const FacRequestDetails = () => {
                 </>
               ) : (
                 <>
-                  <i className="fas fa-check-circle"></i> Approve
+                  <i className="fas fa-check-circle"></i> Approve as FA
                 </>
               )}
             </button>
             <button 
-              onClick={handleReject}
+              onClick={handleFAReject}
               disabled={isSubmitting || !rejectionReason.trim()}
               className="reject-btn"
             >
@@ -233,7 +233,7 @@ const FacRequestDetails = () => {
                 </>
               ) : (
                 <>
-                  <i className="fas fa-times-circle"></i> Reject
+                  <i className="fas fa-times-circle"></i> Reject as FA
                 </>
               )}
             </button>
@@ -244,4 +244,4 @@ const FacRequestDetails = () => {
   );
 };
 
-export default FacRequestDetails;
+export default FARequestDetails;

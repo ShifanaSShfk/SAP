@@ -1,0 +1,102 @@
+/* CalendarPage.css */
+.calendar-page {
+  display: flex;
+  height: 100%;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background: #f9f9f9;
+  /* Remove margin-top since we're using the existing layout header */
+}
+
+.content-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  height: 100%;
+}
+
+.calendar-container {
+  flex: 1;
+}
+
+.calendar-wrapper {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+.calendar-title {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.event-details-container {
+  flex: 1;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  max-height: 80vh;
+}
+
+.event-details-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.event-card {
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+}
+
+.event-title {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.event-info {
+  margin-bottom: 15px;
+}
+
+.event-info p {
+  margin: 5px 0;
+  color: #34495e;
+}
+
+.view-details-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.view-details-btn:hover {
+  background-color: #2980b9;
+}
+
+.no-events-message {
+  text-align: center;
+  color: #7f8c8d;
+  padding: 20px;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .content-container {
+    flex-direction: column;
+  }
+}
