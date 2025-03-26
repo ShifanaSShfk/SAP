@@ -12,7 +12,28 @@ import java.util.Set;
 public class Request {
 
     public enum Status {
-        PENDING, APPROVED, REJECTED
+        Pending("Pending"),   // Changed from PENDING → Pending
+        Approved("Approved"),
+        Rejected("Rejected");
+
+        private final String displayValue;
+
+        Status(String displayValue) {
+            this.displayValue = displayValue;
+        }
+
+        public String getDisplayValue() {
+            return displayValue;
+        }
+
+        public static Status fromValue(String value) {
+            for (Status status : Status.values()) {
+                if (status.displayValue.equalsIgnoreCase(value)) {
+                    return status;
+                }
+            }
+            throw new IllegalArgumentException("Unknown status value: " + value);
+        }
     }
 
     @Id
@@ -36,7 +57,7 @@ public class Request {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, columnDefinition = "ENUM('Pending', 'Approved', 'Rejected') DEFAULT 'Pending'")
-    private Status status = Status.PENDING;
+    private Status status = Status.Pending;
 
     @Column(name = "activity_points", nullable = false, columnDefinition = "INT DEFAULT 0")
     private int activityPoints = 0;

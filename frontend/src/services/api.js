@@ -268,3 +268,31 @@ export const createEvent = async (eventData) => {
     throw error;
   }
 };
+
+/**
+ * Fetches requests for a faculty member (where they are in charge)
+ * @param {string} facultyId - The faculty member's ID
+ * @returns {Promise<Array>} - List of requests
+ */
+export const fetchFacultyRequests = async (facultyId) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/requests/faculty/${facultyId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("authToken")}`
+      }
+    });
+
+    const data = await handleResponse(response);
+    
+    if (!Array.isArray(data)) {
+      throw new Error("Invalid response format from server");
+    }
+    
+    return data;
+  } catch (error) {
+    console.error("Error fetching faculty requests:", error);
+    throw error;
+  }
+};

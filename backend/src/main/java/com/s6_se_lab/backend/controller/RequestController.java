@@ -48,4 +48,23 @@ public class RequestController {
                 facultyInChargeIds, proofFile);
         return ResponseEntity.ok(request);
     }
+
+    @GetMapping("/faculty/{facultyId}")
+public ResponseEntity<List<Request>> getRequestsByFacultyInCharge(@PathVariable String facultyId) {
+    List<Request> requests = requestService.getRequestsByFacultyInChargeId(facultyId);
+    return ResponseEntity.ok(requests);
+}
+
+@PutMapping("/{requestId}/approve")
+public ResponseEntity<Request> approveRequest(@PathVariable Long requestId) {
+    Request request = requestService.approveRequest(requestId);
+    return ResponseEntity.ok(request);
+}
+
+@PutMapping("/{requestId}/reject")
+public ResponseEntity<Request> rejectRequest(@PathVariable Long requestId) {
+    Request request = requestService.rejectRequest(requestId);
+    return ResponseEntity.ok(request);
+}
+
 }
