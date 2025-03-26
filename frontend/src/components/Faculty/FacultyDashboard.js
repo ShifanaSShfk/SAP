@@ -1,3 +1,4 @@
+// FacultyDashboard.js
 import React, { useState, useEffect } from "react";
 import "../../styles/Faculty/FacultyDashboard.css";
 import { Link, useLocation } from "react-router-dom";
@@ -20,23 +21,13 @@ const FacultyDashboard = () => {
         setLoading(true);
         setError(null);
         
-        if (!facultyId) {
-          throw new Error("Faculty ID not found. Please login again.");
-        }
-
-        // Fetch requests where faculty is in charge
+        if (!facultyId) throw new Error("Faculty ID not found. Please login again.");
+        
         const data = await fetchFacultyRequests(facultyId);
-        
-        // Normalize status to match enum values
-        const normalizedRequests = data.map(request => ({
-          ...request,
-          status: request.status?.toUpperCase() || "PENDING" // Default to PENDING if status is missing
-        }));
-        
-        setRequests(normalizedRequests);
+        setRequests(data);
       } catch (err) {
         console.error("Error loading requests:", err);
-        setError(err.response?.data?.message || err.message || "Failed to load requests");
+        setError(err.message || "Failed to load requests");
       } finally {
         setLoading(false);
       }
@@ -47,43 +38,50 @@ const FacultyDashboard = () => {
 
   const filteredRequests = requests.filter(request => {
     if (activeFilter === "all") return true;
-    if (activeFilter === "pending") return request.status === "PENDING";
-    if (activeFilter === "completed") return request.status === "APPROVED" || request.status === "REJECTED";
+    if (activeFilter === "pending") return request.status === "Pending";
+    if (activeFilter === "completed") return request.status === "Approved" || request.status === "Rejected";
     return true;
   });
 
   const getStatusClass = (status) => {
-    if (!status) return "";
-    switch (status.toUpperCase()) {
-      case "PENDING":
-        return "status-pending";
-      case "APPROVED":
-        return "status-approved";
-      case "REJECTED":
-        return "status-rejected";
-      default:
-        return "";
+    switch (status) {
+      case "Pending": return "status-pending";
+      case "Approved": return "status-approved";
+      case "Rejected": return "status-rejected";
+      default: return "";
     }
   };
 
   const formatDateTime = (dateString, timeString) => {
     try {
-      if (!dateString) return "Date not available";
+      if (!dateString) return "Date not specified";
       
-      const date = new Date(dateString);
-      const options = { year: 'numeric', month: 'short', day: 'numeric' };
-      const formattedDate = date.toLocaleDateString(undefined, options);
+      // Parse the date string (format: "YYYY-MM-DD")
+      const [year, month, day] = dateString.split('-');
+      const date = new Date(year, month - 1, day);
+      
+      if (isNaN(date.getTime())) return "Invalid date";
+      
+      const formattedDate = date.toLocaleDateString(undefined, { 
+        year: 'numeric', 
+        month: 'short', 
+        day: 'numeric' 
+      });
       
       if (!timeString) return formattedDate;
       
-      const [hours, minutes] = timeString.split(':');
+      // Parse the time string (format: "HH:MM:SS" or "HH:MM")
+      const timeParts = timeString.split(':');
+      const hours = timeParts[0];
+      const minutes = timeParts[1];
+      
       const hourInt = parseInt(hours, 10);
       const ampm = hourInt >= 12 ? 'PM' : 'AM';
       const displayHour = hourInt % 12 || 12;
       
       return `${formattedDate} at ${displayHour}:${minutes} ${ampm}`;
     } catch {
-      return "Date not available";
+      return "Date not specified";
     }
   };
 
@@ -101,13 +99,13 @@ const FacultyDashboard = () => {
     return (
       <div className="requests-list">
         {filteredRequests.map(request => (
-          <div key={request.request_id || request.id} className="request-card">
+          <div key={request.request_id} className="request-card">
             <div className="request-header">
               <h3 className="request-title">
-                {request.event_name || "Untitled Event"}
+                {request.event_name}
               </h3>
               <span className={`request-status ${getStatusClass(request.status)}`}>
-                {(request.status || "Pending").charAt(0) + (request.status || "Pending").slice(1).toLowerCase()}
+                {request.status}
               </span>
             </div>
             
@@ -115,7 +113,8 @@ const FacultyDashboard = () => {
               <div className="detail-row">
                 <span className="detail-label">Student:</span>
                 <span className="detail-value">
-                  {request.student?.name || "Unknown"} ({request.student_id || "N/A"})
+                  {request.student_name} ({request.student_id})<br />
+                  {request.department} - {request.section}
                 </span>
               </div>
               
@@ -129,14 +128,14 @@ const FacultyDashboard = () => {
               <div className="detail-row">
                 <span className="detail-label">Location:</span>
                 <span className="detail-value">
-                  {request.location || "Not specified"}
+                  {request.location}
                 </span>
               </div>
               
               <div className="detail-row">
                 <span className="detail-label">Points:</span>
                 <span className="detail-value">
-                  {request.activity_points || 0} activity points
+                  {request.activity_points} activity points
                 </span>
               </div>
             </div>
@@ -144,9 +143,9 @@ const FacultyDashboard = () => {
             <div className="request-actions">
               {request.proof_document && (
                 <a 
-                  href={`/${request.proof_document}`} 
+                  href={request.proof_document} 
                   target="_blank" 
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer" 
                   className="proof-link"
                 >
                   <i className="fas fa-file-alt"></i> View Proof
@@ -154,7 +153,7 @@ const FacultyDashboard = () => {
               )}
               
               <Link 
-                to={`${isFAView ? "/fa-request" : "/fac-request"}/${request.request_id || request.id}`}
+                to={`${isFAView ? "/fa-request" : "/fac-request"}/${request.request_id}`}
                 className="details-link"
               >
                 <i className="fas fa-chevron-right"></i> View Details
@@ -186,9 +185,9 @@ const FacultyDashboard = () => {
               onClick={() => setActiveFilter(filter)}
             >
               {filter.charAt(0).toUpperCase() + filter.slice(1)}
-              {filter === "pending" && requests.some(r => r.status === "PENDING") && (
+              {filter === "pending" && requests.some(r => r.status === "Pending") && (
                 <span className="notification-badge">
-                  {requests.filter(r => r.status === "PENDING").length}
+                  {requests.filter(r => r.status === "Pending").length}
                 </span>
               )}
             </button>

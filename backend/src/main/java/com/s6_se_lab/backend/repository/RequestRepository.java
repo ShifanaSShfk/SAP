@@ -2,6 +2,8 @@ package com.s6_se_lab.backend.repository;
 
 import com.s6_se_lab.backend.model.Request;
 import com.s6_se_lab.backend.model.Request.Status;
+
+import org.apache.ibatis.annotations.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -25,4 +27,7 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
 
     @Query("SELECT DISTINCT r FROM Request r JOIN r.facultyInCharge f WHERE f.facultyId = :facultyId")
 List<Request> findByFacultyInChargeId(String facultyId);
+
+@Query("SELECT r FROM Request r JOIN r.facultyInCharge f WHERE f.facultyId = :facultyId")
+List<Request> findByFacultyInChargeFacultyId(@Param("facultyId") String facultyId);
 }
