@@ -1,74 +1,92 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 import "../../styles/Faculty/eventdetails.css";
 
 const EventDetails = () => {
+  const { eventId } = useParams();
+  const navigate = useNavigate();
+  const [event, setEvent] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchEventDetails = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/api/events/${eventId}`);
+        setEvent(response.data);
+      } catch (error) {
+        console.error("Error fetching event details:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchEventDetails();
+  }, [eventId]);
+
+  if (loading) return <div className="loading">Loading event details...</div>;
+  if (!event) return <div className="error">Event not found</div>;
+
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    });
+  };
+
+  const formatTime = (timeString) => {
+    if (!timeString) return '';
+    return timeString.slice(0, 5);
+  };
+
   return (
     <div className="event-container">
-     
-
-      {/* Main Content */}
       <div className="main-content">
-        <h2 className="event-title">Hackathon, 2025</h2>
+        <h2 className="event-title">{event.eventName}</h2>
 
-        {/* Event Information */}
         <div className="event-info">
           <h3>Event Information</h3>
-    
-
           <ul>
-            <li><p><strong>"Technical Hackathon 2025"</strong></p></li>
-            <li><p><strong>Date & Time:</strong> January 25, 2025, 10:00 AM - 5:00 PM</p></li>
-            <li><p><strong>Conducted by:</strong> Manjusha K, Anu Mary Chacko</p></li>
-            <li><p><strong>Category:</strong> Department level</p></li>
-            <li><p><strong>Venue:</strong> Auditorium</p></li>
+            <li><p><strong>Description:</strong> {event.description}</p></li>
+            <li>
+              <p>
+                <strong>Date & Time:</strong> {formatDate(event.eventDate)}, {formatTime(event.eventTime)}
+                {event.eventEndDate && ` to ${formatDate(event.eventEndDate)}, ${formatTime(event.eventEndTime)}`}
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>Conducted by:</strong> {event.faculties?.map(f => f.facultyName).join(', ')}
+              </p>
+            </li>
+            <li><p><strong>Category:</strong> {event.eventType}</p></li>
+            <li><p><strong>Venue:</strong> {event.location}</p></li>
+            <li><p><strong>Activity Points:</strong> {event.activityPoints}</p></li>
           </ul>
-       
         </div>
 
-        {/* Student Participation */}
         <div className="event-participation">
           <h3>Student Participation</h3>
-          <p><strong>Total Participants:</strong> 45</p>
+          <p><strong>Total Participants:</strong> 0</p>
         </div>
 
-        {/* Rewards */}
         <div className="event-rewards">
           <h3>Rewards</h3>
-          <ul>
-            <li><strong>Winner:</strong> ₹25,000</li>
-            <li><strong>Runner-up:</strong> ₹15,000</li>
-            <li><strong>Best Innovation Award:</strong> ₹10,000</li>
-            <li>Each participant earned 5 Activity Points</li>
-          </ul>
-          <a href="#" className="participants-link">List of Participants</a>
+          <p>No reward information available</p>
         </div>
 
-        {/* Student Feedback & Reviews */}
         <div className="event-feedback">
           <h3>Student Feedback & Reviews</h3>
-          <p><strong>Overall Event Rating</strong></p>
-          <p>⭐ ⭐ ⭐ ⭐ ☆</p>
-          <ul>
-            <li>
-              "The hackathon was exciting, and we learned a lot! However, a pre-event workshop on problem-solving
-              and tech stacks would have helped first-time participants feel more confident."
-            </li>
-            <li>
-              "The WiFi was unstable at times, making it hard to research and test our projects. Also, more power sockets would have helped, as some teams struggled to charge their laptops."
-            </li>
-            <li>
-              "We weren't sure what aspects the judges were focusing on. Clear guidelines on evaluation criteria
-              beforehand would have helped us plan our projects better."
-            </li>
-          </ul>
+          <p>No feedback available yet</p>
         </div>
 
-        {/* Attachments */}
         <div className="event-attachments">
-          <h3>Documents & Proofs (Attachments Section)</h3>
+          <h3>Documents & Proofs</h3>
+          <p>No attachments available</p>
         </div>
 
-        {/* Comments Section */}
         <div className="event-comments">
           <h3>Comments</h3>
           <input type="text" className="comment-input" placeholder="Add comment" />
