@@ -1,17 +1,5 @@
 package com.s6_se_lab.backend.service;
 
-import com.s6_se_lab.backend.model.Event;
-import com.s6_se_lab.backend.model.Faculty;
-import com.s6_se_lab.backend.model.Request;
-import com.s6_se_lab.backend.model.Student;
-import com.s6_se_lab.backend.repository.EventRepository;
-import com.s6_se_lab.backend.repository.FacultyRepository;
-import com.s6_se_lab.backend.repository.RequestRepository;
-import com.s6_se_lab.backend.repository.StudentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -22,8 +10,21 @@ import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.s6_se_lab.backend.model.Event;
+import com.s6_se_lab.backend.model.Faculty;
+import com.s6_se_lab.backend.model.Request;
+import com.s6_se_lab.backend.model.Student;
+import com.s6_se_lab.backend.repository.EventRepository;
+import com.s6_se_lab.backend.repository.FacultyRepository;
+import com.s6_se_lab.backend.repository.RequestRepository;
+import com.s6_se_lab.backend.repository.StudentRepository;
 
 @Service
 public class RequestService {
@@ -64,7 +65,7 @@ public class RequestService {
         request.setLocation(event.getLocation());
         request.setActivityPoints(event.getActivityPoints());
         request.setCreatedAt(LocalDateTime.now());
-        request.setStatus(Request.Status.PENDING);
+        request.setStatus(Request.Status.Pending);
         request.setProofDocument(saveFile(proofFile));
 
         // Add faculty advisor
@@ -98,7 +99,7 @@ public class RequestService {
         request.setLocation(location);
         request.setActivityPoints(activityPoints);
         request.setCreatedAt(LocalDateTime.now());
-        request.setStatus(Request.Status.PENDING);
+        request.setStatus(Request.Status.Pending);
         request.setProofDocument(saveFile(proofFile));
 
         // Add faculty advisor
@@ -132,5 +133,27 @@ public class RequestService {
 
         logger.info("File saved at: " + filePath.toString());
         return filePath.toString();
+    }
+
+    // public List<Request> getRequestsByFacultyInChargeId(String facultyId) {
+    //     return requestRepository.findByFacultyInChargeId(facultyId);
+    // }
+
+    public Request approveRequest(Long requestId) {
+        Request request = requestRepository.findById(requestId)
+            .orElseThrow(() -> new RuntimeException("Request not found"));
+        request.setStatus(Request.Status.Approved);
+        return requestRepository.save(request);
+    }
+    
+    public Request rejectRequest(Long requestId) {
+        Request request = requestRepository.findById(requestId)
+            .orElseThrow(() -> new RuntimeException("Request not found"));
+        request.setStatus(Request.Status.Rejected);
+        return requestRepository.save(request);
+    }
+
+    public List<Request> getRequestsByFacultyInChargeId(String facultyId) {
+        return requestRepository.findByFacultyInChargeId(facultyId);
     }
 }

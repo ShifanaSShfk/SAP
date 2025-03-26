@@ -20,6 +20,9 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
     @Query("SELECT r FROM Request r JOIN r.facultyAdvisors fa WHERE fa.facultyId = :facultyId")
     List<Request> findByFacultyAdvisorId(String facultyId);
 
-    @Query("SELECT r FROM Request r JOIN r.facultyInCharge fc WHERE fc.facultyId = :facultyId")
-    List<Request> findByFacultyInChargeId(String facultyId);
+    // @Query("SELECT r FROM Request r JOIN r.facultyInCharge fc WHERE fc.facultyId = :facultyId")
+    // List<Request> findByFacultyInChargeId(String facultyId);
+
+    @Query("SELECT DISTINCT r FROM Request r JOIN r.facultyInCharge f WHERE f.facultyId = :facultyId")
+List<Request> findByFacultyInChargeId(String facultyId);
 }
