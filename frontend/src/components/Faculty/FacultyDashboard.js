@@ -172,9 +172,9 @@ const FacultyDashboard = () => {
           <h2 className="dashboard-title">
             {isFacultyAdvisor && isFAView ? "Faculty Advisor Dashboard" : "Faculty Dashboard"}
           </h2>
-          <div className="dashboard-subtitle">
+          {/* <div className="dashboard-subtitle">
             {isFAView ? "Review student requests" : "Manage assigned requests"}
-          </div>
+          </div> */}
         </div>
         
         <div className="filter-tabs">

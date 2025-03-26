@@ -12,7 +12,7 @@ import java.util.Set;
 public class Request {
 
     public enum Status {
-        Pending("Pending"),   // Changed from PENDING → Pending
+        Pending("Pending"),
         Approved("Approved"),
         Rejected("Rejected");
 
@@ -76,6 +76,9 @@ public class Request {
 
     @Column(name = "location", nullable = false, length = 255)
     private String location;
+
+    @Column(name = "rejection_reason", length = 1000)
+    private String rejectionReason;
 
     @ManyToMany
     @JoinTable(
@@ -207,15 +210,12 @@ public class Request {
     public void setFacultyInCharge(Set<Faculty> facultyInCharge) {
         this.facultyInCharge = facultyInCharge;
     }
-    @Column(name = "rejection_reason", length = 1000)
-private String rejectionReason;
 
-// Add getter and setter
-public String getRejectionReason() {
-    return rejectionReason;
-}
+    public String getRejectionReason() {
+        return rejectionReason;
+    }
 
-public void setRejectionReason(String rejectionReason) {
-    this.rejectionReason = rejectionReason;
-}
+    public void setRejectionReason(String rejectionReason) {
+        this.rejectionReason = rejectionReason;
+    }
 }

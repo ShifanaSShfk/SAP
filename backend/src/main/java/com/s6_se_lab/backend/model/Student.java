@@ -10,6 +10,8 @@ import lombok.*;
 @Data // Lombok annotation for getters, setters, toString, equals, and hashCode
 @NoArgsConstructor // Lombok annotation for default constructor
 @AllArgsConstructor // Lombok annotation for parameterized constructor
+@Getter
+@Setter
 public class Student {
 
     @Id

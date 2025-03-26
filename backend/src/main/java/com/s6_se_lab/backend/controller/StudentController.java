@@ -2,6 +2,7 @@ package com.s6_se_lab.backend.controller;
 
 import com.s6_se_lab.backend.model.Student;
 import com.s6_se_lab.backend.model.User;
+import com.s6_se_lab.backend.repository.StudentRepository;
 import com.s6_se_lab.backend.service.StudentService;
 import com.s6_se_lab.backend.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class StudentController {
 
     @Autowired
     private AuthService userService; // Inject UserService
+
+    @Autowired
+    private StudentRepository studentRepository;
 
     @GetMapping
     public List<Student> getAllStudents() {
@@ -70,4 +74,10 @@ public class StudentController {
         studentService.deleteStudent(studentId);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/by-fa/{facultyAdvisorId}")
+    public List<Student> getStudentsByFacultyAdvisor(@PathVariable String facultyAdvisorId) {
+        return studentRepository.findByFacultyAdvisorId(facultyAdvisorId);
+    }
+    
 }
