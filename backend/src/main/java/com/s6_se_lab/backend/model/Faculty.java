@@ -53,4 +53,6 @@ public class Faculty {
     public Boolean isFacultyAdvisor() {
         return isFacultyAdvisor;
     }
+
+    
 }
