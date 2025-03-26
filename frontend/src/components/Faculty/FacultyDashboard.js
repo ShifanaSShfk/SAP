@@ -141,7 +141,7 @@ const FacultyDashboard = () => {
             </div>
             
             <div className="request-actions">
-              {request.proof_document && (
+              {/* {request.proof_document && (
                 <a 
                   href={request.proof_document} 
                   target="_blank" 
@@ -151,13 +151,20 @@ const FacultyDashboard = () => {
                   <i className="fas fa-file-alt"></i> View Proof
                 </a>
               )}
-              
-              <Link 
+               */}
+              {/* <Link 
                 to={`${isFAView ? "/fa-request" : "/fac-request"}/${request.request_id}`}
                 className="details-link"
               >
                 <i className="fas fa-chevron-right"></i> View Details
-              </Link>
+              </Link> */}
+
+<Link 
+  to={`/fac-request/${request.request_id}`}
+  className="details-link"
+>
+  <i className="fas fa-chevron-right"></i> View Details
+</Link>
             </div>
           </div>
         ))}

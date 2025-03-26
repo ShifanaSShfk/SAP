@@ -1,68 +1,212 @@
 import React, { useState, useEffect } from "react";
-import "../../styles/Faculty/FacultyDashboard.css"; // Import CSS file
-import { Link } from "react-router-dom";
+import "../../styles/Faculty/FacultyDashboard.css";
+import { Link, useLocation } from "react-router-dom";
+import { fetchFacultyRequests } from "../../services/api";
 
-const FacultyDashboard = () => {
-  const [tasks] = useState([
-    { id: 1, requester: "Nikitha", requestType: "sent a request", eventName: "Hackathon", date: "Today", status: "pending" },
-    { id: 2, requester: "Nikitha", requestType: "sent a request", eventName: "CodeInit", date: "25 Jan", status: "completed" }
-  ]);
-  // const upcomingEvents = [
-  //   { id: 1, title: "Talk on Web Development", date: "Friday, 4th February", time: "10:30 AM" },
-  //   { id: 2, title: "Talk on AI/ML", date: "Wednesday, 5th February", time: "6:00 PM" },
-  // ];
+const FADashboard = () => {
+  const [requests, setRequests] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [activeFilter, setActiveFilter] = useState("all");
+  const location = useLocation();
+  
+  const facultyId = localStorage.getItem("userId");
 
   useEffect(() => {
-    if (window.innerWidth < 768) {
-      document.getElementById("sidebar")?.classList.add("sidebar-closed");
-    }
-  }, []);
-
-  return (
-    <div className="min-h-screen flex bg-background">
-      
-
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col">
+    const loadRequests = async () => {
+      try {
+        setLoading(true);
+        setError(null);
         
-        <div className="main-content">
-          <h2 className="section-title">My Tasks</h2>
-          
-          <div className="task-tabs">
-            {["all", "pending", "completed"].map(filter => (
-              <button key={filter} className={`task-tab ${activeFilter === filter ? "active" : ""}`} onClick={() => setActiveFilter(filter)}>
-                {filter.charAt(0).toUpperCase() + filter.slice(1)}
-              </button>
-            ))}
-          </div>
-          <div id="tasksContainer">
+        if (!facultyId) throw new Error("Faculty ID not found. Please login again.");
+        
+        const data = await fetchFacultyRequests(facultyId);
+        setRequests(data);
+      } catch (err) {
+        console.error("Error loading requests:", err);
+        setError(err.message || "Failed to load requests");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadRequests();
+  }, [facultyId]);
+
+  const filteredRequests = requests.filter(request => {
+    if (activeFilter === "all") return true;
+    if (activeFilter === "pending") return request.status === "Pending";
+    if (activeFilter === "completed") return request.status === "Approved" || request.status === "Rejected";
+    return true;
+  });
+
+  const getStatusClass = (status) => {
+    switch (status) {
+      case "Pending": return "status-pending";
+      case "Approved": return "status-approved";
+      case "Rejected": return "status-rejected";
+      default: return "";
+    }
+  };
+
+  const formatDateTime = (dateString, timeString) => {
+    try {
+      if (!dateString) return "Date not specified";
+      
+      const [year, month, day] = dateString.split('-');
+      const date = new Date(year, month - 1, day);
+      
+      if (isNaN(date.getTime())) return "Invalid date";
+      
+      const formattedDate = date.toLocaleDateString(undefined, { 
+        year: 'numeric', 
+        month: 'short', 
+        day: 'numeric' 
+      });
+      
+      if (!timeString) return formattedDate;
+      
+      const timeParts = timeString.split(':');
+      const hours = timeParts[0];
+      const minutes = timeParts[1];
+      
+      const hourInt = parseInt(hours, 10);
+      const ampm = hourInt >= 12 ? 'PM' : 'AM';
+      const displayHour = hourInt % 12 || 12;
+      
+      return `${formattedDate} at ${displayHour}:${minutes} ${ampm}`;
+    } catch {
+      return "Date not specified";
+    }
+  };
+
+  const renderRequestCards = () => {
+    if (filteredRequests.length === 0) {
+      return (
+        <div className="empty-state">
+          <i className="fas fa-inbox"></i>
+          <h3>No {activeFilter !== "all" ? activeFilter : ""} requests found</h3>
+          <p>When students submit requests, they'll appear here.</p>
+        </div>
+      );
+    }
+
+    return (
+      <div className="requests-list">
+        {filteredRequests.map(request => (
+          <div key={request.request_id} className="request-card">
+            <div className="request-header">
+              <h3 className="request-title">
+                {request.event_name}
+              </h3>
+              <span className={`request-status ${getStatusClass(request.status)}`}>
+                {request.status}
+              </span>
+            </div>
             
-            {tasks.filter(t => activeFilter === "all" || t.status === activeFilter).map(task => (
-              <div key={task.id} className="task-card">
-                <p><strong>{task.requester}</strong> {task.requestType} on <strong>{task.eventName}<button className="details-btn"><Link to="/fa-overview">View Details</Link> </button></strong></p>
-                <span className={`task-status ${task.status === "pending" ? "task-status-pending" : "task-status-completed"}`}>
-                  {task.status.charAt(0).toUpperCase() + task.status.slice(1)}
+            <div className="request-details">
+              <div className="detail-row">
+                <span className="detail-label">Student:</span>
+                <span className="detail-value">
+                  {request.student_name} ({request.student_id})<br />
+                  {request.department} - {request.section}
                 </span>
               </div>
-            ))}
-          </div>
-        </div>
-      </div>
-      {/* <aside className="right-sidebar">
-        <div className="events-section">
-          <h3>Upcoming Events</h3>
-          {upcomingEvents.map(event => (
-            <div key={event.id} className="event">
-              <p><strong>{event.title}</strong></p>
-              <p>{event.date}, {event.time}</p>
+              
+              <div className="detail-row">
+                <span className="detail-label">Date & Time:</span>
+                <span className="detail-value">
+                  {formatDateTime(request.event_date, request.event_time)}
+                </span>
+              </div>
+              
+              <div className="detail-row">
+                <span className="detail-label">Location:</span>
+                <span className="detail-value">
+                  {request.location}
+                </span>
+              </div>
+              
+              <div className="detail-row">
+                <span className="detail-label">Points:</span>
+                <span className="detail-value">
+                  {request.activity_points} activity points
+                </span>
+              </div>
             </div>
+            
+            <div className="request-actions">
+              {/* {request.proof_document && (
+                <a 
+                  href={request.proof_document} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="proof-link"
+                >
+                  <i className="fas fa-file-alt"></i> View Proof
+                </a>
+              )} */}
+              
+              <Link 
+                to={`/fa-request/${request.request_id}`}
+                className="details-link"
+              >
+                <i className="fas fa-chevron-right"></i> View Details
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+  return (
+    <div className="faculty-dashboard">
+      <div className="dashboard-content">
+        <div className="dashboard-header">
+          <h2 className="dashboard-title">
+            Faculty Advisor Dashboard
+          </h2>
+        </div>
+        
+        <div className="filter-tabs">
+          {["all", "pending", "completed"].map(filter => (
+            <button
+              key={filter}
+              className={`filter-tab ${activeFilter === filter ? "active" : ""}`}
+              onClick={() => setActiveFilter(filter)}
+            >
+              {filter.charAt(0).toUpperCase() + filter.slice(1)}
+              {filter === "pending" && requests.some(r => r.status === "Pending") && (
+                <span className="notification-badge">
+                  {requests.filter(r => r.status === "Pending").length}
+                </span>
+              )}
+            </button>
           ))}
         </div>
         
-      </aside> */}
+        <div className="requests-container">
+          {error ? (
+            <div className="error-message">
+              <i className="fas fa-exclamation-circle"></i>
+              {error}
+              <button onClick={() => window.location.reload()} className="retry-btn">
+                Try Again
+              </button>
+            </div>
+          ) : loading ? (
+            <div className="loading-state">
+              <div className="spinner"></div>
+              <p>Loading requests...</p>
+            </div>
+          ) : (
+            renderRequestCards()
+          )}
+        </div>
+      </div>
     </div>
   );
 };
 
-export default FacultyDashboard;
+export default FADashboard;
