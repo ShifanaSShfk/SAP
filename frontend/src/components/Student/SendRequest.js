@@ -85,30 +85,47 @@ const SendRequest = () => {
     }
   };
 
+  const filteredFaculties = faculties.filter(faculty =>
+    faculty.facultyName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    faculty.department.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (selectedFaculties.length === 0) {
       alert("Please select at least one faculty in charge");
       return;
     }
-
+  
     const formDataObj = new FormData();
-    Object.keys(formData).forEach((key) => {
-      if (formData[key] !== null && formData[key] !== undefined) {
-        formDataObj.append(key, formData[key]);
-      }
-    });
-
-    // Add selected faculties to form data
+    formDataObj.append("name", studentData.name);
+    formDataObj.append("rollNumber", studentData.rollNumber);
+    formDataObj.append("eventName", formData.eventName);
+    formDataObj.append("eventType", formData.eventType);
+    formDataObj.append("eventDate", formData.eventDate);
+    formDataObj.append("eventTime", formData.eventTime);
+    formDataObj.append("location", formData.location);
+    formDataObj.append("activityPoints", "10");
+    formDataObj.append("proofFile", formData.proofFile);
+  
+    // Add each faculty ID separately
     selectedFaculties.forEach(facultyId => {
-      formDataObj.append("facultyIds", facultyId);
+      formDataObj.append("facultyInChargeIds", facultyId);
     });
-
+  
     try {
-      const response = await sendStudentRequest(formDataObj);
-      console.log("Request submitted successfully:", response);
-      
+      const response = await fetch("http://localhost:8080/api/requests/custom", {
+        method: "POST",
+        body: formDataObj
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to submit request");
+      }
+  
+      const result = await response.json();
+      console.log("Request submitted successfully:", result);
       alert("Request submitted successfully!");
       navigate("/student-dashboard");
     } catch (error) {
@@ -116,11 +133,6 @@ const SendRequest = () => {
       alert("Failed to submit request.");
     }
   };
-
-  const filteredFaculties = faculties.filter(faculty =>
-    faculty.facultyName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    faculty.department.toLowerCase().includes(searchTerm.toLowerCase())
-  );
 
   if (loading) {
     return <div className="loading">Loading...</div>;
