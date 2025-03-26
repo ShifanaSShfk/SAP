@@ -216,4 +216,19 @@ public class RequestService {
         
         return details;
     }
+    public List<Map<String, Object>> getStudentRequests(String studentId) {
+        List<Request> requests = requestRepository.findByStudentStudentIdOrderByCreatedAtDesc(studentId);
+        
+        return requests.stream().map(request -> {
+            Map<String, Object> requestMap = new HashMap<>();
+            requestMap.put("request_id", request.getRequestId());
+            requestMap.put("event_name", request.getEventName());
+            requestMap.put("status", request.getStatus().toString());
+            requestMap.put("event_date", request.getEventDate().toString());
+            requestMap.put("activity_points", request.getActivityPoints());
+            requestMap.put("rejection_reason", request.getRejectionReason());
+            requestMap.put("created_at", request.getCreatedAt().toString());
+            return requestMap;
+        }).collect(Collectors.toList());
+    }
 }

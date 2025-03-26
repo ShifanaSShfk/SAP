@@ -8,7 +8,7 @@ import StudentDashboard from "./components/Student/StudentDashboard";
 import SendRequest from "./components/Student/SendRequest";
 import RequestStatus from "./components/Student/RequestStatus";
 import Activitydetails from "./components/Student/activitydetails";
-import Requesthistory from "./components/Student/requesthistory";
+// import Requesthistory from "./components/Student/requesthistory";
 import FAQ from "./components/Faq";
 import FacOverview from "./components/Faculty/FacRequestOverview";
 import FacApproved from "./components/Faculty/FacRequestApproved";
@@ -40,8 +40,9 @@ function App() {
         <Route path="/send-request" element={<PrivateRoute role="student"><SendRequest /></PrivateRoute>} />
         <Route path="/request-status" element={<PrivateRoute role="student"><RequestStatus /></PrivateRoute>} />
         <Route path="/request-details" element={<PrivateRoute role="student"><Activitydetails /></PrivateRoute>} />
-        <Route path="/request-history" element={<PrivateRoute role="student"><Requesthistory /></PrivateRoute>} />
+        {/* <Route path="/request-history" element={<PrivateRoute role="student"><Requesthistory /></PrivateRoute>} /> */}
         <Route path="/student-profile" element={<PrivateRoute role="student"><Profile /></PrivateRoute>} />
+        <Route path="/faq" element={<PrivateRoute role="student"><FAQ /></PrivateRoute>} />
       </Route>
 
       {/* Faculty Routes */}

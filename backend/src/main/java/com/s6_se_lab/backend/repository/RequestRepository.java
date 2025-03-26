@@ -30,4 +30,15 @@ List<Request> findByFacultyInChargeId(String facultyId);
 
 @Query("SELECT r FROM Request r JOIN r.facultyInCharge f WHERE f.facultyId = :facultyId")
 List<Request> findByFacultyInChargeFacultyId(@Param("facultyId") String facultyId);
+
+@Query("SELECT r FROM Request r WHERE r.student.studentId = :studentId ORDER BY r.createdAt DESC")
+List<Request> findByStudentIdOrderByCreatedAtDesc(@Param("studentId") String studentId);
+
+@Query("SELECT r FROM Request r WHERE r.student.studentId = :studentId AND r.status = :status ORDER BY r.createdAt DESC")
+List<Request> findByStudentIdAndStatusOrderByCreatedAtDesc(
+    @Param("studentId") String studentId, 
+    @Param("status") Status status);
+
+@Query("SELECT r FROM Request r WHERE r.student.studentId = :studentId ORDER BY r.createdAt DESC")
+List<Request> findByStudentStudentIdOrderByCreatedAtDesc(@Param("studentId") String studentId);
 }
