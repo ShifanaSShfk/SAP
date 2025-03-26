@@ -51,8 +51,8 @@ public class RequestService {
         request.setEvent(event);
         request.setEventName(event.getEventName());
         request.setEventType(event.getEventType());
-        request.setEventDate(event.getEventDate());
-        request.setEventTime(event.getEventTime());
+        request.setEventDate(event.getEventStartDate());
+        request.setEventTime(event.getEventStartTime());
         request.setLocation(event.getLocation());
         request.setActivityPoints(event.getActivityPoints());
         request.setCreatedAt(LocalDateTime.now());
@@ -60,8 +60,8 @@ public class RequestService {
         request.setProofDocument(saveFile(proofFile));
 
         // Set faculty_advisor_id and faculty_in_charge_id
-        request.setFacultyAdvisorId(student.getFacultyAdvisorId());
-        request.setFacultyInChargeId(event.getFacultyInChargeId());
+        // request.setFacultyAdvisorId(student.getFacultyAdvisorId());
+        // request.setFacultyInChargeId(event.getFacultyInChargeId());
 
         return requestRepository.save(request);
     }

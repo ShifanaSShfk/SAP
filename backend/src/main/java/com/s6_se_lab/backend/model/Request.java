@@ -32,7 +32,7 @@ public class Request {
     @Column(name = "faculty_advisor_id")
     private String facultyAdvisorId;
 
-    @Column(name = "faculty_in_charge_id")
+    @Column(name = "_charge_id")
     private String facultyInChargeId;
 
     @Column(name = "proof_document", length = 255)

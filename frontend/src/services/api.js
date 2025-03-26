@@ -220,3 +220,51 @@ export const fetchFacultyDetails = async (facultyID) => {
     throw error;
   }
 };
+
+
+export const fetchEventsByDate = async (year, month) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/events/by-date?year=${year}&month=${month}`, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("authToken")}`
+      }
+    });
+    return handleResponse(response);
+  } catch (error) {
+    console.error('Error fetching events:', error);
+    throw error;
+  }
+};
+
+export const fetchFacultyEvents = async (facultyId) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/events/faculty/${facultyId}`, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("authToken")}`
+      }
+    });
+    return handleResponse(response);
+  } catch (error) {
+    console.error('Error fetching faculty events:', error);
+    throw error;
+  }
+};
+
+export const createEvent = async (eventData) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/events`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("authToken")}`
+      },
+      body: JSON.stringify(eventData)
+    });
+    return handleResponse(response);
+  } catch (error) {
+    console.error('Error creating event:', error);
+    throw error;
+  }
+};
