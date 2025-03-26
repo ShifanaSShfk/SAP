@@ -18,29 +18,28 @@ public class User {
     @Column(name = "role", nullable = false)
     private String role; // student, faculty, or admin
 
-    @Column(name = "is_faculty_advisor", columnDefinition = "BOOLEAN DEFAULT FALSE")
-    private Boolean isFacultyAdvisor = false;
+    // @Column(name = "is_faculty_advisor", columnDefinition = "BOOLEAN DEFAULT FALSE")
+    // private Boolean isFacultyAdvisor = false;
 
-    @Column(name = "name")
-    private String name;
+    // @Column(name = "name")
+    // private String name;
 
-    @Column(name = "department")
-    private String department;
+    // @Column(name = "department")
+    // private String department;
 
     // Required no-arg constructor
     public User() {
     }
 
     // All-args constructor
-    public User(String id, String email, String password, String role, 
-               Boolean isFacultyAdvisor, String name, String department) {
+    public User(String id, String email, String password, String role) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.role = role;
-        this.isFacultyAdvisor = isFacultyAdvisor;
-        this.name = name;
-        this.department = department;
+        // this.isFacultyAdvisor = isFacultyAdvisor;
+        // this.name = name;
+        // this.department = department;
     }
 
     // Getters and Setters
@@ -84,13 +83,13 @@ public class User {
     //     this.isFacultyAdvisor = isFacultyAdvisor;
     // }
 
-    public String getName() {
-        return name;
-    }
+    // public String getName() {
+    //     return name;
+    // }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    // public void setName(String name) {
+    //     this.name = name;
+    // }
 
      // public Boolean getIsFacultyAdvisor() {
     //     return isFacultyAdvisor;
@@ -102,9 +101,9 @@ public class User {
     //     return department;
     // }
 
-    public void setDepartment(String department) {
-        this.department = department;
-    }
+    // public void setDepartment(String department) {
+    //     this.department = department;
+    // }
 
     // toString method for debugging
     @Override
@@ -113,9 +112,9 @@ public class User {
                 "id='" + id + '\'' +
                 ", email='" + email + '\'' +
                 ", role='" + role + '\'' +
-                ", isFacultyAdvisor=" + isFacultyAdvisor +
-                ", name='" + name + '\'' +
-                ", department='" + department + '\'' +
+                // ", isFacultyAdvisor=" + isFacultyAdvisor +
+                // ", name='" + name + '\'' +
+                // ", department='" + department + '\'' +
                 '}';
     }
 }
