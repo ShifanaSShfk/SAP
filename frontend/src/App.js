@@ -1,4 +1,4 @@
-// App.js (no changes needed)
+// App.js
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
@@ -26,7 +26,6 @@ import FAApproved from "./components/FA/FARequestApproved";
 import FARejected from "./components/FA/FARequestRejected";
 import PrivateRoute from "./components/PrivateRoute";
 import GenerateReport from "./components/FA/GenerateReport";
-import FacRequestDetails from "./components/Faculty/FacRequestDetails";
 
 function App() {
   return (
@@ -52,24 +51,20 @@ function App() {
         <Route path="/fac-approved" element={<PrivateRoute role="faculty"><FacApproved /></PrivateRoute>} />
         <Route path="/fac-rejected" element={<PrivateRoute role="faculty"><FacRejected /></PrivateRoute>} />
         <Route path="/fac-events" element={<PrivateRoute role="faculty"><FacEvents /></PrivateRoute>} />
-        <Route path="/event-details/:eventId" element={<PrivateRoute role="faculty"><EventDetails /></PrivateRoute>} />
+        <Route path="/event-details" element={<PrivateRoute role="faculty"><EventDetails /></PrivateRoute>} />
         <Route path="/add-event" element={<PrivateRoute role="faculty"><AddEvent /></PrivateRoute>} />
         <Route path="/faculty-profile" element={<PrivateRoute role="faculty"><FacultyProfile /></PrivateRoute>} />
-        <Route path="/faculty-calendar" element={<PrivateRoute role="faculty"><Calendar /></PrivateRoute>} />
-        <Route path="/faculty-faq" element={<PrivateRoute role="faculty"><FAQ /></PrivateRoute>} />
-        <Route path="/fac-request/:requestId" element={<PrivateRoute role="faculty"><FacRequestDetails /></PrivateRoute>} />
+        <Route path="/faculty-calendar" element={<PrivateRoute role="faculty"><Calendar facultyView /></PrivateRoute>} />
+        <Route path="/faculty-faq" element={<PrivateRoute role="faculty"><FAQ facultyView /></PrivateRoute>} />
       </Route>
 
-      {/* FA Routes */}
-      <Route element={<Layout />}>
-        <Route path="/fa-dashboard" element={<PrivateRoute role="faculty"><FADashboard /></PrivateRoute>} />
-        <Route path="/student-details" element={<PrivateRoute role="faculty"><StudentDetails /></PrivateRoute>} />
-        <Route path="/fa-overview" element={<PrivateRoute role="faculty"><FAOverview /></PrivateRoute>} />
-        <Route path="/fa-approved" element={<PrivateRoute role="faculty"><FAApproved /></PrivateRoute>} />
-        <Route path="/fa-rejected" element={<PrivateRoute role="faculty"><FARejected /></PrivateRoute>} />
-        <Route path="/fa-calendar" element={<PrivateRoute role="faculty"><Calendar /></PrivateRoute>} />
-        <Route path="/fa-faq" element={<PrivateRoute role="faculty"><FAQ /></PrivateRoute>} />
-        <Route path="/generate-report" element={<PrivateRoute role="faculty"><GenerateReport /></PrivateRoute>} />
+{/* FA Routes */}
+<Route element={<Layout sidebarType="fa" />}>
+        <Route path="/fa-dashboard" element={<PrivateRoute role="fa" faRequired><FADashboard /></PrivateRoute>} />
+        <Route path="/fa-calendar" element={<PrivateRoute role="fa" faRequired><Calendar faView /></PrivateRoute>} />
+        <Route path="/student-details" element={<PrivateRoute role="fa" faRequired><StudentDetails /></PrivateRoute>} />
+        <Route path="/generate-report" element={<PrivateRoute role="fa" faRequired><GenerateReport /></PrivateRoute>} />
+        <Route path="/fa-faq" element={<PrivateRoute role="fa" faRequired><FAQ faView /></PrivateRoute>} />
       </Route>
     </Routes>
   );

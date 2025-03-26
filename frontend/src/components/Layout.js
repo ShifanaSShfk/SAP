@@ -5,59 +5,74 @@ import StudentSidebar from "./Student/Sidebar";
 import Header from "./Header";
 import UpcomingEvents from "./UpcomingEvents";
 import "../styles/layout.css";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
-const Layout = () => {
+// Layout.js
+const Layout = ({ sidebarType = null }) => {
   const userRole = localStorage.getItem("role");
   const isFacultyAdvisor = localStorage.getItem("isFacultyAdvisor") === "true";
   const location = useLocation();
-  const [currentView, setCurrentView] = useState(
-    localStorage.getItem("currentView") || "faculty"
-  );
+  const navigate = useNavigate();
+  
+  // Determine view - prioritize explicitly passed sidebarType
+  const [currentView, setCurrentView] = useState(() => {
+    if (sidebarType) return sidebarType;
+    const storedView = localStorage.getItem("currentView");
+    return storedView || (userRole === "faculty" ? "faculty" : "");
+  });
 
-  // Update view based on path
+  // Update view when path changes (only for faculty advisors)
   useEffect(() => {
-    if (userRole === "faculty" && isFacultyAdvisor) {
-      // FA-specific paths
-      if (location.pathname.startsWith("/fa-") || 
-          location.pathname === "/student-details" || 
-          location.pathname === "/generate-report") {
-        setCurrentView("fa");
-      } 
-      // Faculty-specific paths
-      else if (location.pathname.startsWith("/faculty-") || 
-               location.pathname === "/fac-events") {
-        setCurrentView("faculty");
+    if (userRole === "faculty" && isFacultyAdvisor && !sidebarType) {
+      const path = location.pathname;
+      
+      // Don't auto-switch on shared routes
+      if (path === "/faculty-calendar" || path === "/faculty-faq" || 
+          path === "/fa-calendar" || path === "/fa-faq") {
+        return;
       }
-      // For shared paths (/calendar, /faq), keep current view
+
+      // Check for FA-specific paths
+      if (path.startsWith("/fa-") || path === "/student-details" || path === "/generate-report") {
+        if (currentView !== "fa") {
+          setCurrentView("fa");
+          localStorage.setItem("currentView", "fa");
+        }
+      } 
+      // Check for faculty-specific paths
+      else if (path.startsWith("/faculty-") || path === "/fac-events") {
+        if (currentView !== "faculty") {
+          setCurrentView("faculty");
+          localStorage.setItem("currentView", "faculty");
+        }
+      }
     }
-  }, [location, userRole, isFacultyAdvisor]);
+  }, [location, userRole, isFacultyAdvisor, currentView, sidebarType]);
 
   const toggleView = () => {
     if (userRole === "faculty" && isFacultyAdvisor) {
       const newView = currentView === "faculty" ? "fa" : "faculty";
       setCurrentView(newView);
       localStorage.setItem("currentView", newView);
-      // Navigate to the corresponding dashboard
-      window.location.href = newView === "fa" ? "/fa-dashboard" : "/faculty-dashboard";
+      navigate(newView === "fa" ? "/fa-dashboard" : "/faculty-dashboard");
     }
+  };
+
+  // Determine which sidebar to show
+  const getSidebar = () => {
+    if (userRole === "faculty") {
+      if (isFacultyAdvisor && (currentView === "fa" || sidebarType === "fa")) {
+        return <FASidebar />;
+      }
+      return <FacultySidebar />;
+    }
+    return <StudentSidebar />;
   };
 
   return (
     <div className="layout">
-      {/* Sidebar based on user role and current view */}
-      {userRole === "faculty" ? (
-        isFacultyAdvisor && currentView === "fa" ? (
-          <FASidebar />
-        ) : (
-          <FacultySidebar />
-        )
-      ) : (
-        <StudentSidebar />
-      )}
-
+      {getSidebar()}
       <div className="separator"></div>
-
       <div className="content">
         <Header 
           onSwitchView={toggleView} 

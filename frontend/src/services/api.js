@@ -379,3 +379,33 @@ export const fetchRequestDetails = async (requestId) => {
     throw error;
   }
 };
+
+// api.js
+export const fetchStudentsByFA = async (facultyAdvisorId) => {
+  try {
+    const token = localStorage.getItem("authToken");
+    const response = await fetch(`${API_BASE_URL}/api/students/by-fa/${facultyAdvisorId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        ...(token && { Authorization: `Bearer ${token}` }),
+      },
+    });
+
+    const data = await handleResponse(response);
+    console.log('Students under FA:', data);
+    
+    return Array.isArray(data) ? data.map(student => ({
+      studentId: student.studentId,
+      studentName: student.studentName,
+      // department: student.department,
+      // section: student.section,
+      institutionalPoints: student.institutionalPoints || 0,
+      departmentPoints: student.departmentPoints || 0,
+      totalPoints: student.totalPoints || 0
+    })) : [];
+  } catch (error) {
+    console.error("Error fetching students by FA:", error);
+    throw error;
+  }
+};
