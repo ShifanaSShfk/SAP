@@ -41,4 +41,7 @@ public interface EventRepository extends JpaRepository<Event, Long> {
 
     // Find events with activity points greater than or equal to specified value
     List<Event> findByActivityPointsGreaterThanEqual(int points);
+    
+    @Query("SELECT e FROM Event e WHERE e.eventStartDate = :date")
+List<Event> findBySingleDate(@Param("date") LocalDate date);
 }

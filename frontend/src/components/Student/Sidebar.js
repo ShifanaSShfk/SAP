@@ -20,7 +20,7 @@ const StudentSidebar = () => {
             <Link to="/student-dashboard">Dashboard</Link>
           </li>
           <li className={location.pathname === "/calendar" ? "active" : ""}>
-            <Link to="/calendar">Calendar</Link>
+            <Link to="/student-calendar">Calendar</Link>
           </li>
           <li className={location.pathname === "/send-request" ? "active" : ""}>
             <Link to="/send-request">Send Request</Link>

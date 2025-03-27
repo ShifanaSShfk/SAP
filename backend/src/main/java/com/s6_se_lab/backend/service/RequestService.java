@@ -71,9 +71,6 @@ public class RequestService {
         request.setProofDocument(saveFile(proofFile));
 
         // Add faculty advisor
-        Optional<Faculty> advisorOptional = facultyRepository.findById(student.getFacultyAdvisorId());
-        advisorOptional.ifPresent(advisor -> request.getFacultyAdvisors().add(advisor));
-
         // Add faculty in charge from event
         request.getFacultyInCharge().addAll(event.getFaculties());
 
@@ -103,10 +100,8 @@ public class RequestService {
         request.setCreatedAt(LocalDateTime.now());
         request.setStatus(Request.Status.Pending);
         request.setProofDocument(saveFile(proofFile));
+        request.setFAStatus(Request.Status.Pending);
 
-        // Add faculty advisor
-        Optional<Faculty> advisorOptional = facultyRepository.findById(student.getFacultyAdvisorId());
-        advisorOptional.ifPresent(advisor -> request.getFacultyAdvisors().add(advisor));
 
         // Add faculty in charge
         Set<Faculty> inChargeFaculties = facultyInChargeIds.stream()
@@ -213,6 +208,7 @@ public class RequestService {
         details.put("activity_points", request.getActivityPoints());
         details.put("proof_document", request.getProofDocument());
         details.put("rejection_reason", request.getRejectionReason());
+        details.put("fa_status", request.getFAStatus().getDisplayValue());
         
         return details;
     }
@@ -228,6 +224,7 @@ public class RequestService {
             requestMap.put("activity_points", request.getActivityPoints());
             requestMap.put("rejection_reason", request.getRejectionReason());
             requestMap.put("created_at", request.getCreatedAt().toString());
+            requestMap.put("fa_status", request.getFAStatus().toString());
             return requestMap;
         }).collect(Collectors.toList());
     }

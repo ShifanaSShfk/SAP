@@ -12,7 +12,7 @@ import FacOverview from "./components/Faculty/FacRequestOverview";
 import FacApproved from "./components/Faculty/FacRequestApproved";
 import FacRejected from "./components/Faculty/FacRequestRejected";
 import FacEvents from "./components/Faculty/MyEvents";
-import EventDetails from "./components/Faculty/eventdetails";
+import EventDetails from "./components/EventDetails";
 import AddEvent from "./components/Faculty/AddEvent";
 import Profile from "./components/Student/Profile";
 import FacultyProfile from "./components/Faculty/FacultyProfile";
@@ -25,12 +25,20 @@ import PrivateRoute from "./components/PrivateRoute";
 import GenerateReport from "./components/FA/GenerateReport";
 import FacRequestDetails from "./components/Faculty/FacRequestDetails";
 import FARequestDetails from "./components/FA/FARequestDetails";
+import CalendarPageS from "./components/Student/CalendarPageS";
+import CalendarPageF from "./components/Faculty/CalendarPageF";
+import CalendarPageFA from "./components/FA/CalendarPageFA";
 
 function App() {
   return (
     <Routes>
       {/* Public Route */}
       <Route path="/" element={<Login />} />
+
+      <Route element={<Layout />}>
+      <Route path="/event-details/:eventId" element={<EventDetails />} />
+      <Route path="/send-request/:eventId" element={<SendRequest />} />
+      </Route>
 
       {/* Protected Routes */}
       {/* Student Routes */}
@@ -41,6 +49,7 @@ function App() {
         <Route path="/request-details" element={<PrivateRoute role="student"><Activitydetails /></PrivateRoute>} />
         <Route path="/student-profile" element={<PrivateRoute role="student"><Profile /></PrivateRoute>} />
         <Route path="/faq" element={<PrivateRoute role="student"><FAQ /></PrivateRoute>} />
+        <Route path="/student-calendar" element={<PrivateRoute role="student"><CalendarPageS /></PrivateRoute>} />
       </Route>
 
       {/* Faculty Routes */}
@@ -55,6 +64,7 @@ function App() {
         <Route path="/faculty-profile" element={<PrivateRoute role="faculty"><FacultyProfile /></PrivateRoute>} />
         <Route path="/faculty-faq" element={<PrivateRoute role="faculty"><FAQ facultyView /></PrivateRoute>} />
         <Route path="/fac-request/:requestId" element={<PrivateRoute role="faculty"><FacRequestDetails /></PrivateRoute>} />
+        <Route path="/faculty-calendar" element={<PrivateRoute role="faculty"><CalendarPageF /></PrivateRoute>} />
       </Route>
 
       {/* FA Routes */}
@@ -67,6 +77,7 @@ function App() {
         <Route path="/fa-approved" element={<PrivateRoute role="fa" faRequired><FAApproved /></PrivateRoute>} />
         <Route path="/fa-rejected" element={<PrivateRoute role="fa" faRequired><FARejected /></PrivateRoute>} />
         <Route path="/fa-request/:requestId" element={<PrivateRoute role="fa" faRequired><FARequestDetails /></PrivateRoute>} />
+        <Route path="/fa-calendar" element={<PrivateRoute role="faculty"><CalendarPageFA /></PrivateRoute>} />
       </Route>
     </Routes>
   );

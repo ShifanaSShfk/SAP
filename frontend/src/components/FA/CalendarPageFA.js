@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import CalendarApp from '../components/Calendar';
+import CalendarApp from './calendarFA';
 import { fetchFacultyEvents } from '../../services/api';
-import './../../styles/Faculty/CalendarPage.css';
+import './../../styles/CalendarPage.css';
 
 const CalendarPage = ({ faculty }) => {
   const navigate = useNavigate();

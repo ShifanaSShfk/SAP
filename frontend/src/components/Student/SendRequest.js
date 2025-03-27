@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { sendStudentRequest } from "../../services/api";
+import { useNavigate, useParams } from "react-router-dom";
 import "../../styles/Student/SendRequest.css";
 
 const SendRequest = () => {
+  const { eventId } = useParams();
   const [formData, setFormData] = useState({
     eventName: "",
     eventType: "",
@@ -23,6 +23,7 @@ const SendRequest = () => {
     department: ""
   });
   const [loading, setLoading] = useState(true);
+  const [eventDetails, setEventDetails] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -42,6 +43,27 @@ const SendRequest = () => {
         const facultiesResponse = await fetch("http://localhost:8080/api/faculty");
         const facultiesData = await facultiesResponse.json();
         
+        // Fetch event details if eventId exists
+        if (eventId) {
+          const eventResponse = await fetch(`http://localhost:8080/api/events/${eventId}`);
+          const event = await eventResponse.json();
+          setEventDetails(event);
+          
+          // Prefill form with event details
+          setFormData({
+            eventName: event.eventName,
+            eventType: event.eventType,
+            eventDate: event.eventStartDate,
+            eventTime: event.eventStartTime,
+            location: event.location,
+            proofFile: null
+          });
+          
+          // Pre-select faculty in charge from event
+          const eventFacultyIds = event.faculties.map(f => f.facultyId);
+          setSelectedFaculties(eventFacultyIds);
+        }
+        
         setStudentData({
           name: student.studentName,
           rollNumber: student.studentId,
@@ -58,20 +80,25 @@ const SendRequest = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [eventId]);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    // Only allow changes to fields that aren't prefilled from event
+    if (!eventId || !['proofFile'].includes(e.target.name)) {
+      setFormData({ ...formData, [e.target.name]: e.target.value });
+    }
   };
 
   const handleFacultySelect = (facultyId) => {
-    setSelectedFaculties(prev => {
-      if (prev.includes(facultyId)) {
-        return prev.filter(id => id !== facultyId);
-      } else {
-        return [...prev, facultyId];
-      }
-    });
+    if (!eventId) { // Only allow changes if not prefilled from event
+      setSelectedFaculties(prev => {
+        if (prev.includes(facultyId)) {
+          return prev.filter(id => id !== facultyId);
+        } else {
+          return [...prev, facultyId];
+        }
+      });
+    }
   };
 
   const handleFileChange = (e) => {
@@ -81,7 +108,7 @@ const SendRequest = () => {
   const handleCancel = () => {
     const confirmLeave = window.confirm("Are you sure you want to leave? Any unsaved data will be lost.");
     if (confirmLeave) {
-      navigate("/student-dashboard");
+      navigate(-1); // Go back to previous page
     }
   };
 
@@ -93,7 +120,7 @@ const SendRequest = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    if (selectedFaculties.length === 0) {
+    if (selectedFaculties.length === 0 && !eventId) {
       alert("Please select at least one faculty in charge");
       return;
     }
@@ -101,21 +128,32 @@ const SendRequest = () => {
     const formDataObj = new FormData();
     formDataObj.append("name", studentData.name);
     formDataObj.append("rollNumber", studentData.rollNumber);
-    formDataObj.append("eventName", formData.eventName);
-    formDataObj.append("eventType", formData.eventType);
-    formDataObj.append("eventDate", formData.eventDate);
-    formDataObj.append("eventTime", formData.eventTime);
-    formDataObj.append("location", formData.location);
-    formDataObj.append("activityPoints", "10");
-    formDataObj.append("proofFile", formData.proofFile);
-  
-    // Add each faculty ID separately
-    selectedFaculties.forEach(facultyId => {
-      formDataObj.append("facultyInChargeIds", facultyId);
-    });
+    
+    if (eventId) {
+      formDataObj.append("eventId", eventId);
+    } else {
+      formDataObj.append("eventName", formData.eventName);
+      formDataObj.append("eventType", formData.eventType);
+      formDataObj.append("eventDate", formData.eventDate);
+      formDataObj.append("eventTime", formData.eventTime);
+      formDataObj.append("location", formData.location);
+      formDataObj.append("activityPoints", "10");
+      // Add each faculty ID separately
+      selectedFaculties.forEach(facultyId => {
+        formDataObj.append("facultyInChargeIds", facultyId);
+      });
+    }
+    
+    if (formData.proofFile) {
+      formDataObj.append("proofFile", formData.proofFile);
+    }
   
     try {
-      const response = await fetch("http://localhost:8080/api/requests/custom", {
+      const endpoint = eventId ? 
+        "http://localhost:8080/api/requests/event" : 
+        "http://localhost:8080/api/requests/custom";
+      
+      const response = await fetch(endpoint, {
         method: "POST",
         body: formDataObj
       });
@@ -140,7 +178,7 @@ const SendRequest = () => {
 
   return (
     <div className="send-request-container">
-      <h2>Submit New Request</h2>
+      <h2>{eventId ? "Send Participation Request" : "Submit New Request"}</h2>
       <form onSubmit={handleSubmit} className="request-form" encType="multipart/form-data">
         {/* Student Information (Read-only) */}
         <div className="student-info">
@@ -166,27 +204,35 @@ const SendRequest = () => {
         <div className="form-row">
           <div className="form-group">
             <label>Event Name *</label>
-            <input
-              type="text"
-              name="eventName"
-              placeholder="Enter event name"
-              required
-              value={formData.eventName}
-              onChange={handleChange}
-            />
+            {eventId ? (
+              <div className="prefilled-value">{formData.eventName}</div>
+            ) : (
+              <input
+                type="text"
+                name="eventName"
+                placeholder="Enter event name"
+                required
+                value={formData.eventName}
+                onChange={handleChange}
+              />
+            )}
           </div>
           <div className="form-group">
             <label>Event Type *</label>
-            <select
-              name="eventType"
-              required
-              value={formData.eventType}
-              onChange={handleChange}
-            >
-              <option value="">Select Event Type</option>
-              <option value="Departmental">Departmental</option>
-              <option value="Institutional">Institutional</option>
-            </select>
+            {eventId ? (
+              <div className="prefilled-value">{formData.eventType}</div>
+            ) : (
+              <select
+                name="eventType"
+                required
+                value={formData.eventType}
+                onChange={handleChange}
+              >
+                <option value="">Select Event Type</option>
+                <option value="Departmental">Departmental</option>
+                <option value="Institutional">Institutional</option>
+              </select>
+            )}
           </div>
         </div>
 
@@ -194,82 +240,96 @@ const SendRequest = () => {
         <div className="form-row">
           <div className="form-group">
             <label>Event Date *</label>
-            <input
-              type="date"
-              name="eventDate"
-              required
-              value={formData.eventDate}
-              onChange={handleChange}
-            />
+            {eventId ? (
+              <div className="prefilled-value">{formData.eventDate}</div>
+            ) : (
+              <input
+                type="date"
+                name="eventDate"
+                required
+                value={formData.eventDate}
+                onChange={handleChange}
+              />
+            )}
           </div>
           <div className="form-group">
             <label>Event Time *</label>
-            <input
-              type="time"
-              name="eventTime"
-              required
-              value={formData.eventTime}
-              onChange={handleChange}
-            />
+            {eventId ? (
+              <div className="prefilled-value">{formData.eventTime}</div>
+            ) : (
+              <input
+                type="time"
+                name="eventTime"
+                required
+                value={formData.eventTime}
+                onChange={handleChange}
+              />
+            )}
           </div>
         </div>
 
         {/* Location */}
         <div className="form-group">
           <label>Location *</label>
-          <input
-            type="text"
-            name="location"
-            placeholder="Enter event location"
-            required
-            value={formData.location}
-            onChange={handleChange}
-          />
+          {eventId ? (
+            <div className="prefilled-value">{formData.location}</div>
+          ) : (
+            <input
+              type="text"
+              name="location"
+              placeholder="Enter event location"
+              required
+              value={formData.location}
+              onChange={handleChange}
+            />
+          )}
         </div>
 
         {/* Faculty In-Charge (Searchable Multi-select) */}
-        <div className="form-group">
-          <label>Faculty In-Charge *</label>
-          <div className="faculty-search-container">
-            <input
-              type="text"
-              placeholder="Search faculty..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="faculty-search"
-            />
-            <div className="faculty-select-container">
-              {filteredFaculties.map(faculty => (
-                <div
-                  key={faculty.facultyId}
-                  className={`faculty-option ${selectedFaculties.includes(faculty.facultyId) ? 'selected' : ''}`}
-                  onClick={() => handleFacultySelect(faculty.facultyId)}
-                >
-                  {faculty.facultyName} ({faculty.department})
-                </div>
-              ))}
-            </div>
-            <div className="selected-faculties">
-              {selectedFaculties.map(facultyId => {
-                const faculty = faculties.find(f => f.facultyId === facultyId);
-                return faculty ? (
-                  <span key={facultyId} className="selected-faculty">
-                    {faculty.facultyName}
-                    <button 
-                      type="button" 
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleFacultySelect(facultyId);
-                      }}
-                    >
-                      ×
-                    </button>
-                  </span>
-                ) : null;
-              })}
+        {!eventId && (
+          <div className="form-group">
+            <label>Faculty In-Charge *</label>
+            <div className="faculty-search-container">
+              <input
+                type="text"
+                placeholder="Search faculty..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="faculty-search"
+              />
+              <div className="faculty-select-container">
+                {filteredFaculties.map(faculty => (
+                  <div
+                    key={faculty.facultyId}
+                    className={`faculty-option ${selectedFaculties.includes(faculty.facultyId) ? 'selected' : ''}`}
+                    onClick={() => handleFacultySelect(faculty.facultyId)}
+                  >
+                    {faculty.facultyName} ({faculty.department})
+                  </div>
+                ))}
+              </div>
+              <div className="selected-faculties">
+                {selectedFaculties.map(facultyId => {
+                  const faculty = faculties.find(f => f.facultyId === facultyId);
+                  return faculty ? (
+                    <span key={facultyId} className="selected-faculty">
+                      {faculty.facultyName}
+                      <button 
+                        type="button" 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleFacultySelect(facultyId);
+                        }}
+                      >
+                        ×
+                      </button>
+                    </span>
+                  ) : null;
+                })}
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* File Upload */}
         <div className="form-group">
@@ -294,7 +354,9 @@ const SendRequest = () => {
           <button type="button" onClick={handleCancel}>
             Cancel
           </button>
-          <button type="submit">Submit Request</button>
+          <button type="submit">
+            {eventId ? "Send Participation Request" : "Submit Request"}
+          </button>
         </div>
       </form>
     </div>

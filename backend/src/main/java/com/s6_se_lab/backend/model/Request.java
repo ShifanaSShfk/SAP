@@ -52,6 +52,9 @@ public class Request {
     @JoinColumn(name = "student_id", nullable = false, foreignKey = @ForeignKey(name = "fk_request_student"))
     private Student student;
 
+    @Column(name = "faculty_advisor_id", length = 255)
+    private String facultyAdvisorId;
+
     @Column(name = "proof_document", length = 255)
     private String proofDocument;
 
@@ -80,13 +83,9 @@ public class Request {
     @Column(name = "rejection_reason", length = 1000)
     private String rejectionReason;
 
-    @ManyToMany
-    @JoinTable(
-        name = "request_faculty_advisors",
-        joinColumns = @JoinColumn(name = "request_id"),
-        inverseJoinColumns = @JoinColumn(name = "faculty_id")
-    )
-    private Set<Faculty> facultyAdvisors = new HashSet<>();
+    @Enumerated(EnumType.STRING)
+    @Column(name = "fa_status", nullable = false, columnDefinition = "ENUM('Pending', 'Approved', 'Rejected') DEFAULT 'Pending'")
+    private Status FAStatus = Status.Pending;
 
     @ManyToMany
     @JoinTable(
@@ -195,14 +194,6 @@ public class Request {
         this.location = location;
     }
 
-    public Set<Faculty> getFacultyAdvisors() {
-        return facultyAdvisors;
-    }
-
-    public void setFacultyAdvisors(Set<Faculty> facultyAdvisors) {
-        this.facultyAdvisors = facultyAdvisors;
-    }
-
     public Set<Faculty> getFacultyInCharge() {
         return facultyInCharge;
     }
@@ -217,5 +208,13 @@ public class Request {
 
     public void setRejectionReason(String rejectionReason) {
         this.rejectionReason = rejectionReason;
+    }
+
+    public Status getFAStatus() {
+        return status;
+    }
+
+    public void setFAStatus(Status status) {
+        this.status = status;
     }
 }
