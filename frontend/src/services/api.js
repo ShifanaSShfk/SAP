@@ -269,11 +269,6 @@ export const createEvent = async (eventData) => {
   }
 };
 
-/**
- * Fetches requests for a faculty member (where they are in charge)
- * @param {string} facultyId - The faculty member's ID
- * @returns {Promise<Array>} - List of requests
- */
 export const fetchFacultyRequests = async (facultyId) => {
   try {
     const response = await fetch(`${API_BASE_URL}/api/requests/faculty/${facultyId}`, {
@@ -302,7 +297,8 @@ export const fetchFacultyRequests = async (facultyId) => {
       event_time: request.event_time,
       location: request.location || "Location not specified",
       activity_points: request.activity_points || 0,
-      proof_document: request.proof_document
+      proof_document: request.proof_document,
+      created_at: request.created_at // Add this line
     }));
   } catch (error) {
     console.error("Error fetching faculty requests:", error);

@@ -34,13 +34,13 @@ const CalendarPage = () => {
                       {event.eventName}
                     </h3>
                     <div className="event-info">
-                      <p><strong>Venue:</strong> {event.Location}</p>
+                      <p><strong>Venue:</strong> {event.location}</p>
                       <p><strong>Time:</strong> {event.eventStartTime}</p>
                       <p><strong>Description:</strong> {event.description}</p>
                     </div>
                     
                     <button
-                      className="view-details-btn"
+                     className="view-details-btn"
                       onClick={() => navigate(`/event-details/${event.eventId}`)}
                     >
                       View Details
