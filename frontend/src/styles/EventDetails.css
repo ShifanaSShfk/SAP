@@ -1,0 +1,195 @@
+/* General Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+}
+
+.event-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.loading-message,
+.error-message {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.event-title {
+  font-size: 2rem;
+  color: white;
+  background: linear-gradient(135deg, #4a00e0, #6a3093);
+  padding: 1.25rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(74, 0, 224, 0.2);
+}
+
+.event-info,
+.event-participation,
+.event-rewards,
+.event-feedback,
+.event-attachments,
+.request-section {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: #4a00e0;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.event-info ul,
+.event-rewards ul,
+.event-feedback ul {
+  padding-left: 1rem;
+}
+
+.event-info li,
+.event-rewards li {
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.event-info strong,
+.event-participation strong,
+.event-rewards strong {
+  color: #4a00e0;
+  min-width: 150px;
+  display: inline-block;
+}
+
+.event-feedback ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.event-feedback li {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-style: italic;
+  color: #555;
+}
+
+.participants-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #4a00e0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.participants-link:hover {
+  color: #6a3093;
+  text-decoration: underline;
+}
+
+.attachments-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.attachment-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #f0f0f0;
+  border-radius: 4px;
+  color: #4a00e0;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.attachment-link:hover {
+  background: #e0e0e0;
+}
+
+/* Request Button Styles */
+.request-section {
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.request-button {
+  background: linear-gradient(135deg, #4a00e0, #6a3093);
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(74, 0, 224, 0.2);
+}
+
+.request-button:hover {
+  background: linear-gradient(135deg, #3a00c0, #5a2083);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(74, 0, 224, 0.25);
+}
+
+.request-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(74, 0, 224, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 1.5rem;
+  }
+  
+  .event-title {
+    font-size: 1.5rem;
+    padding: 1rem;
+  }
+  
+  h3 {
+    font-size: 1.3rem;
+  }
+  
+  .event-info li,
+  .event-rewards li {
+    font-size: 1rem;
+  }
+  
+  .event-info strong,
+  .event-participation strong,
+  .event-rewards strong {
+    min-width: 120px;
+  }
+
+  .request-button {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+  }
+}

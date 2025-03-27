@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Clock, MapPin, Plus, User } from 'lucide-react';
-import { fetchEventsByDate } from '../services/api';
-import '../styles/calendar.css';
+import { fetchEventsByDate } from '../../services/api';
+import '../../styles/calendar.css';
 
 const CalendarApp = ({ faculty, onAddEvent, events: initialEvents = [] }) => {
   const currentDate = new Date();

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Calendar from "./calendarS";
+import Calendar from "./calendarF";
 import "./../../styles/CalendarPage.css";
 
 const CalendarPage = () => {

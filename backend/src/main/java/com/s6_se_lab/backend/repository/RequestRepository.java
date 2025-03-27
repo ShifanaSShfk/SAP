@@ -19,9 +19,6 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
 
     List<Request> findByStatus(Status status);
 
-    @Query("SELECT r FROM Request r JOIN r.facultyAdvisors fa WHERE fa.facultyId = :facultyId")
-    List<Request> findByFacultyAdvisorId(String facultyId);
-
     // @Query("SELECT r FROM Request r JOIN r.facultyInCharge fc WHERE fc.facultyId = :facultyId")
     // List<Request> findByFacultyInChargeId(String facultyId);
 

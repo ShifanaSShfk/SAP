@@ -436,7 +436,7 @@ export const fetchStudentRequests = async (studentId) => {
       request_id: request.request_id || request.requestId,
       event_name: request.event_name || request.eventName,
       status: request.status || "Pending",
-      event_date: request.event_date || request.eventDate,
+      event_date: request.event_date || request.eventStartDate,
       activity_points: request.activity_points || request.activityPoints,
       rejection_reason: request.rejection_reason || null,
       created_at: request.created_at || request.createdAt
@@ -446,3 +446,20 @@ export const fetchStudentRequests = async (studentId) => {
     throw error;
   }
 };
+
+export const getEventById = async (eventId) => {
+  try {
+    const response = await fetch(`${API_URL}/${eventId}`, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("authToken")}`
+      }
+    });
+    return handleResponse(response);
+  } catch (error) {
+    console.error('Error fetching event:', error);
+    throw error;
+  }
+};
+
+
