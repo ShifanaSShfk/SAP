@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { fetchStudentRequests } from "../../services/api";
 import "../../styles/Student/RequestStatus.css";
 
-
 const CalendarIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M8 2V5M16 2V5M3.5 9.09H20.5M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z" stroke="#4A5568" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
@@ -15,7 +14,6 @@ const PointsIcon = () => (
     <path d="M12 17V12M12 7.00001V7.01001M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#4A5568" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );
-
 
 const RequestStatus = () => {
   const [requests, setRequests] = useState([]);
@@ -50,66 +48,50 @@ const RequestStatus = () => {
   });
 
   if (loading) return (
-    <div className="dashboard-container">
-      <div className="main-content">
-        <div className="info-card">
-          <h3>Request Status</h3>
-          <div className="loading">Loading your requests...</div>
-        </div>
-      </div>
+    <div className="request-status-container">
+      <div className="loading-state">Loading your requests...</div>
     </div>
   );
 
   if (error) return (
-    <div className="dashboard-container">
-      <div className="main-content">
-        <div className="info-card">
-          <h3>Request Status</h3>
-          <div className="error">{error}</div>
-        </div>
-      </div>
+    <div className="request-status-container">
+      <div className="error-state">{error}</div>
     </div>
   );
 
   return (
-    <div className="dashboard-container">
-      <div className="main-content">
-        <div className="info-card">
-          <h3>Request Status</h3>
-          
+    <div className="request-status-container">
+      <div className="content-box">
+        <div className="section compact">
+        <h2>Request Status</h2>
           <div className="filter-tabs">
+            
             {["All", "Pending", "Approved", "Rejected"].map((tab) => (
               <button
                 key={tab}
                 className={filter === tab ? "active" : ""}
                 onClick={() => setFilter(tab)}
-                aria-label={`Show ${tab} requests`}
               >
                 {tab}
               </button>
             ))}
           </div>
-
-          {filteredRequests.length === 0 ? (
-            <div className="no-requests">
-              No {filter === "All" ? "" : filter.toLowerCase() + " "}requests found
-            </div>
-          ) : (
+          
+          {filteredRequests.length > 0 ? (
             <div className="requests-list">
               {filteredRequests.map((request) => (
                 <div 
                   key={request.request_id} 
                   className={`request-card ${request.status.toLowerCase()}`}
-                  aria-live="polite"
                 >
                   <div className="request-info">
-                    <h4 title={request.event_name}>{request.event_name}</h4>
+                    <h3>{request.event_name}</h3>
                     <div className="request-meta">
                       <span className={`status-badge ${request.status.toLowerCase()}`}>
                         {request.status}
                       </span>
                       <span className="meta-item">
-                        <CalendarIcon aria-hidden="true" />
+                        <CalendarIcon />
                         <span>
                           {new Date(request.event_date).toLocaleDateString('en-US', {
                             month: 'short',
@@ -119,7 +101,7 @@ const RequestStatus = () => {
                         </span>
                       </span>
                       <span className="meta-item">
-                        <PointsIcon aria-hidden="true" />
+                        <PointsIcon />
                         <span>{request.activity_points} pts</span>
                       </span>
                     </div>
@@ -137,6 +119,10 @@ const RequestStatus = () => {
                   </button>
                 </div>
               ))}
+            </div>
+          ) : (
+            <div className="empty-state">
+              <p>No requests found</p>
             </div>
           )}
         </div>

@@ -24,7 +24,11 @@ const FacultyDashboard = () => {
         if (!facultyId) throw new Error("Faculty ID not found. Please login again.");
         
         const data = await fetchFacultyRequests(facultyId);
-        setRequests(data);
+        // Sort requests by created_at in descending order (newest first)
+        const sortedRequests = data.sort((a, b) => 
+          new Date(b.created_at) - new Date(a.created_at)
+        );
+        setRequests(sortedRequests);
       } catch (err) {
         console.error("Error loading requests:", err);
         setError(err.message || "Failed to load requests");
@@ -32,7 +36,7 @@ const FacultyDashboard = () => {
         setLoading(false);
       }
     };
-
+  
     loadRequests();
   }, [facultyId]);
 

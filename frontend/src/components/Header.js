@@ -78,7 +78,7 @@ const Header = () => {
     // For shared paths (/calendar, /faq), keep current view
   }, [location.pathname, userRole, isFacultyAdvisor]);
 
-  const title = `Hi, ${username}`;
+  const title = `${username}`;
 
   const handleProfileClick = () => {
     navigate(userRole === "faculty" ? "/faculty-profile" : "/student-profile");
