@@ -13,6 +13,7 @@ const FADashboard = () => {
   const facultyId = localStorage.getItem("userId");
   const isFacultyAdvisor = localStorage.getItem("isFacultyAdvisor") === "true";
   const isFAView = location.pathname.includes("fa-dashboard");
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const loadData = async () => {
@@ -61,17 +62,31 @@ const faRequests = allRequests.filter(request =>
     loadData();
   }, [facultyId]);
   
+  useEffect(() => {
+    setSearchTerm(""); // Clear search on tab change
+  }, [activeFilter]);
+  
 
   useEffect(() => {
-    // Apply filter based on fa_status
-    const filtered = requests.filter(request => {
-      if (activeFilter === "all") return true;
-      if (activeFilter === "pending") return !request.fa_status || request.fa_status === "Pending";
-      if (activeFilter === "completed") return request.fa_status === "Approved" || request.fa_status === "Rejected";
-      return true;
-    });
+    const filtered = requests
+      .filter(request => {
+        if (activeFilter === "all") return true;
+        if (activeFilter === "pending") return !request.fa_status || request.fa_status === "Pending";
+        if (activeFilter === "completed") return request.fa_status === "Approved" || request.fa_status === "Rejected";
+        return true;
+      })
+      .filter(request => {
+        const lowerSearch = searchTerm.toLowerCase();
+        return (
+          request.student_name.toLowerCase().includes(lowerSearch) ||
+          request.student_id.toLowerCase().includes(lowerSearch) ||
+          request.event_name.toLowerCase().includes(lowerSearch)
+        );
+      });
+  
     setFilteredRequests(filtered);
-  }, [activeFilter, requests]);
+  }, [activeFilter, requests, searchTerm]);
+  
 
   const getStatusClass = (status) => {
     switch (status) {
@@ -195,7 +210,16 @@ const faRequests = allRequests.filter(request =>
             </button>
           ))}
         </div>
-        
+        <div className="search-bar-container">
+  <input
+    type="text"
+    placeholder="Search by student name, roll no., or event"
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)}
+    className="search-input"
+  />
+</div>
+
         <div className="requests-container">
           {error ? (
             <div className="error-message">

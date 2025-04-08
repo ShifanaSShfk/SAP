@@ -10,6 +10,8 @@ const EventDetails = () => {
   const [loading, setLoading] = useState(true);
   const [facultyInCharge, setFacultyInCharge] = useState("");
   const [role, setRole] = useState("");
+  const [showRequestButton, setShowRequestButton] = useState(false);
+
 
   useEffect(() => {
 
@@ -37,11 +39,18 @@ const EventDetails = () => {
             );
           }
         }
+        // Check if event has ended
+const now = new Date();
+const eventEndDateTime = new Date(`${eventData.eventEndDate}T${eventData.eventEndTime}`);
+
+setShowRequestButton(now >= eventEndDateTime);
+
       } catch (error) {
         console.error("Error fetching event:", error);
       } finally {
         setLoading(false);
       }
+
     };
 
     fetchEvent();
@@ -76,10 +85,11 @@ const EventDetails = () => {
             <li><p><strong>Conducted by:</strong> {facultyInCharge || "Not specified"}</p></li>
             <li><p><strong>Category:</strong> {event.eventType}</p></li>
             <li><p><strong>Venue:</strong> {event.location}</p></li>
+            <li><p><strong>Activity Points:</strong> {event.activityPoints}</p></li>
           </ul>
         </div>
 
-        {role === "student" && (
+        {role === "student" && showRequestButton && (
   <div className="request-section">
     <button 
       className="request-button"
@@ -89,6 +99,7 @@ const EventDetails = () => {
     </button>
   </div>
 )}
+
       </div>
     </div>
   );

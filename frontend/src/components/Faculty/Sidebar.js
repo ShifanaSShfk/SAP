@@ -1,11 +1,10 @@
 // FacultySidebar.js
 import React from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../../styles/Faculty/sidebar.css";
 
 const FacultySidebar = () => {
   const location = useLocation();
-  const navigate = useNavigate();
 
   const handleLogout = () => {
     // Clear stored data

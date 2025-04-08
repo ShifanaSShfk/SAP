@@ -21,9 +21,9 @@ import FacRequestDetails from "./components/Faculty/FacRequestDetails";
 import FARequestDetails from "./components/FA/FARequestDetails";
 import CalendarPageS from "./components/Student/CalendarPageS";
 import CalendarPageF from "./components/Faculty/CalendarPageF";
-import CalendarPageFA from "./components/FA/CalendarPageFA";
 import OAuthHandler from './components/OAuthHandler';
 import ForgotPassword from "./components/ForgotPassword";
+import AdminDashboard from "./components/Admin/AdminDashboard";
 
 function App() {
   return (
@@ -68,8 +68,12 @@ function App() {
         <Route path="/generate-report" element={<PrivateRoute role="fa" faRequired><GenerateReport /></PrivateRoute>} />
         <Route path="/fa-faq" element={<PrivateRoute role="fa" faRequired><FAQ faView /></PrivateRoute>} />
         <Route path="/fa-request/:requestId" element={<PrivateRoute role="fa" faRequired><FARequestDetails /></PrivateRoute>} />
-        <Route path="/fa-calendar" element={<PrivateRoute role="faculty"><CalendarPageFA /></PrivateRoute>} />
       </Route>
+
+      {/* Admin Routes */}
+      {/* <Route element={<Layout sidebarType="fa" />}>
+        <Route path="/admin-dashboard" element={<PrivateRoute role="admin"><FADashboard /></PrivateRoute>} />
+      </Route> */}
     </Routes>
   );
 }

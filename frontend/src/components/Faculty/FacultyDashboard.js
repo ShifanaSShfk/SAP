@@ -10,7 +10,8 @@ const FacultyDashboard = () => {
   const [error, setError] = useState(null);
   const [activeFilter, setActiveFilter] = useState("all");
   const location = useLocation();
-  
+  const [searchTerm, setSearchTerm] = useState("");
+
   const facultyId = localStorage.getItem("userId");
   const isFacultyAdvisor = localStorage.getItem("isFacultyAdvisor") === "true";
   const isFAView = location.pathname.includes("fa-dashboard");
@@ -40,12 +41,22 @@ const FacultyDashboard = () => {
     loadRequests();
   }, [facultyId]);
 
-  const filteredRequests = requests.filter(request => {
+  const filteredRequests = requests
+  .filter(request => {
     if (activeFilter === "all") return true;
     if (activeFilter === "pending") return request.status === "Pending";
     if (activeFilter === "completed") return request.status === "Approved" || request.status === "Rejected";
     return true;
+  })
+  .filter(request => {
+    const lowerSearch = searchTerm.toLowerCase();
+    return (
+      request.student_name.toLowerCase().includes(lowerSearch) ||
+      request.student_id.toLowerCase().includes(lowerSearch) ||
+      request.event_name.toLowerCase().includes(lowerSearch)
+    );
   });
+
 
   const getStatusClass = (status) => {
     switch (status) {
@@ -56,38 +67,38 @@ const FacultyDashboard = () => {
     }
   };
 
-  const formatDateTime = (dateString, timeString) => {
-    try {
-      if (!dateString) return "Date not specified";
+  // const formatDateTime = (dateString, timeString) => {
+  //   try {
+  //     if (!dateString) return "Date not specified";
       
-      // Parse the date string (format: "YYYY-MM-DD")
-      const [year, month, day] = dateString.split('-');
-      const date = new Date(year, month - 1, day);
+  //     // Parse the date string (format: "YYYY-MM-DD")
+  //     const [year, month, day] = dateString.split('-');
+  //     const date = new Date(year, month - 1, day);
       
-      if (isNaN(date.getTime())) return "Invalid date";
+  //     if (isNaN(date.getTime())) return "Invalid date";
       
-      const formattedDate = date.toLocaleDateString(undefined, { 
-        year: 'numeric', 
-        month: 'short', 
-        day: 'numeric' 
-      });
+  //     const formattedDate = date.toLocaleDateString(undefined, { 
+  //       year: 'numeric', 
+  //       month: 'short', 
+  //       day: 'numeric' 
+  //     });
       
-      if (!timeString) return formattedDate;
+  //     if (!timeString) return formattedDate;
       
-      // Parse the time string (format: "HH:MM:SS" or "HH:MM")
-      const timeParts = timeString.split(':');
-      const hours = timeParts[0];
-      const minutes = timeParts[1];
+  //     // Parse the time string (format: "HH:MM:SS" or "HH:MM")
+  //     const timeParts = timeString.split(':');
+  //     const hours = timeParts[0];
+  //     const minutes = timeParts[1];
       
-      const hourInt = parseInt(hours, 10);
-      const ampm = hourInt >= 12 ? 'PM' : 'AM';
-      const displayHour = hourInt % 12 || 12;
+  //     const hourInt = parseInt(hours, 10);
+  //     const ampm = hourInt >= 12 ? 'PM' : 'AM';
+  //     const displayHour = hourInt % 12 || 12;
       
-      return `${formattedDate} at ${displayHour}:${minutes} ${ampm}`;
-    } catch {
-      return "Date not specified";
-    }
-  };
+  //     return `${formattedDate} at ${displayHour}:${minutes} ${ampm}`;
+  //   } catch {
+  //     return "Date not specified";
+  //   }
+  // };
 
   const renderRequestCards = () => {
     if (filteredRequests.length === 0) {
@@ -122,7 +133,7 @@ const FacultyDashboard = () => {
                 </span>
               </div>
               
-              <div className="detail-row">
+              {/* <div className="detail-row">
                 <span className="detail-label">Date & Time:</span>
                 <span className="detail-value">
                   {formatDateTime(request.event_date, request.event_time)}
@@ -135,13 +146,13 @@ const FacultyDashboard = () => {
                   {request.location}
                 </span>
               </div>
-              
-              <div className="detail-row">
+               */}
+              {/* <div className="detail-row">
                 <span className="detail-label">Points:</span>
                 <span className="detail-value">
                   {request.activity_points} activity points
                 </span>
-              </div>
+              </div> */}
             </div>
             
             <div className="request-actions">
@@ -204,7 +215,16 @@ const FacultyDashboard = () => {
             </button>
           ))}
         </div>
-        
+        <div className="search-bar-container">
+  <input
+    type="text"
+    placeholder="Search by student name, roll no., or event name"
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)}
+    className="search-input"
+  />
+</div>
+
         <div className="requests-container">
           {error ? (
             <div className="error-message">

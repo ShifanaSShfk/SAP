@@ -21,6 +21,7 @@ const AddEvent = () => {
   const [currentFaculty, setCurrentFaculty] = useState(null);
   const navigate = useNavigate();
   const userId = localStorage.getItem("userId");
+    const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -210,28 +211,68 @@ const AddEvent = () => {
           </select>
         </div>
 
-        {/* Faculty In-Charge */}
+        {/* Faculty In-Charge (Searchable Multi-select) */}
+
         <div className="form-group">
-          <label>Faculty In-Charge *</label>
-          <div className="faculty-selection">
-            {currentFaculty && (
-              <div className="faculty-chip primary">
-                {currentFaculty.facultyName} (You)
-              </div>
-            )}
-            {faculties
-              .filter(f => f.facultyId !== userId)
-              .map(faculty => (
-                <div
-                  key={faculty.facultyId}
-                  className={`faculty-chip ${selectedFaculties.includes(faculty.facultyId) ? 'selected' : ''}`}
-                  onClick={() => handleFacultySelect(faculty.facultyId)}
-                >
-                  {faculty.facultyName}
-                </div>
-              ))}
-          </div>
-        </div>
+  <label>Faculty In-Charge *</label>
+  <div className="faculty-search-container">
+
+    {/* Search Input */}
+    <input
+      type="text"
+      placeholder="Search faculty..."
+      value={searchTerm}
+      onChange={(e) => setSearchTerm(e.target.value)}
+      className="faculty-search"
+    />
+
+    {/* Searchable List */}
+    <div className="faculty-select-container">
+      {faculties
+        .filter(faculty =>
+          faculty.facultyName.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+        .map(faculty => {
+          const isCurrent = faculty.facultyId === userId;
+          const isSelected = selectedFaculties.includes(faculty.facultyId);
+          return (
+            <div
+              key={faculty.facultyId}
+              className={`faculty-option ${isSelected ? 'selected' : ''}`}
+              onClick={() => handleFacultySelect(faculty.facultyId)}
+            >
+              {faculty.facultyName} {isCurrent ? "(You)" : ""} ({faculty.department})
+            </div>
+          );
+        })}
+    </div>
+
+    {/* Selected Faculties Display */}
+    <div className="selected-faculties">
+      {selectedFaculties.map(facultyId => {
+        const faculty = faculties.find(f => f.facultyId === facultyId);
+        if (!faculty) return null;
+        const isCurrent = faculty.facultyId === userId;
+        return (
+          <span key={facultyId} className="selected-faculty">
+            {faculty.facultyName} {isCurrent ? "(You)" : ""}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleFacultySelect(facultyId);
+              }}
+            >
+              ×
+            </button>
+          </span>
+        );
+      })}
+    </div>
+  </div>
+</div>
+
+
 
         {/* Description */}
         <div className="form-group">

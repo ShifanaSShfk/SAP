@@ -7,6 +7,7 @@ const StudentDetails = () => {
   const [sortBy, setSortBy] = useState("Total Activity Points");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const fetchStudents = async () => {
@@ -44,7 +45,12 @@ const StudentDetails = () => {
     fetchStudents();
   }, []);
 
-  const sortedStudents = [...students].sort((a, b) => {
+  const filteredStudents = students.filter((student) =>
+    student.studentId.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    student.studentName.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  
+  const sortedStudents = [...filteredStudents].sort((a, b) => {
     if (sortBy === "Total Activity Points") {
       return b.totalPoints - a.totalPoints;
     } else if (sortBy === "Department Activity Points") {
@@ -54,6 +60,7 @@ const StudentDetails = () => {
     }
     return 0;
   });
+  
 
   if (loading) return <div className="loading">Loading student details...</div>;
   if (error) return <div className="error">Error: {error}</div>;
@@ -75,6 +82,15 @@ const StudentDetails = () => {
             <option value="Institute Activity Points">Institute Activity Points</option>
           </select>
         </div>
+        <div className="search-bar">
+  <input
+    type="text"
+    placeholder="Search by Student ID or Name"
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)}
+  />
+</div>
+
       </header>
       
       <table className="student-table">

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "../styles/UpcomingEvents.css";
 
 const UpcomingEvents = () => {
   const [upcomingEvents, setUpcomingEvents] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUpcomingEvents = async () => {
@@ -21,7 +23,7 @@ const UpcomingEvents = () => {
   
         const filteredEvents = events.filter(event => {
           const eventStartDate = new Date(event.eventStartDate);
-          const eventStartDateTime = new Date(`${event.eventStartDate}T${event.eventStartTime}`);
+         // const eventStartDateTime = new Date(`${event.eventStartDate}T${event.eventStartTime}`);
           const eventEndDateTime = new Date(`${event.eventEndDate}T${event.eventEndTime}`);
           
           // Check if event is ongoing or in the future
@@ -59,7 +61,9 @@ const UpcomingEvents = () => {
         {upcomingEvents.length > 0 ? (
           <div className="events-list">
             {upcomingEvents.map(event => (
-              <div key={event.eventId} className="event-card">
+              <div key={event.eventId} className="event-card"
+              onClick={() => navigate(`/event-details/${event.eventId}`)}
+                style={{ cursor: "pointer" }}>
                 <div className="event-date-badge">
                   {new Date(event.eventStartDate).toLocaleDateString('en-US', { day: 'numeric' })}
                   <span className="event-month">

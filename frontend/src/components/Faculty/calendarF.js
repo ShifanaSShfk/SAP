@@ -94,25 +94,27 @@ const Calendar = ({ onDateSelect }) => {
           <div key={`empty-${i}`} className="empty"></div>
         ))}
         {Array.from({ length: getDaysInMonth(year, month) }, (_, i) => {
-          const date = i + 1;
-          const key = `${month}-${date}`;
-          const hasEvent = eventMap[key];
+  const date = i + 1;
+  const key = `${month}-${date}`;
+  const hasEvent = eventMap[key];
 
-          return (
-            <div
-              key={date}
-              className={`calendar-day ${selectedDate === date ? "selected" : ""} ${hasEvent ? "has-event" : ""}`}
-              onClick={() => handleDateClick(date)}
-            >
-              <div className="day-number">{date}</div>
-              {/* {hasEvent && (
-                // <div className="event-indicator">
-                //   {eventMap[key].length} event{eventMap[key].length > 1 ? 's' : ''}
-                // </div>
-              )} */}
-            </div>
-          );
-        })}
+  const today = new Date();
+  const isToday =
+    today.getDate() === date &&
+    today.getMonth() === month &&
+    today.getFullYear() === year;
+
+  return (
+    <div
+      key={date}
+      className={`calendar-day ${selectedDate === date ? "selected" : ""} ${hasEvent ? "has-event" : ""} ${isToday ? "today" : ""}`}
+      onClick={() => handleDateClick(date)}
+    >
+      <div className="day-number">{date}</div>
+    </div>
+  );
+})}
+
       </div>
       {loading && <div className="loading-spinner"></div>}
     </div>

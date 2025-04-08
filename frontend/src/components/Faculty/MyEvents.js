@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchFacultyEvents } from '../../services/api'; // Import the API function
+import { fetchFacultyEvents } from '../../services/api';
 import '../../styles/Faculty/MyEvents.css';
 
-// Event Card Component
 const EventCard = ({ event }) => {
   const formatDate = (dateString) => {
     const options = { day: 'numeric', month: 'short', year: 'numeric' };
@@ -44,6 +43,12 @@ const EventCard = ({ event }) => {
             <span> to {formatDate(event.eventEndDate)}</span>
           )}
         </div>
+        {event.location && (
+          <div className="event-location">
+            <i className="icon-location"></i>
+            <span>{event.location}</span>
+          </div>
+        )}
       </div>
 
       <div className="event-status">
@@ -60,10 +65,10 @@ const EventCard = ({ event }) => {
   );
 };
 
-// My Events Component
 const MyEvents = () => {
   const [activeTab, setActiveTab] = useState('All');
   const [events, setEvents] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -102,7 +107,27 @@ const MyEvents = () => {
     });
   };
 
-  const filteredEvents = filterEventsByStatus(activeTab);
+  const filterEventsBySearch = (filtered) => {
+    return filtered.filter(event => {
+      const search = searchTerm.toLowerCase();
+  
+      // Convert eventStartDate to a readable string like "Apr 7, 2025"
+      const readableDate = new Date(event.eventStartDate).toLocaleDateString('en-US', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+      }).toLowerCase();
+  
+      return (
+        event.eventName?.toLowerCase().includes(search) ||
+        event.location?.toLowerCase().includes(search) ||
+        readableDate.includes(search)
+      );
+    });
+  };
+  
+
+  const filteredEvents = filterEventsBySearch(filterEventsByStatus(activeTab));
 
   if (loading) {
     return <div className="loading-message">Loading events...</div>;
@@ -126,11 +151,25 @@ const MyEvents = () => {
               <button 
                 key={tab}
                 className={`tab-btn ${activeTab === tab ? 'active' : ''}`}
-                onClick={() => setActiveTab(tab)}
+                onClick={() => {
+                  setActiveTab(tab);
+                  setSearchTerm('');
+                }}
               >
                 {tab}
               </button>
             ))}
+          </div>
+
+          {/* 🔍 Search Input */}
+          <div className="search-box">
+            <input
+              type="text"
+              placeholder="Search by name, location or date..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="search-input"
+            />
           </div>
 
           <div className="events-grid">

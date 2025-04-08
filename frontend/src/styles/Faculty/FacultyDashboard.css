@@ -237,3 +237,17 @@
   margin: 0 auto;
   line-height: 1.6;
 }
+
+.search-bar-container {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.search-input {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 300px;
+}

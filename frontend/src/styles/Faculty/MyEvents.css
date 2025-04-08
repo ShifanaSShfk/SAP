@@ -366,5 +366,18 @@
       overflow-x: auto;
       width: 100%;
     }
+
+    .search-box {
+      margin: 1rem 0;
+      text-align: right;
+    }
+    
+    .search-input {
+      padding: 0.5rem;
+      width: 100%;
+      max-width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }    
   }
   

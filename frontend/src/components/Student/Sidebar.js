@@ -1,10 +1,9 @@
 import React from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../../styles/Student/sidebar.css";
 
 const StudentSidebar = () => {
   const location = useLocation();
-  const navigate = useNavigate();
 
   const handleLogout = () => {
   // Clear stored data
