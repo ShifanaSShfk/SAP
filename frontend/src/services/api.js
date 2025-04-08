@@ -37,15 +37,16 @@ export const loginUser = async (id, password) => {
     console.log('Attempting login with:', { id, password });
     
     const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
+      credentials: "include",
       method: "POST",
       headers: { 
         "Content-Type": "application/json",
-        "Accept": "application/json"
+        "Accept": "application/json",
       },
       body: JSON.stringify({ 
         id: id.trim(),
         password: password
-      }),
+      })
     });
 
     console.log('Login response status:', response.status);
@@ -105,6 +106,10 @@ export const sendStudentRequest = async (data) => {
     const response = await fetch(`${API_BASE_URL}/api/requests/submit`, {
       method: "POST",
       body: formData,
+      credentials: "include",
+      headers: {
+        "Authorization": `Bearer ${localStorage.getItem("authToken")}`,
+      },
     });
 
     return handleResponse(response);
@@ -125,6 +130,7 @@ export const addEvent = async (eventData) => {
     const token = localStorage.getItem("authToken");
 
     const response = await fetch(`${API_URL}/add`, {
+      credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -147,9 +153,11 @@ export const addEvent = async (eventData) => {
 export const getAllEvents = async () => {
   try {
     const response = await fetch(`${API_URL}/all`, {
+      credentials: "include",
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
       },
     });
 
@@ -167,6 +175,7 @@ export const fetchStudentDetails = async (studentID) => {
   try {
     const token = localStorage.getItem("authToken");
     const response = await fetch(`${API_BASE_URL}/api/students/${studentID}`, {
+      credentials: "include",
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -198,10 +207,11 @@ export const fetchStudentDetails = async (studentID) => {
 export const fetchFacultyDetails = async (facultyID) => {
   try {
     const response = await fetch(`${API_BASE_URL}/api/faculty/${facultyID}`, {
+      credentials: "include",
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem("authToken")}`
+        "Authorization": `Bearer ${localStorage.getItem("authToken")}`,
       },
     });
 
@@ -225,10 +235,12 @@ export const fetchFacultyDetails = async (facultyID) => {
 export const fetchEventsByDate = async (year, month) => {
   try {
     const response = await fetch(`${API_BASE_URL}/api/events/by-date?year=${year}&month=${month}`, {
-      headers: {
+      method: "GET",
+      credentials: "include",
+        headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem("authToken")}`
-      }
+        "Authorization": `Bearer ${localStorage.getItem("authToken")}`,
+      },
     });
     return handleResponse(response);
   } catch (error) {
@@ -240,10 +252,12 @@ export const fetchEventsByDate = async (year, month) => {
 export const fetchFacultyEvents = async (facultyId) => {
   try {
     const response = await fetch(`${API_BASE_URL}/api/events/faculty/${facultyId}`, {
+      method: "GET",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem("authToken")}`
-      }
+        "Authorization": `Bearer ${localStorage.getItem("authToken")}`,
+      },
     });
     return handleResponse(response);
   } catch (error) {
@@ -256,9 +270,10 @@ export const createEvent = async (eventData) => {
   try {
     const response = await fetch(`${API_BASE_URL}/api/events`, {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem("authToken")}`
+        "Authorization": `Bearer ${localStorage.getItem("authToken")}`,
       },
       body: JSON.stringify(eventData)
     });
@@ -273,10 +288,11 @@ export const fetchFacultyRequests = async (facultyId) => {
   try {
     const response = await fetch(`${API_BASE_URL}/api/requests/faculty/${facultyId}`, {
       method: "GET",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem("authToken")}`
-      }
+        "Authorization": `Bearer ${localStorage.getItem("authToken")}`,
+      },
     });
 
     const data = await handleResponse(response);
@@ -289,6 +305,7 @@ export const fetchFacultyRequests = async (facultyId) => {
       request_id: request.request_id,
       event_name: request.event_name || "Untitled Event",
       status: request.status || "Pending",
+      fa_status: request.fa_status || "Pending",
       student_id: request.student_id,
       student_name: request.student_name || "Unknown Student",
       department: request.department || "N/A",
@@ -308,13 +325,16 @@ export const fetchFacultyRequests = async (facultyId) => {
 
 export const approveRequest = async (requestId) => {
   try {
+    const facultyId = localStorage.getItem("userId");
     const response = await fetch(`${API_BASE_URL}/api/requests/${requestId}/approve`, {
       method: "PUT",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem("authToken")}`
-      }
-    });
+        "Authorization": `Bearer ${localStorage.getItem("authToken")}`,
+        "facultyId": facultyId,
+      },
+    })
     return handleResponse(response);
   } catch (error) {
     console.error("Error approving request:", error);
@@ -324,11 +344,14 @@ export const approveRequest = async (requestId) => {
 
 export const rejectRequest = async (requestId, reason) => {
   try {
+    const facultyId = localStorage.getItem("userId");
     const response = await fetch(`${API_BASE_URL}/api/requests/${requestId}/reject`, {
       method: "PUT",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem("authToken")}`
+        "Authorization": `Bearer ${localStorage.getItem("authToken")}`,
+        "facultyId": facultyId,
       },
       body: JSON.stringify({ reason })
     });
@@ -339,6 +362,43 @@ export const rejectRequest = async (requestId, reason) => {
   }
 };
 
+
+export const faapproveRequest = async (requestId) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/requests/${requestId}/faapprove`, {
+      method: "PUT",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("authToken")}`,
+      },
+    })
+    return handleResponse(response);
+  } catch (error) {
+    console.error("Error approving request:", error);
+    throw error;
+  }
+};
+
+export const farejectRequest = async (requestId, reason) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/requests/${requestId}/fareject`, {
+      method: "PUT",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("authToken")}`,
+      },
+      body: JSON.stringify({ reason })
+    });
+    return handleResponse(response);
+  } catch (error) {
+    console.error("Error rejecting request:", error);
+    throw error;
+  }
+};
+
+
 /**
  * Fetches details of a specific request
  * @param {string} requestId - The ID of the request to fetch
@@ -346,12 +406,16 @@ export const rejectRequest = async (requestId, reason) => {
  */
 export const fetchRequestDetails = async (requestId) => {
   try {
+    const facultyId = localStorage.getItem("userId");
     const response = await fetch(`${API_BASE_URL}/api/requests/${requestId}`, {
       method: "GET",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem("authToken")}`
-      }
+        "Authorization": `Bearer ${localStorage.getItem("authToken")}`,
+        "facultyId": facultyId,
+        
+      },
     });
     
     const data = await handleResponse(response);
@@ -368,7 +432,8 @@ export const fetchRequestDetails = async (requestId) => {
       location: data.location,
       activity_points: data.activity_points,
       proof_document: data.proof_document,
-      rejection_reason: data.rejection_reason || ''
+      rejection_reason: data.rejection_reason || '',
+      fa_status: data.fa_status
     };
   } catch (error) {
     console.error("Error fetching request details:", error);
@@ -382,6 +447,7 @@ export const fetchStudentsByFA = async (facultyAdvisorId) => {
     const token = localStorage.getItem("authToken");
     const response = await fetch(`${API_BASE_URL}/api/students/by-fa/${facultyAdvisorId}`, {
       method: "GET",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
         ...(token && { Authorization: `Bearer ${token}` }),
@@ -411,6 +477,7 @@ export const fetchStudentRequests = async (studentId) => {
     const token = localStorage.getItem("authToken");
     const response = await fetch(`${API_BASE_URL}/api/requests/student/${studentId}`, {
       method: "GET",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
         ...(token && { Authorization: `Bearer ${token}` }),
@@ -432,10 +499,13 @@ export const fetchStudentRequests = async (studentId) => {
       request_id: request.request_id || request.requestId,
       event_name: request.event_name || request.eventName,
       status: request.status || "Pending",
+      fa_status: request.fa_status || "Pending",
       event_date: request.event_date || request.eventStartDate,
       activity_points: request.activity_points || request.activityPoints,
       rejection_reason: request.rejection_reason || null,
-      created_at: request.created_at || request.createdAt
+      created_at: request.created_at || request.createdAt,
+      student_id: request.student_id, 
+      student_name: request.student_name
     })).sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
   } catch (error) {
     console.error("Error fetching student requests:", error);
@@ -446,10 +516,12 @@ export const fetchStudentRequests = async (studentId) => {
 export const getEventById = async (eventId) => {
   try {
     const response = await fetch(`${API_URL}/${eventId}`, {
+      credentials: "include",
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem("authToken")}`
-      }
+        "Authorization": `Bearer ${localStorage.getItem("authToken")}`,
+      },
     });
     return handleResponse(response);
   } catch (error) {

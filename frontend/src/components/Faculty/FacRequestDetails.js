@@ -16,10 +16,14 @@ const FacRequestDetails = () => {
   useEffect(() => {
     const loadRequestDetails = async () => {
       try {
+        const facultyId = localStorage.getItem('userId');
         setIsLoading(true);
         const response = await fetch(`${API_BASE_URL}/api/requests/${requestId}`, {
+          credentials: "include",
+          method: "GET",
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+            'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+            'facultyId': facultyId
           }
         });
         const data = await response.json();
@@ -34,24 +38,29 @@ const FacRequestDetails = () => {
     loadRequestDetails();
   }, [requestId]);
 
-  const handleApprove = async () => {
-    setIsSubmitting(true);
-    try {
-      const response = await fetch(`${API_BASE_URL}/api/requests/${requestId}/approve`, {
-        method: "PUT",
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('authToken')}`
-        }
-      });
+const handleApprove = async () => {
+  setIsSubmitting(true);
+  try {
+    const facultyId = localStorage.getItem('userId'); // 👈 retrieve facultyId
+    const response = await fetch(`${API_BASE_URL}/api/requests/${requestId}/approve`, {
+      method: "PUT",
+      credentials: "include",
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+        'Content-Type': 'application/json',
+        'facultyId': facultyId // 👈 include this header
+      }
+    });
 
-      if (!response.ok) throw new Error('Approval failed');
-      setRequest(prev => ({ ...prev, status: "Approved" }));
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+    if (!response.ok) throw new Error('Approval failed');
+    setRequest(prev => ({ ...prev, status: "Approved" }));
+  } catch (err) {
+    setError(err.message);
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
 
   const handleReject = async () => {
     if (!rejectionReason.trim()) {
@@ -61,11 +70,14 @@ const FacRequestDetails = () => {
 
     setIsSubmitting(true);
     try {
+      const facultyId = localStorage.getItem('userId');
       const response = await fetch(`${API_BASE_URL}/api/requests/${requestId}/reject`, {
         method: "PUT",
+        credentials: "include",
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+          'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+          'facultyId': facultyId 
         },
         body: JSON.stringify({ reason: rejectionReason })
       });

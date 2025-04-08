@@ -32,20 +32,48 @@ const SendRequest = () => {
         const studentId = localStorage.getItem("userId");
         
         // Fetch student data
-        const studentResponse = await fetch(`http://localhost:8080/api/students/${studentId}`);
+        const studentResponse = await fetch(`http://localhost:8080/api/students/${studentId}`, {
+          credentials: "include",
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+          }
+        });
         const student = await studentResponse.json();
         
         // Fetch faculty advisor
-        const advisorResponse = await fetch(`http://localhost:8080/api/faculty/${student.facultyAdvisorId}`);
+        const advisorResponse = await fetch(`http://localhost:8080/api/faculty/${student.facultyAdvisorId}`, {
+          credentials: "include",
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+          }
+        });
         const advisor = await advisorResponse.json();
         
         // Fetch all faculties
-        const facultiesResponse = await fetch("http://localhost:8080/api/faculty");
+        const facultiesResponse = await fetch("http://localhost:8080/api/faculty", {
+          credentials: "include",
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+          }
+        });
         const facultiesData = await facultiesResponse.json();
         
         // Fetch event details if eventId exists
         if (eventId) {
-          const eventResponse = await fetch(`http://localhost:8080/api/events/${eventId}`);
+          const eventResponse = await fetch(`http://localhost:8080/api/events/${eventId}`, {
+            credentials: "include",
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+            }
+          });
           const event = await eventResponse.json();
           setEventDetails(event);
           
@@ -155,6 +183,7 @@ const SendRequest = () => {
       
       const response = await fetch(endpoint, {
         method: "POST",
+        credentials: "include",
         body: formDataObj
       });
   

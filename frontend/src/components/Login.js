@@ -62,7 +62,7 @@ const Login = () => {
           <button
             type="button"
             className="forgot-password"
-            onClick={() => console.log("Forgot Password clicked!")}
+            onClick={() => navigate("/forgot-password")}
           >
             Forgot Password?
           </button>
@@ -76,10 +76,14 @@ const Login = () => {
           </button>
         </form>
 
-        <button className="google-btn">
-          <img src={googleLogo} alt="Google Logo" />
-          Sign in with Google
-        </button>
+        <button 
+  className="google-btn" 
+  onClick={() => window.location.href = "http://localhost:8080/oauth2/authorization/google"}
+>
+  <img src={googleLogo} alt="Google Logo" />
+  Sign in with Google
+</button>
+
       </div>
     </div>
   );

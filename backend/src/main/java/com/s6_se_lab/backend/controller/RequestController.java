@@ -1,7 +1,9 @@
 package com.s6_se_lab.backend.controller;
 
 import com.s6_se_lab.backend.model.Request;
+import com.s6_se_lab.backend.model.RequestFacultyInCharge;
 import com.s6_se_lab.backend.service.RequestService;
+import com.s6_se_lab.backend.service.RequestFacultyInChargeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -21,6 +23,9 @@ public class RequestController {
 
     @Autowired
     private RequestService requestService;
+
+    @Autowired
+    private RequestFacultyInChargeService requestFacultyInChargeService;
 
     @PostMapping("/event")
     public ResponseEntity<Request> createEventRequest(
@@ -58,25 +63,52 @@ public class RequestController {
     }
 
 
-@PutMapping("/{requestId}/approve")
-public ResponseEntity<Request> approveRequest(@PathVariable Long requestId) {
-    Request request = requestService.approveRequest(requestId);
-    return ResponseEntity.ok(request);
+    @PutMapping("/{requestId}/approve")
+public ResponseEntity<String> approveRequest(
+        @PathVariable Long requestId,
+        @RequestHeader String facultyId) {
+
+    requestFacultyInChargeService.updateStatusA(requestId, facultyId, RequestFacultyInCharge.Status.Approved);
+    return ResponseEntity.ok("Request approved by faculty");
 }
+
+    
 
 @PutMapping("/{requestId}/reject")
 public ResponseEntity<Request> rejectRequest(
     @PathVariable Long requestId,
+    @RequestHeader String facultyId,
     @RequestBody Map<String, String> requestBody) {
     
     String reason = requestBody.get("reason");
     Request request = requestService.rejectRequest(requestId, reason);
+    requestFacultyInChargeService.updateStatusR(requestId, facultyId, RequestFacultyInCharge.Status.Rejected, reason);
     return ResponseEntity.ok(request);
 }
 
+@PutMapping("/{requestId}/faapprove")
+public ResponseEntity<String> faapproveRequest(
+        @PathVariable Long requestId) {
+
+    requestService.updateFAStatusA(requestId, Request.Status.Approved);
+    return ResponseEntity.ok("Request approved by faculty");
+}
+
+    
+
+@PutMapping("/{requestId}/fareject")
+public ResponseEntity<String> farejectRequest(
+    @PathVariable Long requestId,
+    @RequestBody Map<String, String> requestBody) {
+    
+    String reason = requestBody.get("reason");
+    requestService.updateFAStatusR(requestId, Request.Status.Rejected, reason);
+    return ResponseEntity.ok("Request rejected by faculty");
+}
+
 @GetMapping("/{requestId}")
-public ResponseEntity<Map<String, Object>> getRequestDetails(@PathVariable Long requestId) {
-    Map<String, Object> requestDetails = requestService.getRequestWithDetails(requestId);
+public ResponseEntity<Map<String, Object>> getRequestDetails(@PathVariable Long requestId, @RequestHeader String facultyId) {
+    Map<String, Object> requestDetails = requestService.getRequestWithDetails(requestId, facultyId);
     return ResponseEntity.ok(requestDetails);
 }
 

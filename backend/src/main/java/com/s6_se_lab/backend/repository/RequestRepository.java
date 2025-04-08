@@ -3,12 +3,14 @@ package com.s6_se_lab.backend.repository;
 import com.s6_se_lab.backend.model.Request;
 import com.s6_se_lab.backend.model.Request.Status;
 
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface RequestRepository extends JpaRepository<Request, Long> {
@@ -38,4 +40,6 @@ List<Request> findByStudentIdAndStatusOrderByCreatedAtDesc(
 
 @Query("SELECT r FROM Request r WHERE r.student.studentId = :studentId ORDER BY r.createdAt DESC")
 List<Request> findByStudentStudentIdOrderByCreatedAtDesc(@Param("studentId") String studentId);
+
+Optional<Request> findByRequestId(Long requestId);
 }

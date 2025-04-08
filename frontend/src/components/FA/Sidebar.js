@@ -8,8 +8,13 @@ const FASidebar = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    // Clear stored data
     localStorage.clear();
-    navigate("/");
+  
+    // Optional: Clear any other state if needed
+  
+    // Redirect to Google logout, then your login page
+    window.location.href = "https://accounts.google.com/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:3000";
   };
 
   return (

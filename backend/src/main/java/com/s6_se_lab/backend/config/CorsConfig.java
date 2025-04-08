@@ -12,14 +12,16 @@ public class CorsConfig {
 
     @Bean
     public CorsFilter corsFilter() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
-        
-        config.setAllowedOrigins(List.of("http://localhost:3000")); // Frontend React URL
+
+        config.setAllowedOriginPatterns(List.of("http://localhost:3000")); // ✅ correct port
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        config.setAllowedHeaders(List.of("*"));
-        config.setAllowCredentials(true);
-        
+        config.addAllowedHeader("*"); // allows all headers
+
+        config.setExposedHeaders(List.of("Authorization"));
+        config.setAllowCredentials(true); // ✅ for sending cookies or Authorization header
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }

@@ -26,11 +26,25 @@ const AddEvent = () => {
     const fetchData = async () => {
       try {
         // Get current faculty details
-        const facultyResponse = await axios.get(`http://localhost:8080/api/faculty/${userId}`);
+        const facultyResponse = await axios.get(`http://localhost:8080/api/faculty/${userId}`,{
+          withCredentials: true,
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+          }
+        });
         setCurrentFaculty(facultyResponse.data);
         
         // Get all faculties for selection
-        const allFacultiesResponse = await axios.get("http://localhost:8080/api/faculty");
+        const allFacultiesResponse = await axios.get("http://localhost:8080/api/faculty", {
+          withCredentials: true,
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+          }
+        });
         setFaculties(allFacultiesResponse.data);
         
         // Automatically add current faculty as selected
@@ -72,11 +86,19 @@ const AddEvent = () => {
       };
 
       await axios.post("http://localhost:8080/api/events", eventData, {
-        params: {
-          facultyIds: selectedFaculties
-        },
-        paramsSerializer: { indexes: null } // To handle array params correctly
-      });
+  withCredentials: true,
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
+  },
+  params: {
+    facultyIds: selectedFaculties
+  },
+  paramsSerializer: {
+    indexes: null  // To serialize array as `facultyIds=1&facultyIds=2`
+  }
+});
+
       
       alert("Event created successfully!");
       navigate("/faculty-dashboard");

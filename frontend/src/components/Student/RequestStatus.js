@@ -42,10 +42,21 @@ const RequestStatus = () => {
     fetchRequests();
   }, []);
 
-  const filteredRequests = requests.filter(request => {
+  const getDisplayStatus = (request) => {
+    const status = request.status?.toLowerCase();
+    const faStatus = request.fa_status?.toLowerCase();
+  
+    if (status === "rejected" || faStatus === "rejected") return "Rejected";
+    if (faStatus === "approved") return "Approved";
+    if (faStatus === "pending" && status !== "rejected") return "Pending";
+    return "Unknown";
+  };
+  
+  const filteredRequests = requests.filter((request) => {
     if (filter === "All") return true;
-    return request.status.toLowerCase() === filter.toLowerCase();
+    return getDisplayStatus(request) === filter;
   });
+  
 
   if (loading) return (
     <div className="request-status-container">
@@ -87,9 +98,10 @@ const RequestStatus = () => {
                   <div className="request-info">
                     <h3>{request.event_name}</h3>
                     <div className="request-meta">
-                      <span className={`status-badge ${request.status.toLowerCase()}`}>
-                        {request.status}
-                      </span>
+                    <span className={`status-badge ${getDisplayStatus(request).toLowerCase()}`}>
+  {getDisplayStatus(request)}
+</span>
+
                       <span className="meta-item">
                         <CalendarIcon />
                         <span>
@@ -113,7 +125,7 @@ const RequestStatus = () => {
                   </div>
                   <button 
                     className="view-details"
-                    onClick={() => window.location.href = `/request-details?id=${request.request_id}`}
+                    onClick={() => window.location.href = `/student-request-details?id=${request.request_id}`}
                   >
                     View Details
                   </button>

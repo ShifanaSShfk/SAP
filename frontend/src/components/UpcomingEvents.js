@@ -8,7 +8,14 @@ const UpcomingEvents = () => {
   useEffect(() => {
     const fetchUpcomingEvents = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/events/all");
+        const response = await axios.get("http://localhost:8080/api/events/all", {
+          withCredentials: true,
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+          }
+        });
         const events = response.data;
         const now = new Date();
   

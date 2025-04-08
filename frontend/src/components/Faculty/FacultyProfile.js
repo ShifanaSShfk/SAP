@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { fetchFacultyDetails } from '../../services/api';
 import '../../styles/profile.css';
 
@@ -7,7 +7,7 @@ const FacultyProfile = () => {
   const [faculty, setFaculty] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     const loadFacultyData = async () => {
@@ -39,9 +39,9 @@ const FacultyProfile = () => {
     loadFacultyData();
   }, []);
 
-  const handleSwitchView = () => {
-    navigate('/fa-dashboard');
-  };
+  // const handleSwitchView = () => {
+  //   navigate('/fa-dashboard');
+  // };
 
   if (loading) {
     return <div className="profile-container">Loading profile...</div>;
@@ -72,11 +72,11 @@ const FacultyProfile = () => {
         <p><strong>Email:</strong> {faculty?.email || 'N/A'}</p>
       </div>
       
-      {faculty?.isFacultyAdvisor && (
+      {/* {faculty?.isFacultyAdvisor && (
         <button onClick={handleSwitchView} className="switch-view-btn">
           Switch to Faculty Advisor View
         </button>
-      )}
+      )} */}
       
       <Link to="/faculty-dashboard" className="back-btn">
         ← Back to Dashboard

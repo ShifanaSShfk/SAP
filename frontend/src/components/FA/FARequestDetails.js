@@ -4,7 +4,7 @@ import "../../styles/Faculty/FacRequestDetails.css";
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
 
-const FARequestDetails = () => {
+const FacRequestDetails = () => {
   const { requestId } = useParams();
   const navigate = useNavigate();
   const [request, setRequest] = useState(null);
@@ -16,11 +16,16 @@ const FARequestDetails = () => {
   useEffect(() => {
     const loadRequestDetails = async () => {
       try {
+        const facultyId = localStorage.getItem('userId');
         setIsLoading(true);
         const response = await fetch(`${API_BASE_URL}/api/requests/${requestId}`, {
+          method: "GET",
+          credentials: "include",
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('authToken')}`
-          }
+            'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+            "Content-Type": "application/json",
+            'facultyId': facultyId,
+          },
         });
         const data = await response.json();
         setRequest(data);
@@ -34,26 +39,30 @@ const FARequestDetails = () => {
     loadRequestDetails();
   }, [requestId]);
 
-  const handleFAApprove = async () => {
-    setIsSubmitting(true);
-    try {
-      const response = await fetch(`${API_BASE_URL}/api/requests/${requestId}/fa/approve`, {
-        method: "PUT",
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('authToken')}`
-        }
-      });
+const handleApprove = async () => {
+  setIsSubmitting(true);
+  try {
+// 👈 retrieve facultyId
+    const response = await fetch(`${API_BASE_URL}/api/requests/${requestId}/faapprove`, {
+      credentials: "include",
+      method: "PUT",
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+        'Content-Type': 'application/json',
+      },
+    });
 
-      if (!response.ok) throw new Error('FA Approval failed');
-      setRequest(prev => ({ ...prev, status: "Approved" }));
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+    if (!response.ok) throw new Error('Approval failed');
+    setRequest(prev => ({ ...prev, fa_status: "Approved" }));
+  } catch (err) {
+    setError(err.message);
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
-  const handleFAReject = async () => {
+
+  const handleReject = async () => {
     if (!rejectionReason.trim()) {
       setError("Please provide a reason for rejection");
       return;
@@ -61,17 +70,18 @@ const FARequestDetails = () => {
 
     setIsSubmitting(true);
     try {
-      const response = await fetch(`${API_BASE_URL}/api/requests/${requestId}/fa/reject`, {
+      const response = await fetch(`${API_BASE_URL}/api/requests/${requestId}/fareject`, {
+        credentials: "include",
         method: "PUT",
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+          'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
         },
         body: JSON.stringify({ reason: rejectionReason })
       });
 
-      if (!response.ok) throw new Error('FA Rejection failed');
-      setRequest(prev => ({ ...prev, status: "Rejected", rejection_reason: rejectionReason }));
+      if (!response.ok) throw new Error('Rejection failed');
+      setRequest(prev => ({ ...prev, fa_status: "Rejected", rejection_reason: rejectionReason }));
     } catch (err) {
       setError(err.message || "Failed to reject request");
     } finally {
@@ -112,14 +122,14 @@ const FARequestDetails = () => {
     );
   }
 
-  const getStatusBadge = (status) => {
-    switch (status) {
+  const getStatusBadge = (fa_status) => {
+    switch (fa_status) {
       case "Approved":
-        return <span className="status-badge approved">{status}</span>;
+        return <span className="status-badge approved">{fa_status}</span>;
       case "Rejected":
-        return <span className="status-badge rejected">{status}</span>;
+        return <span className="status-badge rejected">{fa_status}</span>;
       default:
-        return <span className="status-badge pending">{status}</span>;
+        return <span className="status-badge pending">{fa_status}</span>;
     }
   };
 
@@ -129,11 +139,11 @@ const FARequestDetails = () => {
         <i className="fas fa-arrow-left"></i> Back to Dashboard
       </button>
 
-      <h2>Request Details (Faculty Advisor View)</h2>
+      <h2>Request Details</h2>
 
       <div className="info-row">
         <span className="label">Current Status:</span>
-        <span className="value">{getStatusBadge(request.status)}</span>
+        <span className="value">{getStatusBadge(request.fa_status)}</span>
       </div>
 
       <div className="info-row">
@@ -189,9 +199,9 @@ const FARequestDetails = () => {
         </div>
       )}
 
-      {request.status === "Pending" && (
+      {request.fa_status === "Pending" && (
         <div className="action-section">
-          <h3>Take Action (Faculty Advisor)</h3>
+          <h3>Take Action</h3>
           {error && <div className="error-message">{error}</div>}
           
           <div className="form-group">
@@ -208,7 +218,7 @@ const FARequestDetails = () => {
 
           <div className="action-buttons">
             <button 
-              onClick={handleFAApprove}
+              onClick={handleApprove}
               disabled={isSubmitting}
               className="approve-btn"
             >
@@ -218,12 +228,12 @@ const FARequestDetails = () => {
                 </>
               ) : (
                 <>
-                  <i className="fas fa-check-circle"></i> Approve as FA
+                  <i className="fas fa-check-circle"></i> Approve
                 </>
               )}
             </button>
             <button 
-              onClick={handleFAReject}
+              onClick={handleReject}
               disabled={isSubmitting || !rejectionReason.trim()}
               className="reject-btn"
             >
@@ -233,7 +243,7 @@ const FARequestDetails = () => {
                 </>
               ) : (
                 <>
-                  <i className="fas fa-times-circle"></i> Reject as FA
+                  <i className="fas fa-times-circle"></i> Reject
                 </>
               )}
             </button>
@@ -244,4 +254,4 @@ const FARequestDetails = () => {
   );
 };
 
-export default FARequestDetails;
+export default FacRequestDetails;

@@ -7,9 +7,15 @@ const StudentSidebar = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("role");
-    navigate("/");
-  };
+  // Clear stored data
+  localStorage.clear();
+
+  // Optional: Clear any other state if needed
+
+  // Redirect to Google logout, then your login page
+  window.location.href = "https://accounts.google.com/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:3000";
+};
+
 
   return (
     <aside className="sidebar">

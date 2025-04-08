@@ -52,9 +52,6 @@ public class Request {
     @JoinColumn(name = "student_id", nullable = false, foreignKey = @ForeignKey(name = "fk_request_student"))
     private Student student;
 
-    @Column(name = "faculty_advisor_id", length = 255)
-    private String facultyAdvisorId;
-
     @Column(name = "proof_document", length = 255)
     private String proofDocument;
 
@@ -211,10 +208,10 @@ public class Request {
     }
 
     public Status getFAStatus() {
-        return status;
+        return FAStatus;
     }
 
-    public void setFAStatus(Status status) {
-        this.status = status;
+    public void setFAStatus(Status FAStatus) {
+        this.FAStatus = FAStatus;
     }
 }

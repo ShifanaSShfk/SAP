@@ -13,7 +13,14 @@ const Calendar = ({ onDateSelect }) => {
   // Fetch events from backend
   useEffect(() => {
     setLoading(true);
-    axios.get("http://localhost:8080/api/events/all")
+    axios.get("http://localhost:8080/api/events/all", {
+      withCredentials: true,
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+      }
+    })
       .then((response) => {
         setEvents(response.data);
         setLoading(false);

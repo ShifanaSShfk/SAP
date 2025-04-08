@@ -9,8 +9,10 @@ const EventDetails = () => {
   const [event, setEvent] = useState(null);
   const [loading, setLoading] = useState(true);
   const [facultyInCharge, setFacultyInCharge] = useState("");
+  const [role, setRole] = useState("");
 
   useEffect(() => {
+
     if (!eventId) {
       console.error("eventId is undefined!");
       setLoading(false);
@@ -19,6 +21,7 @@ const EventDetails = () => {
 
     const fetchEvent = async () => {
       try {
+        
         const eventData = await getEventById(eventId);
         if (!eventData) {
           console.error("Event not found or API error!");
@@ -42,6 +45,9 @@ const EventDetails = () => {
     };
 
     fetchEvent();
+    const userRole = localStorage.getItem("role");
+    setRole(userRole);
+
   }, [eventId]);
 
   const handleSendRequest = () => {
@@ -73,14 +79,16 @@ const EventDetails = () => {
           </ul>
         </div>
 
-        <div className="request-section">
-          <button 
-            className="request-button"
-            onClick={handleSendRequest}
-          >
-            Send Participation Request
-          </button>
-        </div>
+        {role === "student" && (
+  <div className="request-section">
+    <button 
+      className="request-button"
+      onClick={handleSendRequest}
+    >
+      Send Participation Request
+    </button>
+  </div>
+)}
       </div>
     </div>
   );

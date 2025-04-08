@@ -32,21 +32,39 @@ const Header = () => {
       const role = localStorage.getItem("role");
       const userId = localStorage.getItem("userId");
       const storedName = localStorage.getItem("username");
-      
+  
       setUserRole(role);
       setUsername(storedName || "User");
-
+  
       try {
         if (role === "faculty") {
           const facultyData = await fetchFacultyDetails(userId);
-          setUsername(facultyData.name || facultyData.facultyName);
-          setIsFacultyAdvisor(facultyData.isFacultyAdvisor);
-          localStorage.setItem("username", facultyData.name || facultyData.facultyName);
-          
-          // Set initial view based on path
-          const initialView = location.pathname.startsWith("/fa-") ? "fa" : "faculty";
-          setCurrentView(initialView);
-          localStorage.setItem("currentView", initialView);
+  
+          const name = facultyData.name || facultyData.facultyName;
+          const advisor = facultyData.isFacultyAdvisor;
+  
+          setUsername(name);
+          setIsFacultyAdvisor(advisor);
+  
+          localStorage.setItem("username", name);
+          localStorage.setItem("isFacultyAdvisor", advisor);
+  
+          const storedView = localStorage.getItem("currentView");
+  
+          // ✅ Set only if not already stored
+          if (!storedView) {
+            const path = location.pathname;
+            const initialView =
+              path.startsWith("/fa-") || path === "/student-details" || path === "/generate-report"
+                ? "fa"
+                : "faculty";
+  
+            setCurrentView(initialView);
+            localStorage.setItem("currentView", initialView);
+          } else {
+            setCurrentView(storedView);
+          }
+  
         } else if (role === "student") {
           const studentData = await fetchStudentDetails(userId);
           setUsername(studentData.studentName);
@@ -56,9 +74,11 @@ const Header = () => {
         console.error("Error fetching user details:", error);
       }
     };
-
+  
     loadUserData();
-  }, []);
+  }, [location.pathname]);
+  
+  
 
   // Update view when navigating
   useEffect(() => {
@@ -78,7 +98,7 @@ const Header = () => {
     // For shared paths (/calendar, /faq), keep current view
   }, [location.pathname, userRole, isFacultyAdvisor]);
 
-  const title = `${username}`;
+  const title = username;
 
   const handleProfileClick = () => {
     navigate(userRole === "faculty" ? "/faculty-profile" : "/student-profile");

@@ -12,7 +12,14 @@ const EventDetails = () => {
   useEffect(() => {
     const fetchEventDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/events/${eventId}`);
+        const response = await axios.get(`http://localhost:8080/api/events/${eventId}`,{
+          withCredentials: true,
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+          }
+        });
         setEvent(response.data);
       } catch (error) {
         console.error("Error fetching event details:", error);
