@@ -5,13 +5,12 @@ Tech Stack & Key Features:
 
 Frontend: React.js, Material-UI (for responsive UI), Axios (API integration)
 
-Backend: Node.js, Express.js (RESTful API), JWT (authentication)
+Backend: Node.js, RESTful API
 
-Database: MongoDB (NoSQL for flexible data modeling)
+Database: mySQL
 
 Additional Tools: Git (version control), Postman (API testing)
 
-Impact: Enhanced efficiency by replacing error-prone spreadsheets with a centralized, scalable solution featuring role-based access, real-time updates, and automated reporting.
 
 
 📂 SAP/
