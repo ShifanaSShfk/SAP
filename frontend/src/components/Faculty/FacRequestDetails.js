@@ -12,6 +12,11 @@ const FacRequestDetails = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState(null);
+  const [uploadSuccess, setUploadSuccess] = useState(false);
+  
 
   useEffect(() => {
     const loadRequestDetails = async () => {
@@ -135,6 +140,50 @@ const handleApprove = async () => {
     }
   };
 
+
+
+// file input handler
+
+
+// upload handler
+const handleFileUpload = async () => {
+  if (!selectedFile) {
+    setUploadError("Please select a file to upload.");
+    return;
+  }
+  setUploading(true);
+  setUploadError(null);
+  setUploadSuccess(false);
+
+  try {
+    const formData = new FormData();
+    formData.append("file", selectedFile);
+
+    const facultyId = localStorage.getItem('userId');
+
+    const response = await fetch(`${API_BASE_URL}/api/requests/${requestId}/upload`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+        'facultyId': facultyId
+      },
+      body: formData
+    });
+
+    if (!response.ok) throw new Error('File upload failed');
+
+    setUploadSuccess(true);
+    setSelectedFile(null);
+  } catch (err) {
+    setUploadError(err.message || "Failed to upload file");
+  } finally {
+    setUploading(false);
+  }
+};
+
+
+
   return (
     <div className="request-details-container">
       <button onClick={() => navigate(-1)} className="back-btn">
@@ -178,21 +227,24 @@ const handleApprove = async () => {
         <span className="value">{request.activity_points || 0}</span>
       </div>
 
-      {request.proof_document && (
-        <div className="info-row">
-          <span className="label">Proof Document:</span>
-          <span className="value">
-            <a 
-              href={`${API_BASE_URL}/${request.proof_document}`} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="proof-link"
-            >
-              <i className="fas fa-file-alt"></i> View Document
-            </a>
-          </span>
+            {/* Student Files Section */}
+{request.student_file && (
+  <div className="info-row">
+    <span className="label">Proof File:</span>
+    <div className="value">
+      
+          <a
+            href={`http://localhost:8080/api/files/${request.student_file.fileName}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="proof-link"
+          >
+            {request.student_file.fileName}
+          </a>
         </div>
-      )}
+      
+    </div>
+)}
 
       {request.rejection_reason && (
         <div className="info-row">
@@ -200,6 +252,42 @@ const handleApprove = async () => {
           <span className="value">{request.rejection_reason}</span>
         </div>
       )}
+
+{request.status === "Pending" && (
+      <div className="form-group">
+      <div className="upload-section">
+  <h3>Upload Additional Document</h3>
+
+  <div className="form-group">
+    <input 
+      type="file" 
+      onChange={(e) => setSelectedFile(e.target.files[0])}
+      className="file-input"
+    />
+  </div>
+
+  <button 
+    onClick={handleFileUpload} 
+    disabled={uploading || !selectedFile} 
+    className="upload-btn"
+  >
+    {uploading ? (
+      <>
+        <i className="fas fa-spinner fa-spin"></i> Uploading...
+      </>
+    ) : (
+      <>
+        <i className="fas fa-upload"></i> Upload File
+      </>
+    )}
+  </button>
+
+  {uploadError && <div className="error-message">{uploadError}</div>}
+  {uploadSuccess && <div className="success-message">File uploaded successfully!</div>}
+</div>
+</div>
+)}
+
 
       {request.status === "Pending" && (
         <div className="action-section">

@@ -9,6 +9,28 @@
     padding-bottom: 220px;
   }
   
+  .faculty-incharge-section {
+    margin-top: 2rem;
+  }
+  
+  .faculty-incharge-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  
+  .faculty-incharge-table th,
+  .faculty-incharge-table td {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+  
+  .faculty-incharge-table th {
+    background-color: #f8f8f8;
+  }
+  
+
   .request-details-container h2 {
     color: #2c3e50;
     margin-bottom: 1.5rem;

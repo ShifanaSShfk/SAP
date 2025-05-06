@@ -89,6 +89,22 @@ setShowRequestButton(now >= eventEndDateTime);
           </ul>
         </div>
 
+
+        {event.posterUrl && (
+  <div className="poster-preview">
+    <img 
+      src={`http://localhost:8080/api/events/posters/${event.posterUrl}`} 
+      alt="Event Poster" 
+      className="poster-image"
+      style={{ width: '300px', height: '300px', objectFit: 'contain', borderRadius: '8px' }}
+    />
+  </div>
+)}
+
+
+
+
+
         {role === "student" && showRequestButton && (
   <div className="request-section">
     <button 

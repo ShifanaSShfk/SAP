@@ -71,9 +71,9 @@ function App() {
       </Route>
 
       {/* Admin Routes */}
-      {/* <Route element={<Layout sidebarType="fa" />}>
-        <Route path="/admin-dashboard" element={<PrivateRoute role="admin"><FADashboard /></PrivateRoute>} />
-      </Route> */}
+      <Route element={<Layout/>}>
+        <Route path="/admin-dashboard" element={<PrivateRoute role="admin"><AdminDashboard /></PrivateRoute>} />
+      </Route>
     </Routes>
   );
 }

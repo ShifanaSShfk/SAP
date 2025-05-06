@@ -210,3 +210,78 @@ h2 {
 .back-btn:hover {
   background: #e0e0e0;
 }
+
+.chart-section {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+}
+
+.chart-title {
+  color: #003366; /* dark blue */
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.chart-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+}
+
+.leaderboard-section {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.leaderboard-title {
+  font-size: 1.5rem;
+  color: #343a40;
+  margin-bottom: 1rem;
+}
+
+.leaderboard-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.leaderboard-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background-color: #f1f3f5;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.leaderboard-item:hover {
+  transform: scale(1.02);
+  background-color: #e9ecef;
+}
+
+.rank {
+  font-weight: bold;
+  color: #495057;
+}
+
+.name {
+  flex-grow: 1;
+  margin-left: 1rem;
+  font-weight: 500;
+  color: #212529;
+}
+
+.points {
+  font-weight: bold;
+  color: #007bff;
+}
+
+

@@ -194,28 +194,51 @@ const handleApprove = async () => {
         <span className="value">{request.activity_points || 0}</span>
       </div>
 
-      {request.proof_document && (
-        <div className="info-row">
-          <span className="label">Proof Document:</span>
-          <span className="value">
-            <a 
-              href={`${API_BASE_URL}/${request.proof_document}`} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="proof-link"
-            >
-              <i className="fas fa-file-alt"></i> View Document
-            </a>
-          </span>
+             {/* Student Files Section */}
+{request.student_file && (
+  <div className="info-row">
+    <span className="label">Proof File:</span>
+    <div className="value">
+      
+          <a
+            href={`http://localhost:8080/api/files/${request.student_file.fileName}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="proof-link"
+          >
+            {request.student_file.fileName}
+          </a>
         </div>
-      )}
+      
+    </div>
+)}
 
-      {request.rejection_reason && (
-        <div className="info-row">
-          <span className="label">Rejection Reason:</span>
-          <span className="value">{request.rejection_reason}</span>
-        </div>
-      )}
+{request.faculty_in_charges && request.faculty_in_charges.length > 0 && (
+  <div className="faculty-incharge-section">
+    <h3>Faculty In-Charges</h3>
+    <table className="faculty-incharge-table">
+      <thead>
+        <tr>
+          <th>Faculty Name</th>
+          <th>Faculty ID</th>
+          <th>Status</th>
+          <th>Rejection Reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        {request.faculty_in_charges.map((faculty, index) => (
+          <tr key={index}>
+            <td>{faculty.faculty_name}</td>
+            <td>{faculty.faculty_id}</td>
+            <td>{faculty.status}</td>
+            <td>{faculty.rejection_reason || "—"}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+)}
+
 
       {request.status === "Pending" && (
         <div className="action-section">

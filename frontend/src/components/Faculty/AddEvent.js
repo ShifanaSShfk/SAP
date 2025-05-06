@@ -22,6 +22,8 @@ const AddEvent = () => {
   const navigate = useNavigate();
   const userId = localStorage.getItem("userId");
     const [searchTerm, setSearchTerm] = useState("");
+    const [poster, setPoster] = useState(null);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,12 +80,27 @@ const AddEvent = () => {
     e.preventDefault();
     
     try {
+        let posterFileName = null;
+    
+        // 1. Upload poster if selected
+        if (poster) {
+          const formData = new FormData();
+          formData.append("file", poster);
+          const uploadResponse = await axios.post("http://localhost:8080/api/events/uploadPoster", formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+            }
+          });
+          posterFileName = uploadResponse.data;
+        }
       const eventData = {
         ...event,
         eventStartDate: event.eventStartDate.split("T")[0],
         eventEndDate: event.eventEndDate ? event.eventEndDate.split("T")[0] : event.eventStartDate.split("T")[0],
         eventStartTime: event.eventStartTime.slice(0, 5),
         eventEndTime: event.eventEndTime ? event.eventEndTime.slice(0, 5) : event.eventStartTime.slice(0, 5),
+        posterUrl: posterFileName,
       };
 
       await axios.post("http://localhost:8080/api/events", eventData, {
@@ -284,6 +301,28 @@ const AddEvent = () => {
             required
           />
         </div>
+
+        <div className="form-group">
+  <label>Event Poster</label>
+  <input
+    type="file"
+    name="poster"
+    accept="image/*,.pdf"
+    onChange={(e) => setPoster(e.target.files[0])}
+  />
+</div>
+
+{poster && (
+  <div className="poster-preview">
+    <img 
+  src={URL.createObjectURL(poster)} 
+  alt="Poster Preview" 
+  style={{ width: '300px', height: '300px', objectFit: 'contain', borderRadius: '8px' }}
+/>
+  </div>
+)}
+
+
 
         <div className="form-actions">
           <button type="button" onClick={() => navigate("/faculty-dashboard")}>

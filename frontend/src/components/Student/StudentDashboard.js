@@ -1,35 +1,48 @@
 import React, { useEffect, useState } from 'react';
+import { Pie } from 'react-chartjs-2';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { fetchStudentDetails, fetchFacultyDetails } from '../../services/api';
 import '../../styles/Student/StudentDashboard.css';
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 const StudentDashboard = () => {
   const [student, setStudent] = useState(null);
   const [facultyAdvisor, setFacultyAdvisor] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [leaderboard, setLeaderboard] = useState([]);
+
+  useEffect(() => {
+    const fetchLeaderboard = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/api/students/top");
+
+        const data = await response.json();
+        console.log(data); // Add this line to log the response
+        setLeaderboard(data);
+      } catch (err) {
+        console.error("Failed to fetch leaderboard", err);
+      }
+    };
+  
+    fetchLeaderboard();
+  }, []);  
 
   useEffect(() => {
     const loadData = async () => {
       try {
         const userId = localStorage.getItem('userId');
-        if (!userId) {
-          throw new Error('User ID not found');
-        }
+        if (!userId) throw new Error('User ID not found');
 
-        // Fetch student details
         const studentData = await fetchStudentDetails(userId);
-        console.log('Student Data:', studentData); // Add this for debugging
         setStudent(studentData);
 
-        // If student has faculty advisor, fetch their details
         if (studentData.facultyAdvisorId) {
           const facultyData = await fetchFacultyDetails(studentData.facultyAdvisorId);
-          console.log('Faculty Data:', facultyData); // Add this for debugging
           setFacultyAdvisor(facultyData);
         }
-
       } catch (error) {
-        console.error('Error loading student data:', error);
         setError(error.message || 'Failed to load student data');
       } finally {
         setLoading(false);
@@ -39,13 +52,37 @@ const StudentDashboard = () => {
     loadData();
   }, []);
 
-  if (loading) {
-    return <div className="loading">Loading...</div>;
-  }
+  if (loading) return <div className="loading">Loading...</div>;
+  if (error) return <div className="error-message">{error}</div>;
 
-  if (error) {
-    return <div className="error-message">{error}</div>;
-  }
+  const pieData = {
+    labels: ['Institutional Points', 'Departmental Points'],
+    datasets: [
+      {
+        data: [
+          student?.institutionalPoints || 0,
+          student?.departmentPoints || 0
+        ],
+        backgroundColor: ['#007bff', '#f7c948'], // blue and yellow
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const pieOptions = {
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          color: '#333',
+          font: {
+            size: 14,
+          },
+        },
+      },
+    },
+    maintainAspectRatio: false,
+  };
 
   return (
     <div className="dashboard-container">
@@ -63,6 +100,32 @@ const StudentDashboard = () => {
             <p><strong>Total Points:</strong> {student?.totalPoints || 0}</p>
           </div>
         </section>
+
+        <section className="chart-section">
+          <h3 className="chart-title">Activity Points Distribution</h3>
+          <div className="chart-container">
+            <Pie data={pieData} options={pieOptions} />
+          </div>
+        </section>
+
+        <section className="leaderboard-section">
+  <h3 className="leaderboard-title">🏆 Top 5 Students</h3>
+  <ol className="leaderboard-list">
+    {leaderboard.length > 0 ? (
+      leaderboard.map((student, index) => (
+        <li key={student.studentId} className="leaderboard-item">
+          <span className="rank">#{index + 1}</span>
+          <span className="name">{student.studentName}</span>
+          <span className="points">{student.totalPoints} pts</span>
+        </li>
+      ))
+    ) : (
+      <li>No leaderboard data available.</li>
+    )}
+  </ol>
+</section>
+
+
       </main>
     </div>
   );

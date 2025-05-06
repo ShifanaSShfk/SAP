@@ -197,17 +197,19 @@ const faRequests = allRequests.filter(request =>
         <div className="filter-tabs">
           {["all", "pending", "completed"].map(filter => (
             <button
-              key={filter}
-              className={`filter-tab ${activeFilter === filter ? "active" : ""}`}
-              onClick={() => setActiveFilter(filter)}
-            >
-              {filter.charAt(0).toUpperCase() + filter.slice(1)}
-              {filter === "pending" && requests.some(r => r.status === "Pending") && (
-                <span className="notification-badge">
-                  {requests.filter(r => r.status === "Pending").length}
-                </span>
-              )}
-            </button>
+            key={filter}
+            className={`filter-tab ${activeFilter === filter ? "active" : ""}`}
+            onClick={() => setActiveFilter(filter)}
+          >
+            {filter.charAt(0).toUpperCase() + filter.slice(1)}
+            
+            {filter === "pending" && requests.some(r => !r.fa_status || r.fa_status === "Pending") && (
+              <span className="notification-badge">
+                {requests.filter(r => !r.fa_status || r.fa_status === "Pending").length}
+              </span>
+            )}
+          </button>
+          
           ))}
         </div>
         <div className="search-bar-container">

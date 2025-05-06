@@ -365,7 +365,7 @@ const SendRequest = () => {
           <label>Proof Document *</label>
           <div className="file-upload-box">
             <p>Drag and drop your file here or click to browse</p>
-            <p className="file-format">(Only JPG, PNG files allowed)</p>
+            <p className="file-format">(Only JPG, PNG, PDF files allowed)</p>
             <input 
               type="file" 
               accept="image/png, image/jpeg" 

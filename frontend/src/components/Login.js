@@ -24,6 +24,8 @@ const Login = () => {
         navigate('/student-dashboard');
       } else if (userData.role === 'faculty') {
         navigate(userData.isFacultyAdvisor ? '/fa-dashboard' : '/faculty-dashboard');
+      } else if(userData.role === 'admin') {
+        navigate('/admin-dashboard');
       }
     } catch (error) {
       console.error("Login failed:", error);
