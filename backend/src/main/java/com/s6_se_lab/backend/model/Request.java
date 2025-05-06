@@ -52,9 +52,6 @@ public class Request {
     @JoinColumn(name = "student_id", nullable = false, foreignKey = @ForeignKey(name = "fk_request_student"))
     private Student student;
 
-    @Column(name = "proof_document", length = 255)
-    private String proofDocument;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, columnDefinition = "ENUM('Pending', 'Approved', 'Rejected') DEFAULT 'Pending'")
     private Status status = Status.Pending;
@@ -125,14 +122,6 @@ public class Request {
 
     public void setStudent(Student student) {
         this.student = student;
-    }
-
-    public String getProofDocument() {
-        return proofDocument;
-    }
-
-    public void setProofDocument(String proofDocument) {
-        this.proofDocument = proofDocument;
     }
 
     public Status getStatus() {

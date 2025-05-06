@@ -79,5 +79,9 @@ public class StudentController {
     public List<Student> getStudentsByFacultyAdvisor(@PathVariable String facultyAdvisorId) {
         return studentRepository.findByFacultyAdvisorId(facultyAdvisorId);
     }
-    
+
+    @GetMapping("/top")
+    public List<Student> getTopStudents() {
+        return studentService.getTopStudentsByTotalPoints();
+}
 }

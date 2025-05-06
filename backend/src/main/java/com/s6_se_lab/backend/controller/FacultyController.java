@@ -51,6 +51,21 @@ public class FacultyController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/list")
+public ResponseEntity<List<Map<String, Object>>> getFacultyListForDropdown() {
+    List<Faculty> facultyList = facultyService.getAllFaculty();
+    List<Map<String, Object>> response = facultyList.stream().map(faculty -> {
+        Map<String, Object> map = new HashMap<>();
+        map.put("facultyId", faculty.getFacultyId());
+        map.put("facultyName", faculty.getFacultyName());
+        map.put("department", faculty.getDepartment());
+        return map;
+    }).toList();
+
+    return ResponseEntity.ok(response);
+}
+
+
     @PostMapping
     public Faculty createFaculty(@RequestBody Faculty faculty) {
         return facultyService.createFaculty(faculty);

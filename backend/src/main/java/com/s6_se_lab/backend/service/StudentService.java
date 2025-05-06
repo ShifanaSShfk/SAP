@@ -42,4 +42,9 @@ public class StudentService {
     public void deleteStudent(String studentId) {
         studentRepository.deleteById(studentId);
     }
+
+    public List<Student> getTopStudentsByTotalPoints() {
+        return studentRepository.findTop5ByOrderByTotalPointsDesc();
+    }    
+    
 }

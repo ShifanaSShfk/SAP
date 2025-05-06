@@ -70,4 +70,8 @@ public class Event {
         inverseJoinColumns = @JoinColumn(name = "faculty_id")
     )
     private Set<Faculty> faculties = new HashSet<>();
+
+    @Column(name = "poster_url")
+    private String posterUrl;
+
 }

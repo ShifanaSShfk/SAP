@@ -1,5 +1,7 @@
 package com.s6_se_lab.backend.controller;
 
+
+import com.s6_se_lab.backend.dto.FacultyIdsRequest;
 import com.s6_se_lab.backend.model.Request;
 import com.s6_se_lab.backend.model.RequestFacultyInCharge;
 import com.s6_se_lab.backend.service.RequestService;
@@ -62,6 +64,12 @@ public class RequestController {
         return ResponseEntity.ok(requests);
     }
 
+    @PostMapping("/{requestId}/add-faculties")
+public ResponseEntity<?> addFacultiesInCharge(@PathVariable Long requestId, @RequestBody FacultyIdsRequest body) {
+    System.out.println("Received Faculty IDs: " + body.getFacultyIds());
+    requestFacultyInChargeService.addFacultiesInCharge(requestId, body.getFacultyIds());
+    return ResponseEntity.ok().build();
+}
 
     @PutMapping("/{requestId}/approve")
 public ResponseEntity<String> approveRequest(
@@ -112,6 +120,7 @@ public ResponseEntity<Map<String, Object>> getRequestDetails(@PathVariable Long 
     return ResponseEntity.ok(requestDetails);
 }
 
+
 @GetMapping("/student/{studentId}")
 public ResponseEntity<List<Map<String, Object>>> getStudentRequests(@PathVariable String studentId) {
     try {
@@ -121,4 +130,20 @@ public ResponseEntity<List<Map<String, Object>>> getStudentRequests(@PathVariabl
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 }
+
+@PostMapping("/{requestId}/upload")
+    public ResponseEntity<String> uploadRequestFile(
+            @PathVariable Long requestId,
+            @RequestParam("file") MultipartFile file,
+            @RequestHeader("facultyId") String facultyId) {
+
+        try {
+            requestService.saveRequestFile(requestId, file, facultyId);
+            return ResponseEntity.ok("File uploaded successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("File upload failed: " + e.getMessage());
+        }
+    }
+
+
 }

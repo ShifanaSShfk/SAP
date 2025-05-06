@@ -1,12 +1,16 @@
 package com.s6_se_lab.backend.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.s6_se_lab.backend.model.RequestFacultyInCharge;
+import com.s6_se_lab.backend.repository.FacultyRepository;
 import com.s6_se_lab.backend.repository.RequestFacultyInChargeRepository;
-
+import com.s6_se_lab.backend.model.Faculty;
 import com.s6_se_lab.backend.model.Request;
+import com.s6_se_lab.backend.model.RequestFacultyId;
 import com.s6_se_lab.backend.repository.RequestRepository;
 
 import jakarta.transaction.Transactional;
@@ -19,6 +23,9 @@ public class RequestFacultyInChargeService {
 
     @Autowired
     private RequestRepository requestRepository;
+
+    @Autowired
+    private FacultyRepository facultyRepository;
 
     @Transactional
 public void updateStatusA(Long requestId, String facultyId, RequestFacultyInCharge.Status status) {
@@ -55,6 +62,29 @@ public void updateStatusA(Long requestId, String facultyId, RequestFacultyInChar
         rfic.setRejectionReason(reason);
         requestFacultyInChargeRepository.save(rfic);
     }
-
+    
+    public void addFacultiesInCharge(Long requestId, List<String> facultyIds) {
+        Request request = requestRepository.findById(requestId)
+            .orElseThrow(() -> new RuntimeException("Request not found with id: " + requestId));
+    
+        for (String facultyId : facultyIds) {
+            Faculty faculty = facultyRepository.findById(facultyId)
+                .orElseThrow(() -> new RuntimeException("Faculty not found with id: " + facultyId));
+    
+            RequestFacultyInCharge inCharge = new RequestFacultyInCharge();
+            
+            // 👉 THIS LINE IS MISSING
+            inCharge.setId(new RequestFacultyId(request.getRequestId(), faculty.getFacultyId()));
+            
+            inCharge.setRequest(request);
+            inCharge.setFaculty(faculty);
+            inCharge.setStatus(RequestFacultyInCharge.Status.Pending);
+    
+            System.out.println("Saving Faculty InCharge: " + inCharge);
+    
+            requestFacultyInChargeRepository.save(inCharge);
+        }
+    }
+    
     
 }
